@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>hot-CNO and breakout &#8212; pynucastro 2.6.0.post57+gd3a17fba2 documentation</title>
+    <title>hot-CNO and breakout &#8212; pynucastro 2.6.0.post140+g7d01fa58a documentation</title>
   
   
   
@@ -39,7 +39,7 @@
 <link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
   <script src="../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
 
-    <script src="../_static/documentation_options.js?v=e47bdb58"></script>
+    <script src="../_static/documentation_options.js?v=507d7f94"></script>
     <script src="../_static/doctools.js?v=9bcbadda"></script>
     <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
@@ -197,6 +197,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../electron-capture-example.html">Tabulated Weak Rate Example</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../electron-captures.html">Combining ReacLib Rates with Electron Capture Tables</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../alternate-rates.html"><code class="docutils literal notranslate"><span class="pre">alternate_rates</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../inert-nuclei.html">Inert Nuclei</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Advanced Rate Operations</span></p>
 <ul class="nav bd-sidenav">
@@ -217,11 +218,19 @@
 <li class="toctree-l1"><a class="reference internal" href="../unimportant-rates.html">Removing Unimportant Rates</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../network-cycles.html">Finding Cycles (with NetworkX)</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../stiffness.html">Assessing the Stiffness of a Network</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../reduction.html">Network Reduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../sens_analysis_example.html">Sensitivity Analysis</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Nuclear Statistical Equilibrium</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../NSE-example.html">NSE Demonstrations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../NSE-example.html">NSE Examples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../NSE-direct-integration.html">NSE vs. Direct Integration</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../nse_table.html">Creating an NSE table</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Thermodynamics</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../fermi-integrals.html">Fermi-Dirac Integrals</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../electron-eos.html">The Electron-Positron EOS</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Plasma Neutrinos</span></p>
 <ul class="nav bd-sidenav">
@@ -265,6 +274,8 @@
 </ul>
 </details></li>
 <li class="toctree-l3 has-children"><a class="reference internal" href="../pynucastro.eos.html">pynucastro.eos package</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l4"><a class="reference internal" href="../pynucastro.eos.difference_utils.html">pynucastro.eos.difference_utils module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../pynucastro.eos.electron_eos.html">pynucastro.eos.electron_eos module</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../pynucastro.eos.fermi_integrals.html">pynucastro.eos.fermi_integrals module</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../pynucastro.eos.quadrature_weights.html">pynucastro.eos.quadrature_weights module</a></li>
 </ul>
@@ -275,7 +286,6 @@
 <li class="toctree-l4"><a class="reference internal" href="../pynucastro.networks.fortran_network.html">pynucastro.networks.fortran_network module</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../pynucastro.networks.helper.html">pynucastro.networks.helper module</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../pynucastro.networks.nse_network.html">pynucastro.networks.nse_network module</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../pynucastro.networks.numpy_network.html">pynucastro.networks.numpy_network module</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../pynucastro.networks.python_network.html">pynucastro.networks.python_network module</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../pynucastro.networks.rate_collection.html">pynucastro.networks.rate_collection module</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../pynucastro.networks.simple_cxx_network.html">pynucastro.networks.simple_cxx_network module</a></li>
@@ -310,11 +320,7 @@
 </ul>
 </details></li>
 <li class="toctree-l3 has-children"><a class="reference internal" href="../pynucastro.reduction.html">pynucastro.reduction package</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l4"><a class="reference internal" href="../pynucastro.reduction.drgep.html">pynucastro.reduction.drgep module</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../pynucastro.reduction.generate_data.html">pynucastro.reduction.generate_data module</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../pynucastro.reduction.load_network.html">pynucastro.reduction.load_network module</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../pynucastro.reduction.reduction.html">pynucastro.reduction.reduction module</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../pynucastro.reduction.reduction_utils.html">pynucastro.reduction.reduction_utils module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../pynucastro.reduction.drgep_module.html">pynucastro.reduction.drgep_module module</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../pynucastro.reduction.sensitivity_analysis.html">pynucastro.reduction.sensitivity_analysis module</a></li>
 </ul>
 </details></li>
@@ -323,7 +329,9 @@
 <li class="toctree-l4"><a class="reference internal" href="../pynucastro.screening.screening_util.html">pynucastro.screening.screening_util module</a></li>
 </ul>
 </details></li>
+<li class="toctree-l3"><a class="reference internal" href="../pynucastro.mpi_utils.html">pynucastro.mpi_utils module</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../pynucastro.numba_util.html">pynucastro.numba_util module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../pynucastro.utils.html">pynucastro.utils module</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../pynucastro.yt_utils.html">pynucastro.yt_utils module</a></li>
 </ul>
 </details></li>
@@ -628,7 +636,7 @@ across the other nuclei.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/906998741b6ef954b99124f25a40defc04f108efa83bc49de5f9e4f77bfd2a23.png" src="../_images/906998741b6ef954b99124f25a40defc04f108efa83bc49de5f9e4f77bfd2a23.png" />
+<img alt="../_images/e629a371107377e37239d0e090098564fbbbaa40d681d52bc33a0a4606ac353c.png" src="../_images/e629a371107377e37239d0e090098564fbbbaa40d681d52bc33a0a4606ac353c.png" />
 </div>
 </div>
 <section id="transition-from-cno-to-hot-cno">
@@ -649,7 +657,7 @@ across the other nuclei.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/44c40159d77b45e1286d4f8b3f9d8d7987a08a0e43a7fe4b6588a13729d07a2e.png" src="../_images/44c40159d77b45e1286d4f8b3f9d8d7987a08a0e43a7fe4b6588a13729d07a2e.png" />
+<img alt="../_images/b424a21d68f7ff982b4a01d2c90df4c94c4abf6a489ba57fbdc8edb41e3428ec.png" src="../_images/b424a21d68f7ff982b4a01d2c90df4c94c4abf6a489ba57fbdc8edb41e3428ec.png" />
 </div>
 </div>
 <p>Starting at <span class="math notranslate nohighlight">\({}^{12}\mathrm{C}\)</span>, we see the following sequence dominate:</p>
@@ -670,7 +678,7 @@ across the other nuclei.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/295af0af0a349a91009d6b4af73652bf98492a8267ea625ed994342a255712ec.png" src="../_images/295af0af0a349a91009d6b4af73652bf98492a8267ea625ed994342a255712ec.png" />
+<img alt="../_images/94c418376da24b8e66102c85f476297dedb52d7a6d70717615ca554756b2d647.png" src="../_images/94c418376da24b8e66102c85f476297dedb52d7a6d70717615ca554756b2d647.png" />
 </div>
 </div>
 <p>Now we see that the proton capture on <span class="math notranslate nohighlight">\({}^{13}\mathrm{N}\)</span> is faster than the beta-decay, and we make <span class="math notranslate nohighlight">\({}^{14}\mathrm{O}\)</span>.  Then the cycle continues as before.</p>
@@ -684,7 +692,7 @@ across the other nuclei.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/f7737dd44a9bd164a734a240567e00ed8dc92112b46ce550419a6475c4946e86.png" src="../_images/f7737dd44a9bd164a734a240567e00ed8dc92112b46ce550419a6475c4946e86.png" />
+<img alt="../_images/fa588e9a9368a3130c654d1f29480e5d1c029bfb74155bb68c0d449967449dc3.png" src="../_images/fa588e9a9368a3130c654d1f29480e5d1c029bfb74155bb68c0d449967449dc3.png" />
 </div>
 </div>
 <p>Since the beta-decays are temperature independent (you just have to wait for the nucleus to decay), the overall hot-CNO rate becomes insensitive to temperature.</p>
@@ -734,7 +742,7 @@ across the other nuclei.</p>
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Text(0, 0.5, &#39;$N_A \\langle\\sigma v\\rangle$&#39;)
 </pre></div>
 </div>
-<img alt="../_images/41c1fec17084e03f7c5a84c0594376a0df8fde3741c5f6fdbdd8368eb2f01ce2.png" src="../_images/41c1fec17084e03f7c5a84c0594376a0df8fde3741c5f6fdbdd8368eb2f01ce2.png" />
+<img alt="../_images/7d39042c007ffb79fb6cffa53c8287a5901ba5c956020a5c67e8aa20c1eb8aa4.png" src="../_images/7d39042c007ffb79fb6cffa53c8287a5901ba5c956020a5c67e8aa20c1eb8aa4.png" />
 </div>
 </div>
 <p>We see that above <span class="math notranslate nohighlight">\(T \sim 2\times 10^8~\mathrm{K}\)</span>, the proton-capture proceeds faster than the beta-decay, and we transition to hot-CNO.</p>

@@ -1,10 +1,9 @@
 Overview of pynucastro
 ======================
 
-pynucastro is a set of python interfaces to nuclear reaction rates. It
-is meant for both interactive exploration of rates (through Jupyter
-notebooks) and to create reaction networks for use in simulation
-codes.
+pynucastro is a python library for nuclear astrophysics.  It provides
+access to nuclear data and reaction rates, and tools for building
+and interactively exploring nuclear reaction networks.
 
 The preferred way of importing pynucastro is as follows:
 
@@ -128,7 +127,7 @@ There are two modes of usage for pynucastro.
 
   .. math::
 
-     \frac{dY_i}{dt} = - \sum_{j,k} Y_i Y_j \lambda_{i(j,k)l} + \sum_{j,k} Y_l Y_k \lambda_{l(j,k)i}
+     \frac{dY_i}{dt} = - \sum_{j,k} Y_i Y_j \lambda_{i(j,k)l} + \sum_{j,k} Y_l Y_k \lambda_{l(k,j)i}
 
   where the :math:`\lambda`'s are the rates of destruction and creation
   of species i, represented by the molar fraction :math:`Y_i` (see,

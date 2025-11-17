@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>pynucastro package &#8212; pynucastro 2.6.0.post57+gd3a17fba2 documentation</title>
+    <title>pynucastro package &#8212; pynucastro 2.6.0.post140+g7d01fa58a documentation</title>
   
   
   
@@ -39,7 +39,7 @@
 <link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
   <script src="_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
 
-    <script src="_static/documentation_options.js?v=e47bdb58"></script>
+    <script src="_static/documentation_options.js?v=507d7f94"></script>
     <script src="_static/doctools.js?v=9bcbadda"></script>
     <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="_static/clipboard.min.js?v=a7894cd8"></script>
@@ -195,6 +195,7 @@
 <li class="toctree-l1"><a class="reference internal" href="electron-capture-example.html">Tabulated Weak Rate Example</a></li>
 <li class="toctree-l1"><a class="reference internal" href="electron-captures.html">Combining ReacLib Rates with Electron Capture Tables</a></li>
 <li class="toctree-l1"><a class="reference internal" href="alternate-rates.html"><code class="docutils literal notranslate"><span class="pre">alternate_rates</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="inert-nuclei.html">Inert Nuclei</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Advanced Rate Operations</span></p>
 <ul class="nav bd-sidenav">
@@ -215,11 +216,19 @@
 <li class="toctree-l1"><a class="reference internal" href="unimportant-rates.html">Removing Unimportant Rates</a></li>
 <li class="toctree-l1"><a class="reference internal" href="network-cycles.html">Finding Cycles (with NetworkX)</a></li>
 <li class="toctree-l1"><a class="reference internal" href="stiffness.html">Assessing the Stiffness of a Network</a></li>
+<li class="toctree-l1"><a class="reference internal" href="reduction.html">Network Reduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sens_analysis_example.html">Sensitivity Analysis</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Nuclear Statistical Equilibrium</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="NSE-example.html">NSE Demonstrations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="NSE-example.html">NSE Examples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="NSE-direct-integration.html">NSE vs. Direct Integration</a></li>
 <li class="toctree-l1"><a class="reference internal" href="nse_table.html">Creating an NSE table</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Thermodynamics</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="fermi-integrals.html">Fermi-Dirac Integrals</a></li>
+<li class="toctree-l1"><a class="reference internal" href="electron-eos.html">The Electron-Positron EOS</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Plasma Neutrinos</span></p>
 <ul class="nav bd-sidenav">
@@ -263,6 +272,8 @@
 </ul>
 </details></li>
 <li class="toctree-l3 has-children"><a class="reference internal" href="pynucastro.eos.html">pynucastro.eos package</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l4"><a class="reference internal" href="pynucastro.eos.difference_utils.html">pynucastro.eos.difference_utils module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="pynucastro.eos.electron_eos.html">pynucastro.eos.electron_eos module</a></li>
 <li class="toctree-l4"><a class="reference internal" href="pynucastro.eos.fermi_integrals.html">pynucastro.eos.fermi_integrals module</a></li>
 <li class="toctree-l4"><a class="reference internal" href="pynucastro.eos.quadrature_weights.html">pynucastro.eos.quadrature_weights module</a></li>
 </ul>
@@ -273,7 +284,6 @@
 <li class="toctree-l4"><a class="reference internal" href="pynucastro.networks.fortran_network.html">pynucastro.networks.fortran_network module</a></li>
 <li class="toctree-l4"><a class="reference internal" href="pynucastro.networks.helper.html">pynucastro.networks.helper module</a></li>
 <li class="toctree-l4"><a class="reference internal" href="pynucastro.networks.nse_network.html">pynucastro.networks.nse_network module</a></li>
-<li class="toctree-l4"><a class="reference internal" href="pynucastro.networks.numpy_network.html">pynucastro.networks.numpy_network module</a></li>
 <li class="toctree-l4"><a class="reference internal" href="pynucastro.networks.python_network.html">pynucastro.networks.python_network module</a></li>
 <li class="toctree-l4"><a class="reference internal" href="pynucastro.networks.rate_collection.html">pynucastro.networks.rate_collection module</a></li>
 <li class="toctree-l4"><a class="reference internal" href="pynucastro.networks.simple_cxx_network.html">pynucastro.networks.simple_cxx_network module</a></li>
@@ -308,11 +318,7 @@
 </ul>
 </details></li>
 <li class="toctree-l3 has-children"><a class="reference internal" href="pynucastro.reduction.html">pynucastro.reduction package</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l4"><a class="reference internal" href="pynucastro.reduction.drgep.html">pynucastro.reduction.drgep module</a></li>
-<li class="toctree-l4"><a class="reference internal" href="pynucastro.reduction.generate_data.html">pynucastro.reduction.generate_data module</a></li>
-<li class="toctree-l4"><a class="reference internal" href="pynucastro.reduction.load_network.html">pynucastro.reduction.load_network module</a></li>
-<li class="toctree-l4"><a class="reference internal" href="pynucastro.reduction.reduction.html">pynucastro.reduction.reduction module</a></li>
-<li class="toctree-l4"><a class="reference internal" href="pynucastro.reduction.reduction_utils.html">pynucastro.reduction.reduction_utils module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="pynucastro.reduction.drgep_module.html">pynucastro.reduction.drgep_module module</a></li>
 <li class="toctree-l4"><a class="reference internal" href="pynucastro.reduction.sensitivity_analysis.html">pynucastro.reduction.sensitivity_analysis module</a></li>
 </ul>
 </details></li>
@@ -321,7 +327,9 @@
 <li class="toctree-l4"><a class="reference internal" href="pynucastro.screening.screening_util.html">pynucastro.screening.screening_util module</a></li>
 </ul>
 </details></li>
+<li class="toctree-l3"><a class="reference internal" href="pynucastro.mpi_utils.html">pynucastro.mpi_utils module</a></li>
 <li class="toctree-l3"><a class="reference internal" href="pynucastro.numba_util.html">pynucastro.numba_util module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pynucastro.utils.html">pynucastro.utils module</a></li>
 <li class="toctree-l3"><a class="reference internal" href="pynucastro.yt_utils.html">pynucastro.yt_utils module</a></li>
 </ul>
 </details></li>
@@ -622,9 +630,6 @@ Jupyter notebooks.</p></li>
 <li><p><a class="reference internal" href="pynucastro.networks.nse_network.html#pynucastro.networks.nse_network.NSENetwork" title="pynucastro.networks.nse_network.NSENetwork"><code class="xref py py-obj docutils literal notranslate"><span class="pre">NSENetwork</span></code></a> :
 this extends the <code class="docutils literal notranslate"><span class="pre">RateCollection</span></code> to allow for solving for the
 nuclear statistical equilibrium state of a collection of nuclei.</p></li>
-<li><p><a class="reference internal" href="pynucastro.networks.numpy_network.html#pynucastro.networks.numpy_network.NumpyNetwork" title="pynucastro.networks.numpy_network.NumpyNetwork"><code class="xref py py-obj docutils literal notranslate"><span class="pre">NumpyNetwork</span></code></a> : this extends the
-<code class="docutils literal notranslate"><span class="pre">RateCollection</span></code> to allow evaluating reaction rates using vectorized
-NumPy arrays, which may be more efficient for some applications.</p></li>
 </ul>
 <p>and the network classes intended for outputting the righthand side
 of the ODE system for use in python or other applications:</p>
@@ -704,7 +709,8 @@ read in all known tabular reaction rates.</p></li>
 <section id="reduction">
 <h2><code class="docutils literal notranslate"><span class="pre">reduction</span></code><a class="headerlink" href="#reduction" title="Link to this heading">#</a></h2>
 <p><a class="reference internal" href="pynucastro.reduction.html#module-pynucastro.reduction" title="pynucastro.reduction"><code class="xref py py-mod docutils literal notranslate"><span class="pre">reduction</span></code></a> provides tools for directed
-relation graph with error propagation reduction of reaction networks.</p>
+relation graph with error propagation and sensitivity analysis
+reduction of reaction networks.</p>
 </section>
 <section id="screening">
 <h2><code class="docutils literal notranslate"><span class="pre">screening</span></code><a class="headerlink" href="#screening" title="Link to this heading">#</a></h2>
@@ -747,6 +753,18 @@ routines for modifying the reaction rates.</p>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="pynucastro.eos.html">pynucastro.eos package</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="pynucastro.eos.html#submodules">Submodules</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="pynucastro.eos.difference_utils.html">pynucastro.eos.difference_utils module</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="pynucastro.eos.difference_utils.html#pynucastro.eos.difference_utils.adaptive_diff"><code class="docutils literal notranslate"><span class="pre">adaptive_diff()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="pynucastro.eos.difference_utils.html#pynucastro.eos.difference_utils.eighth_order_diff"><code class="docutils literal notranslate"><span class="pre">eighth_order_diff()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="pynucastro.eos.difference_utils.html#pynucastro.eos.difference_utils.fourth_order_diff"><code class="docutils literal notranslate"><span class="pre">fourth_order_diff()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="pynucastro.eos.difference_utils.html#pynucastro.eos.difference_utils.sixth_order_diff"><code class="docutils literal notranslate"><span class="pre">sixth_order_diff()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="pynucastro.eos.electron_eos.html">pynucastro.eos.electron_eos module</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="pynucastro.eos.electron_eos.html#pynucastro.eos.electron_eos.EOSState"><code class="docutils literal notranslate"><span class="pre">EOSState</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="pynucastro.eos.electron_eos.html#pynucastro.eos.electron_eos.ElectronEOS"><code class="docutils literal notranslate"><span class="pre">ElectronEOS</span></code></a></li>
+</ul>
+</li>
 <li class="toctree-l3"><a class="reference internal" href="pynucastro.eos.fermi_integrals.html">pynucastro.eos.fermi_integrals module</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="pynucastro.eos.fermi_integrals.html#pynucastro.eos.fermi_integrals.BreakPoints"><code class="docutils literal notranslate"><span class="pre">BreakPoints</span></code></a></li>
 <li class="toctree-l4"><a class="reference internal" href="pynucastro.eos.fermi_integrals.html#pynucastro.eos.fermi_integrals.FermiIntegral"><code class="docutils literal notranslate"><span class="pre">FermiIntegral</span></code></a></li>
@@ -784,10 +802,6 @@ routines for modifying the reaction rates.</p>
 <li class="toctree-l3"><a class="reference internal" href="pynucastro.networks.nse_network.html">pynucastro.networks.nse_network module</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="pynucastro.networks.nse_network.html#pynucastro.networks.nse_network.NSENetwork"><code class="docutils literal notranslate"><span class="pre">NSENetwork</span></code></a></li>
 <li class="toctree-l4"><a class="reference internal" href="pynucastro.networks.nse_network.html#pynucastro.networks.nse_network.NSETableEntry"><code class="docutils literal notranslate"><span class="pre">NSETableEntry</span></code></a></li>
-</ul>
-</li>
-<li class="toctree-l3"><a class="reference internal" href="pynucastro.networks.numpy_network.html">pynucastro.networks.numpy_network module</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="pynucastro.networks.numpy_network.html#pynucastro.networks.numpy_network.NumpyNetwork"><code class="docutils literal notranslate"><span class="pre">NumpyNetwork</span></code></a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="pynucastro.networks.python_network.html">pynucastro.networks.python_network module</a><ul>
@@ -898,6 +912,7 @@ routines for modifying the reaction rates.</p>
 <li class="toctree-l4"><a class="reference internal" href="pynucastro.rates.library.html#pynucastro.rates.library.LangankeLibrary"><code class="docutils literal notranslate"><span class="pre">LangankeLibrary</span></code></a></li>
 <li class="toctree-l4"><a class="reference internal" href="pynucastro.rates.library.html#pynucastro.rates.library.Library"><code class="docutils literal notranslate"><span class="pre">Library</span></code></a></li>
 <li class="toctree-l4"><a class="reference internal" href="pynucastro.rates.library.html#pynucastro.rates.library.OdaLibrary"><code class="docutils literal notranslate"><span class="pre">OdaLibrary</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="pynucastro.rates.library.html#pynucastro.rates.library.PruetFullerLibrary"><code class="docutils literal notranslate"><span class="pre">PruetFullerLibrary</span></code></a></li>
 <li class="toctree-l4"><a class="reference internal" href="pynucastro.rates.library.html#pynucastro.rates.library.RateFilter"><code class="docutils literal notranslate"><span class="pre">RateFilter</span></code></a></li>
 <li class="toctree-l4"><a class="reference internal" href="pynucastro.rates.library.html#pynucastro.rates.library.ReacLibLibrary"><code class="docutils literal notranslate"><span class="pre">ReacLibLibrary</span></code></a></li>
 <li class="toctree-l4"><a class="reference internal" href="pynucastro.rates.library.html#pynucastro.rates.library.SuzukiLibrary"><code class="docutils literal notranslate"><span class="pre">SuzukiLibrary</span></code></a></li>
@@ -935,41 +950,12 @@ routines for modifying the reaction rates.</p>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="pynucastro.reduction.html">pynucastro.reduction package</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="pynucastro.reduction.html#submodules">Submodules</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="pynucastro.reduction.drgep.html">pynucastro.reduction.drgep module</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="pynucastro.reduction.drgep.html#pynucastro.reduction.drgep.calc_interaction_matrix"><code class="docutils literal notranslate"><span class="pre">calc_interaction_matrix()</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="pynucastro.reduction.drgep.html#pynucastro.reduction.drgep.calc_interaction_matrix_numpy"><code class="docutils literal notranslate"><span class="pre">calc_interaction_matrix_numpy()</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="pynucastro.reduction.drgep.html#pynucastro.reduction.drgep.drgep"><code class="docutils literal notranslate"><span class="pre">drgep()</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="pynucastro.reduction.drgep.html#pynucastro.reduction.drgep.drgep_dijkstras"><code class="docutils literal notranslate"><span class="pre">drgep_dijkstras()</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="pynucastro.reduction.drgep.html#pynucastro.reduction.drgep.get_adj_nuc"><code class="docutils literal notranslate"><span class="pre">get_adj_nuc()</span></code></a></li>
-</ul>
-</li>
-<li class="toctree-l3"><a class="reference internal" href="pynucastro.reduction.generate_data.html">pynucastro.reduction.generate_data module</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="pynucastro.reduction.generate_data.html#pynucastro.reduction.generate_data.dataset"><code class="docutils literal notranslate"><span class="pre">dataset()</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="pynucastro.reduction.generate_data.html#pynucastro.reduction.generate_data.main"><code class="docutils literal notranslate"><span class="pre">main()</span></code></a></li>
-</ul>
-</li>
-<li class="toctree-l3"><a class="reference internal" href="pynucastro.reduction.load_network.html">pynucastro.reduction.load_network module</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="pynucastro.reduction.load_network.html#pynucastro.reduction.load_network.load_network"><code class="docutils literal notranslate"><span class="pre">load_network()</span></code></a></li>
-</ul>
-</li>
-<li class="toctree-l3"><a class="reference internal" href="pynucastro.reduction.reduction.html">pynucastro.reduction.reduction module</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="pynucastro.reduction.reduction.html#pynucastro.reduction.reduction.NetInfo"><code class="docutils literal notranslate"><span class="pre">NetInfo</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="pynucastro.reduction.reduction.html#pynucastro.reduction.reduction.abar_dot"><code class="docutils literal notranslate"><span class="pre">abar_dot()</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="pynucastro.reduction.reduction.html#pynucastro.reduction.reduction.enuc_dot"><code class="docutils literal notranslate"><span class="pre">enuc_dot()</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="pynucastro.reduction.reduction.html#pynucastro.reduction.reduction.get_errfunc_enuc"><code class="docutils literal notranslate"><span class="pre">get_errfunc_enuc()</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="pynucastro.reduction.reduction.html#pynucastro.reduction.reduction.get_net_info"><code class="docutils literal notranslate"><span class="pre">get_net_info()</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="pynucastro.reduction.reduction.html#pynucastro.reduction.reduction.main"><code class="docutils literal notranslate"><span class="pre">main()</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="pynucastro.reduction.reduction.html#pynucastro.reduction.reduction.map_comp"><code class="docutils literal notranslate"><span class="pre">map_comp()</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="pynucastro.reduction.reduction.html#pynucastro.reduction.reduction.rel_err"><code class="docutils literal notranslate"><span class="pre">rel_err()</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="pynucastro.reduction.reduction.html#pynucastro.reduction.reduction.ye_dot"><code class="docutils literal notranslate"><span class="pre">ye_dot()</span></code></a></li>
-</ul>
-</li>
-<li class="toctree-l3"><a class="reference internal" href="pynucastro.reduction.reduction_utils.html">pynucastro.reduction.reduction_utils module</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="pynucastro.reduction.reduction_utils.html#pynucastro.reduction.reduction_utils.FailedMPIImport"><code class="docutils literal notranslate"><span class="pre">FailedMPIImport</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="pynucastro.reduction.reduction_utils.html#pynucastro.reduction.reduction_utils.MPIImportError"><code class="docutils literal notranslate"><span class="pre">MPIImportError</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="pynucastro.reduction.reduction_utils.html#pynucastro.reduction.reduction_utils.mpi_importer"><code class="docutils literal notranslate"><span class="pre">mpi_importer()</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="pynucastro.reduction.reduction_utils.html#pynucastro.reduction.reduction_utils.mpi_numpy_decomp"><code class="docutils literal notranslate"><span class="pre">mpi_numpy_decomp()</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="pynucastro.reduction.reduction_utils.html#pynucastro.reduction.reduction_utils.to_list"><code class="docutils literal notranslate"><span class="pre">to_list()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="pynucastro.reduction.drgep_module.html">pynucastro.reduction.drgep_module module</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="pynucastro.reduction.drgep_module.html#pynucastro.reduction.drgep_module.calc_interaction_matrix"><code class="docutils literal notranslate"><span class="pre">calc_interaction_matrix()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="pynucastro.reduction.drgep_module.html#pynucastro.reduction.drgep_module.drgep"><code class="docutils literal notranslate"><span class="pre">drgep()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="pynucastro.reduction.drgep_module.html#pynucastro.reduction.drgep_module.drgep_dijkstras"><code class="docutils literal notranslate"><span class="pre">drgep_dijkstras()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="pynucastro.reduction.drgep_module.html#pynucastro.reduction.drgep_module.get_adj_nuc"><code class="docutils literal notranslate"><span class="pre">get_adj_nuc()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="pynucastro.reduction.drgep_module.html#pynucastro.reduction.drgep_module.to_list"><code class="docutils literal notranslate"><span class="pre">to_list()</span></code></a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="pynucastro.reduction.sensitivity_analysis.html">pynucastro.reduction.sensitivity_analysis module</a><ul>
@@ -990,11 +976,13 @@ routines for modifying the reaction rates.</p>
 <li class="toctree-l4"><a class="reference internal" href="pynucastro.screening.screen.html#pynucastro.screening.screen.chugunov_2007"><code class="docutils literal notranslate"><span class="pre">chugunov_2007()</span></code></a></li>
 <li class="toctree-l4"><a class="reference internal" href="pynucastro.screening.screen.html#pynucastro.screening.screen.chugunov_2009"><code class="docutils literal notranslate"><span class="pre">chugunov_2009()</span></code></a></li>
 <li class="toctree-l4"><a class="reference internal" href="pynucastro.screening.screen.html#pynucastro.screening.screen.debye_huckel"><code class="docutils literal notranslate"><span class="pre">debye_huckel()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="pynucastro.screening.screen.html#pynucastro.screening.screen.f0"><code class="docutils literal notranslate"><span class="pre">f0()</span></code></a></li>
 <li class="toctree-l4"><a class="reference internal" href="pynucastro.screening.screen.html#pynucastro.screening.screen.make_plasma_state"><code class="docutils literal notranslate"><span class="pre">make_plasma_state()</span></code></a></li>
 <li class="toctree-l4"><a class="reference internal" href="pynucastro.screening.screen.html#pynucastro.screening.screen.make_screen_factors"><code class="docutils literal notranslate"><span class="pre">make_screen_factors()</span></code></a></li>
 <li class="toctree-l4"><a class="reference internal" href="pynucastro.screening.screen.html#pynucastro.screening.screen.potekhin_1998"><code class="docutils literal notranslate"><span class="pre">potekhin_1998()</span></code></a></li>
 <li class="toctree-l4"><a class="reference internal" href="pynucastro.screening.screen.html#pynucastro.screening.screen.screen5"><code class="docutils literal notranslate"><span class="pre">screen5()</span></code></a></li>
 <li class="toctree-l4"><a class="reference internal" href="pynucastro.screening.screen.html#pynucastro.screening.screen.screening_check"><code class="docutils literal notranslate"><span class="pre">screening_check()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="pynucastro.screening.screen.html#pynucastro.screening.screen.smooth_clip"><code class="docutils literal notranslate"><span class="pre">smooth_clip()</span></code></a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="pynucastro.screening.screening_util.html">pynucastro.screening.screening_util module</a><ul>
@@ -1013,7 +1001,18 @@ routines for modifying the reaction rates.</p>
 <h2>Submodules<a class="headerlink" href="#submodules" title="Link to this heading">#</a></h2>
 <div class="toctree-wrapper compound">
 <ul>
+<li class="toctree-l1"><a class="reference internal" href="pynucastro.mpi_utils.html">pynucastro.mpi_utils module</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="pynucastro.mpi_utils.html#pynucastro.mpi_utils.FailedMPIImport"><code class="docutils literal notranslate"><span class="pre">FailedMPIImport</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="pynucastro.mpi_utils.html#pynucastro.mpi_utils.MPIImportError"><code class="docutils literal notranslate"><span class="pre">MPIImportError</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="pynucastro.mpi_utils.html#pynucastro.mpi_utils.mpi_importer"><code class="docutils literal notranslate"><span class="pre">mpi_importer()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="pynucastro.mpi_utils.html#pynucastro.mpi_utils.mpi_numpy_decomp"><code class="docutils literal notranslate"><span class="pre">mpi_numpy_decomp()</span></code></a></li>
+</ul>
+</li>
 <li class="toctree-l1"><a class="reference internal" href="pynucastro.numba_util.html">pynucastro.numba_util module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="pynucastro.utils.html">pynucastro.utils module</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="pynucastro.utils.html#pynucastro.utils.pynucastro_version"><code class="docutils literal notranslate"><span class="pre">pynucastro_version()</span></code></a></li>
+</ul>
+</li>
 <li class="toctree-l1"><a class="reference internal" href="pynucastro.yt_utils.html">pynucastro.yt_utils module</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="pynucastro.yt_utils.html#pynucastro.yt_utils.get_point"><code class="docutils literal notranslate"><span class="pre">get_point()</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="pynucastro.yt_utils.html#pynucastro.yt_utils.to_conditions"><code class="docutils literal notranslate"><span class="pre">to_conditions()</span></code></a></li>

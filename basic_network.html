@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>Basic Networks &#8212; pynucastro 2.6.0.post57+gd3a17fba2 documentation</title>
+    <title>Basic Networks &#8212; pynucastro 2.6.0.post140+g7d01fa58a documentation</title>
   
   
   
@@ -39,7 +39,7 @@
 <link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
   <script src="_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
 
-    <script src="_static/documentation_options.js?v=e47bdb58"></script>
+    <script src="_static/documentation_options.js?v=507d7f94"></script>
     <script src="_static/doctools.js?v=9bcbadda"></script>
     <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="_static/clipboard.min.js?v=a7894cd8"></script>
@@ -195,6 +195,7 @@
 <li class="toctree-l1"><a class="reference internal" href="electron-capture-example.html">Tabulated Weak Rate Example</a></li>
 <li class="toctree-l1"><a class="reference internal" href="electron-captures.html">Combining ReacLib Rates with Electron Capture Tables</a></li>
 <li class="toctree-l1"><a class="reference internal" href="alternate-rates.html"><code class="docutils literal notranslate"><span class="pre">alternate_rates</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="inert-nuclei.html">Inert Nuclei</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Advanced Rate Operations</span></p>
 <ul class="nav bd-sidenav">
@@ -215,11 +216,19 @@
 <li class="toctree-l1"><a class="reference internal" href="unimportant-rates.html">Removing Unimportant Rates</a></li>
 <li class="toctree-l1"><a class="reference internal" href="network-cycles.html">Finding Cycles (with NetworkX)</a></li>
 <li class="toctree-l1"><a class="reference internal" href="stiffness.html">Assessing the Stiffness of a Network</a></li>
+<li class="toctree-l1"><a class="reference internal" href="reduction.html">Network Reduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sens_analysis_example.html">Sensitivity Analysis</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Nuclear Statistical Equilibrium</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="NSE-example.html">NSE Demonstrations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="NSE-example.html">NSE Examples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="NSE-direct-integration.html">NSE vs. Direct Integration</a></li>
 <li class="toctree-l1"><a class="reference internal" href="nse_table.html">Creating an NSE table</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Thermodynamics</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="fermi-integrals.html">Fermi-Dirac Integrals</a></li>
+<li class="toctree-l1"><a class="reference internal" href="electron-eos.html">The Electron-Positron EOS</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Plasma Neutrinos</span></p>
 <ul class="nav bd-sidenav">
@@ -263,6 +272,8 @@
 </ul>
 </details></li>
 <li class="toctree-l3 has-children"><a class="reference internal" href="pynucastro.eos.html">pynucastro.eos package</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l4"><a class="reference internal" href="pynucastro.eos.difference_utils.html">pynucastro.eos.difference_utils module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="pynucastro.eos.electron_eos.html">pynucastro.eos.electron_eos module</a></li>
 <li class="toctree-l4"><a class="reference internal" href="pynucastro.eos.fermi_integrals.html">pynucastro.eos.fermi_integrals module</a></li>
 <li class="toctree-l4"><a class="reference internal" href="pynucastro.eos.quadrature_weights.html">pynucastro.eos.quadrature_weights module</a></li>
 </ul>
@@ -273,7 +284,6 @@
 <li class="toctree-l4"><a class="reference internal" href="pynucastro.networks.fortran_network.html">pynucastro.networks.fortran_network module</a></li>
 <li class="toctree-l4"><a class="reference internal" href="pynucastro.networks.helper.html">pynucastro.networks.helper module</a></li>
 <li class="toctree-l4"><a class="reference internal" href="pynucastro.networks.nse_network.html">pynucastro.networks.nse_network module</a></li>
-<li class="toctree-l4"><a class="reference internal" href="pynucastro.networks.numpy_network.html">pynucastro.networks.numpy_network module</a></li>
 <li class="toctree-l4"><a class="reference internal" href="pynucastro.networks.python_network.html">pynucastro.networks.python_network module</a></li>
 <li class="toctree-l4"><a class="reference internal" href="pynucastro.networks.rate_collection.html">pynucastro.networks.rate_collection module</a></li>
 <li class="toctree-l4"><a class="reference internal" href="pynucastro.networks.simple_cxx_network.html">pynucastro.networks.simple_cxx_network module</a></li>
@@ -308,11 +318,7 @@
 </ul>
 </details></li>
 <li class="toctree-l3 has-children"><a class="reference internal" href="pynucastro.reduction.html">pynucastro.reduction package</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l4"><a class="reference internal" href="pynucastro.reduction.drgep.html">pynucastro.reduction.drgep module</a></li>
-<li class="toctree-l4"><a class="reference internal" href="pynucastro.reduction.generate_data.html">pynucastro.reduction.generate_data module</a></li>
-<li class="toctree-l4"><a class="reference internal" href="pynucastro.reduction.load_network.html">pynucastro.reduction.load_network module</a></li>
-<li class="toctree-l4"><a class="reference internal" href="pynucastro.reduction.reduction.html">pynucastro.reduction.reduction module</a></li>
-<li class="toctree-l4"><a class="reference internal" href="pynucastro.reduction.reduction_utils.html">pynucastro.reduction.reduction_utils module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="pynucastro.reduction.drgep_module.html">pynucastro.reduction.drgep_module module</a></li>
 <li class="toctree-l4"><a class="reference internal" href="pynucastro.reduction.sensitivity_analysis.html">pynucastro.reduction.sensitivity_analysis module</a></li>
 </ul>
 </details></li>
@@ -321,7 +327,9 @@
 <li class="toctree-l4"><a class="reference internal" href="pynucastro.screening.screening_util.html">pynucastro.screening.screening_util module</a></li>
 </ul>
 </details></li>
+<li class="toctree-l3"><a class="reference internal" href="pynucastro.mpi_utils.html">pynucastro.mpi_utils module</a></li>
 <li class="toctree-l3"><a class="reference internal" href="pynucastro.numba_util.html">pynucastro.numba_util module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pynucastro.utils.html">pynucastro.utils module</a></li>
 <li class="toctree-l3"><a class="reference internal" href="pynucastro.yt_utils.html">pynucastro.yt_utils module</a></li>
 </ul>
 </details></li>
@@ -614,35 +622,6 @@ warning: N15 was not able to be linked in TabularLibrary
 warning: p was not able to be linked in TabularLibrary
 warning: O16 was not able to be linked in TabularLibrary
 warning: N14 was not able to be linked in TabularLibrary
-modifying N13 ⟶ p + C12 from C12 + p ⟶ N13 + 𝛾
-modifying N14 ⟶ p + C13 from C13 + p ⟶ N14 + 𝛾
-modifying O14 ⟶ p + N13 from N13 + p ⟶ O14 + 𝛾
-modifying O15 ⟶ p + N14 from N14 + p ⟶ O15 + 𝛾
-modifying O16 ⟶ p + N15 from N15 + p ⟶ O16 + 𝛾
-modifying O16 ⟶ He4 + C12 from C12 + He4 ⟶ O16 + 𝛾
-modifying F17 ⟶ p + O16 from O16 + p ⟶ F17 + 𝛾
-modifying F18 ⟶ p + O17 from O17 + p ⟶ F18 + 𝛾
-modifying F18 ⟶ He4 + N14 from N14 + He4 ⟶ F18 + 𝛾
-modifying F19 ⟶ p + O18 from O18 + p ⟶ F19 + 𝛾
-modifying F19 ⟶ He4 + N15 from N15 + He4 ⟶ F19 + 𝛾
-modifying Ne18 ⟶ p + F17 from F17 + p ⟶ Ne18 + 𝛾
-modifying Ne18 ⟶ He4 + O14 from O14 + He4 ⟶ Ne18 + 𝛾
-modifying Ne19 ⟶ p + F18 from F18 + p ⟶ Ne19 + 𝛾
-modifying Ne19 ⟶ He4 + O15 from O15 + He4 ⟶ Ne19 + 𝛾
-modifying Ne20 ⟶ p + F19 from F19 + p ⟶ Ne20 + 𝛾
-modifying Ne20 ⟶ He4 + O16 from O16 + He4 ⟶ Ne20 + 𝛾
-modifying Ne21 ⟶ He4 + O17 from O17 + He4 ⟶ Ne21 + 𝛾
-modifying C12 ⟶ 3 He4 from 3 He4 ⟶ C12 + 𝛾
-modifying C12 + He4 ⟶ p + N15 from N15 + p ⟶ He4 + C12
-modifying N14 + He4 ⟶ p + O17 from O17 + p ⟶ He4 + N14
-modifying N15 + He4 ⟶ p + O18 from O18 + p ⟶ He4 + N15
-modifying O15 + He4 ⟶ p + F18 from F18 + p ⟶ He4 + O15
-modifying O16 + p ⟶ He4 + N13 from N13 + He4 ⟶ p + O16
-modifying O16 + He4 ⟶ p + F19 from F19 + p ⟶ He4 + O16
-modifying F17 + p ⟶ He4 + O14 from O14 + He4 ⟶ p + F17
-modifying F17 + He4 ⟶ p + Ne20 from Ne20 + p ⟶ He4 + F17
-modifying Ne20 + He4 ⟶ C12 + C12 from C12 + C12 ⟶ He4 + Ne20
-modifying Ne21 + p ⟶ He4 + F18 from F18 + He4 ⟶ p + Ne21
 </pre></div>
 </div>
 </div>
@@ -672,7 +651,7 @@ this can be changed via the <code class="docutils literal notranslate"><span cla
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/480bc53d3cca2e70db32a2a17055b2c24aa98a41b041ef8298ea422ddddcfe51.png" src="_images/480bc53d3cca2e70db32a2a17055b2c24aa98a41b041ef8298ea422ddddcfe51.png" />
+<img alt="_images/926eb5d39813f3da11bbabb5034b3942479912c764e9e836cf913f2302fee86d.png" src="_images/926eb5d39813f3da11bbabb5034b3942479912c764e9e836cf913f2302fee86d.png" />
 </div>
 </div>
 <p>We can see that it is using some tabulated weak rates for some links:</p>
@@ -713,7 +692,7 @@ this can be changed via the <code class="docutils literal notranslate"><span cla
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/ca1a695254fc436f75e281d70053d9a1ba64c974fb80c591b4091097603c82e5.png" src="_images/ca1a695254fc436f75e281d70053d9a1ba64c974fb80c591b4091097603c82e5.png" />
+<img alt="_images/2e093b74570285b7fc23fee5b5b2a7c96efaf349b0e839ac8055e8c1ce8f498b.png" src="_images/2e093b74570285b7fc23fee5b5b2a7c96efaf349b0e839ac8055e8c1ce8f498b.png" />
 </div>
 </div>
 <p>Also notice that <code class="docutils literal notranslate"><span class="pre">network_helper</span></code> includes both the forward and reverse rates for all links.</p>

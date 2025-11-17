@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>Selecting Rates from a Library &#8212; pynucastro 2.6.0.post57+gd3a17fba2 documentation</title>
+    <title>Selecting Rates from a Library &#8212; pynucastro 2.6.0.post140+g7d01fa58a documentation</title>
   
   
   
@@ -39,7 +39,7 @@
 <link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
   <script src="_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
 
-    <script src="_static/documentation_options.js?v=e47bdb58"></script>
+    <script src="_static/documentation_options.js?v=507d7f94"></script>
     <script src="_static/doctools.js?v=9bcbadda"></script>
     <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="_static/clipboard.min.js?v=a7894cd8"></script>
@@ -195,6 +195,7 @@
 <li class="toctree-l1"><a class="reference internal" href="electron-capture-example.html">Tabulated Weak Rate Example</a></li>
 <li class="toctree-l1"><a class="reference internal" href="electron-captures.html">Combining ReacLib Rates with Electron Capture Tables</a></li>
 <li class="toctree-l1"><a class="reference internal" href="alternate-rates.html"><code class="docutils literal notranslate"><span class="pre">alternate_rates</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="inert-nuclei.html">Inert Nuclei</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Advanced Rate Operations</span></p>
 <ul class="nav bd-sidenav">
@@ -215,11 +216,19 @@
 <li class="toctree-l1"><a class="reference internal" href="unimportant-rates.html">Removing Unimportant Rates</a></li>
 <li class="toctree-l1"><a class="reference internal" href="network-cycles.html">Finding Cycles (with NetworkX)</a></li>
 <li class="toctree-l1"><a class="reference internal" href="stiffness.html">Assessing the Stiffness of a Network</a></li>
+<li class="toctree-l1"><a class="reference internal" href="reduction.html">Network Reduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sens_analysis_example.html">Sensitivity Analysis</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Nuclear Statistical Equilibrium</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="NSE-example.html">NSE Demonstrations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="NSE-example.html">NSE Examples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="NSE-direct-integration.html">NSE vs. Direct Integration</a></li>
 <li class="toctree-l1"><a class="reference internal" href="nse_table.html">Creating an NSE table</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Thermodynamics</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="fermi-integrals.html">Fermi-Dirac Integrals</a></li>
+<li class="toctree-l1"><a class="reference internal" href="electron-eos.html">The Electron-Positron EOS</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Plasma Neutrinos</span></p>
 <ul class="nav bd-sidenav">
@@ -263,6 +272,8 @@
 </ul>
 </details></li>
 <li class="toctree-l3 has-children"><a class="reference internal" href="pynucastro.eos.html">pynucastro.eos package</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l4"><a class="reference internal" href="pynucastro.eos.difference_utils.html">pynucastro.eos.difference_utils module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="pynucastro.eos.electron_eos.html">pynucastro.eos.electron_eos module</a></li>
 <li class="toctree-l4"><a class="reference internal" href="pynucastro.eos.fermi_integrals.html">pynucastro.eos.fermi_integrals module</a></li>
 <li class="toctree-l4"><a class="reference internal" href="pynucastro.eos.quadrature_weights.html">pynucastro.eos.quadrature_weights module</a></li>
 </ul>
@@ -273,7 +284,6 @@
 <li class="toctree-l4"><a class="reference internal" href="pynucastro.networks.fortran_network.html">pynucastro.networks.fortran_network module</a></li>
 <li class="toctree-l4"><a class="reference internal" href="pynucastro.networks.helper.html">pynucastro.networks.helper module</a></li>
 <li class="toctree-l4"><a class="reference internal" href="pynucastro.networks.nse_network.html">pynucastro.networks.nse_network module</a></li>
-<li class="toctree-l4"><a class="reference internal" href="pynucastro.networks.numpy_network.html">pynucastro.networks.numpy_network module</a></li>
 <li class="toctree-l4"><a class="reference internal" href="pynucastro.networks.python_network.html">pynucastro.networks.python_network module</a></li>
 <li class="toctree-l4"><a class="reference internal" href="pynucastro.networks.rate_collection.html">pynucastro.networks.rate_collection module</a></li>
 <li class="toctree-l4"><a class="reference internal" href="pynucastro.networks.simple_cxx_network.html">pynucastro.networks.simple_cxx_network module</a></li>
@@ -308,11 +318,7 @@
 </ul>
 </details></li>
 <li class="toctree-l3 has-children"><a class="reference internal" href="pynucastro.reduction.html">pynucastro.reduction package</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l4"><a class="reference internal" href="pynucastro.reduction.drgep.html">pynucastro.reduction.drgep module</a></li>
-<li class="toctree-l4"><a class="reference internal" href="pynucastro.reduction.generate_data.html">pynucastro.reduction.generate_data module</a></li>
-<li class="toctree-l4"><a class="reference internal" href="pynucastro.reduction.load_network.html">pynucastro.reduction.load_network module</a></li>
-<li class="toctree-l4"><a class="reference internal" href="pynucastro.reduction.reduction.html">pynucastro.reduction.reduction module</a></li>
-<li class="toctree-l4"><a class="reference internal" href="pynucastro.reduction.reduction_utils.html">pynucastro.reduction.reduction_utils module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="pynucastro.reduction.drgep_module.html">pynucastro.reduction.drgep_module module</a></li>
 <li class="toctree-l4"><a class="reference internal" href="pynucastro.reduction.sensitivity_analysis.html">pynucastro.reduction.sensitivity_analysis module</a></li>
 </ul>
 </details></li>
@@ -321,7 +327,9 @@
 <li class="toctree-l4"><a class="reference internal" href="pynucastro.screening.screening_util.html">pynucastro.screening.screening_util module</a></li>
 </ul>
 </details></li>
+<li class="toctree-l3"><a class="reference internal" href="pynucastro.mpi_utils.html">pynucastro.mpi_utils module</a></li>
 <li class="toctree-l3"><a class="reference internal" href="pynucastro.numba_util.html">pynucastro.numba_util module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pynucastro.utils.html">pynucastro.utils module</a></li>
 <li class="toctree-l3"><a class="reference internal" href="pynucastro.yt_utils.html">pynucastro.yt_utils module</a></li>
 </ul>
 </details></li>
@@ -656,7 +664,7 @@ for the libraries that supply tabulated rates.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/cdec1c8cb90d3456eb9fbbe7450d9678b5374d0d07feb8a2cb5d9a6d99e4724c.png" src="_images/cdec1c8cb90d3456eb9fbbe7450d9678b5374d0d07feb8a2cb5d9a6d99e4724c.png" />
+<img alt="_images/0c0c8b46545388260e28e218ab82a10dd400eedacda777c54544e8c1a71a1f4c.png" src="_images/0c0c8b46545388260e28e218ab82a10dd400eedacda777c54544e8c1a71a1f4c.png" />
 </div>
 </div>
 <p>Note that the above network also includes the triple-alpha rate from Reaclib.</p>
@@ -706,15 +714,15 @@ O16 + C12 ⟶ p + Al27           [Q =   5.17 MeV] (O16 + C12 --&gt; p + Al27 &lt
 Ne20 + C12 ⟶ He4 + Si28        [Q =  12.02 MeV] (Ne20 + C12 --&gt; He4 + Si28 &lt;rolf_reaclib__&gt;)
 Ne20 + C12 ⟶ p + P31           [Q =  10.10 MeV] (Ne20 + C12 --&gt; p + P31 &lt;rolf_reaclib__&gt;)
 Ne20 + C12 ⟶ n + S31           [Q =   3.93 MeV] (Ne20 + C12 --&gt; n + S31 &lt;rolf_reaclib__&gt;)
-C12 + n ⟶ He4 + Be9            [Q =  -5.70 MeV] (C12 + n --&gt; He4 + Be9 &lt;cf88_reaclib__reverse&gt;)
-C12 + n ⟶ p + B12              [Q = -12.59 MeV] (C12 + n --&gt; p + B12 &lt;wag_reaclib__reverse&gt;)
-C12 + He4 ⟶ p + N15            [Q =  -4.97 MeV] (C12 + He4 --&gt; p + N15 &lt;nacr_reaclib__reverse&gt;)
-C12 + He4 ⟶ n + O15            [Q =  -8.50 MeV] (C12 + He4 --&gt; n + O15 &lt;cf88_reaclib__reverse&gt;)
-C12 + C12 ⟶ n + Mg23           [Q =  -2.60 MeV] (C12 + C12 --&gt; n + Mg23 &lt;cf88_reaclib__reverse&gt;)
-C12 ⟶ 3 He4                    [Q =  -7.28 MeV] (C12 --&gt; 3 He4 &lt;fy05_reaclib__reverse&gt;)
-C12 ⟶ p + B11                  [Q = -15.96 MeV] (C12 --&gt; p + B11 &lt;nw00_reaclib__reverse&gt;)
-C12 ⟶ n + C11                  [Q = -18.72 MeV] (C12 --&gt; n + C11 &lt;bb92_reaclib__reverse&gt;)
-O16 + C12 ⟶ n + Si27           [Q =  -0.42 MeV] (O16 + C12 --&gt; n + Si27 &lt;cf88_reaclib__reverse&gt;)
+C12 + n ⟶ He4 + Be9            [Q =  -5.70 MeV] (C12 + n --&gt; He4 + Be9 &lt;cf88_reaclib__derived_from_inverse&gt;)
+C12 + n ⟶ p + B12              [Q = -12.59 MeV] (C12 + n --&gt; p + B12 &lt;wag_reaclib__derived_from_inverse&gt;)
+C12 + He4 ⟶ p + N15            [Q =  -4.97 MeV] (C12 + He4 --&gt; p + N15 &lt;nacr_reaclib__derived_from_inverse&gt;)
+C12 + He4 ⟶ n + O15            [Q =  -8.50 MeV] (C12 + He4 --&gt; n + O15 &lt;cf88_reaclib__derived_from_inverse&gt;)
+C12 + C12 ⟶ n + Mg23           [Q =  -2.60 MeV] (C12 + C12 --&gt; n + Mg23 &lt;cf88_reaclib__derived_from_inverse&gt;)
+C12 ⟶ 3 He4                    [Q =  -7.28 MeV] (C12 --&gt; 3 He4 &lt;fy05_reaclib__derived_from_inverse&gt;)
+C12 ⟶ p + B11                  [Q = -15.96 MeV] (C12 --&gt; p + B11 &lt;nw00_reaclib__derived_from_inverse&gt;)
+C12 ⟶ n + C11                  [Q = -18.72 MeV] (C12 --&gt; n + C11 &lt;bb92_reaclib__derived_from_inverse&gt;)
+O16 + C12 ⟶ n + Si27           [Q =  -0.42 MeV] (O16 + C12 --&gt; n + Si27 &lt;cf88_reaclib__derived_from_inverse&gt;)
 </pre></div>
 </div>
 </div>
@@ -742,7 +750,7 @@ O16 + C12 ⟶ n + Si27           [Q =  -0.42 MeV] (O16 + C12 --&gt; n + Si27 &lt
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/70e798fb14c964e249b7bf79904fafa20406cca56d5a60aa4be84e8dc136ab2f.png" src="_images/70e798fb14c964e249b7bf79904fafa20406cca56d5a60aa4be84e8dc136ab2f.png" />
+<img alt="_images/a3eef6d4749e414e74dadde6e6767668a6aa77ef5c415b8bc7ce37d155c5f40e.png" src="_images/a3eef6d4749e414e74dadde6e6767668a6aa77ef5c415b8bc7ce37d155c5f40e.png" />
 </div>
 </div>
 </section>
@@ -765,7 +773,7 @@ O16 + C12 ⟶ n + Si27           [Q =  -0.42 MeV] (O16 + C12 --&gt; n + Si27 &lt
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>C12 + C12 ⟶ He4 + Ne20         [Q =   4.62 MeV] (C12 + C12 --&gt; He4 + Ne20 &lt;cf88_reaclib__&gt;)
 C12 + C12 ⟶ p + Na23           [Q =   2.24 MeV] (C12 + C12 --&gt; p + Na23 &lt;cf88_reaclib__&gt;)
-C12 + C12 ⟶ n + Mg23           [Q =  -2.60 MeV] (C12 + C12 --&gt; n + Mg23 &lt;cf88_reaclib__reverse&gt;)
+C12 + C12 ⟶ n + Mg23           [Q =  -2.60 MeV] (C12 + C12 --&gt; n + Mg23 &lt;cf88_reaclib__derived_from_inverse&gt;)
 </pre></div>
 </div>
 </div>
@@ -885,17 +893,17 @@ Ca40 + He4 ⟶ Ti44 + 𝛾          [Q =   5.13 MeV] (Ca40 + He4 --&gt; Ti44 &lt
 Ti44 + He4 ⟶ Cr48 + 𝛾          [Q =   7.70 MeV] (Ti44 + He4 --&gt; Cr48 &lt;ths8_reaclib__&gt;)
 Cr48 + He4 ⟶ Fe52 + 𝛾          [Q =   7.94 MeV] (Cr48 + He4 --&gt; Fe52 &lt;ths8_reaclib__&gt;)
 Fe52 + He4 ⟶ Ni56 + 𝛾          [Q =   8.00 MeV] (Fe52 + He4 --&gt; Ni56 &lt;ths8_reaclib__&gt;)
-O16 ⟶ He4 + C12                [Q =  -7.16 MeV] (O16 --&gt; He4 + C12 &lt;nac2_reaclib__reverse&gt;)
-Ne20 ⟶ He4 + O16               [Q =  -4.73 MeV] (Ne20 --&gt; He4 + O16 &lt;co10_reaclib__reverse&gt;)
-Mg24 ⟶ He4 + Ne20              [Q =  -9.32 MeV] (Mg24 --&gt; He4 + Ne20 &lt;il10_reaclib__reverse&gt;)
-Si28 ⟶ He4 + Mg24              [Q =  -9.98 MeV] (Si28 --&gt; He4 + Mg24 &lt;st08_reaclib__reverse&gt;)
-S32 ⟶ He4 + Si28               [Q =  -6.95 MeV] (S32 --&gt; He4 + Si28 &lt;ths8_reaclib__reverse&gt;)
-Ar36 ⟶ He4 + S32               [Q =  -6.64 MeV] (Ar36 --&gt; He4 + S32 &lt;ths8_reaclib__reverse&gt;)
-Ca40 ⟶ He4 + Ar36              [Q =  -7.04 MeV] (Ca40 --&gt; He4 + Ar36 &lt;ths8_reaclib__reverse&gt;)
-Ti44 ⟶ He4 + Ca40              [Q =  -5.13 MeV] (Ti44 --&gt; He4 + Ca40 &lt;chw0_reaclib__reverse&gt;)
-Cr48 ⟶ He4 + Ti44              [Q =  -7.70 MeV] (Cr48 --&gt; He4 + Ti44 &lt;ths8_reaclib__reverse&gt;)
-Fe52 ⟶ He4 + Cr48              [Q =  -7.94 MeV] (Fe52 --&gt; He4 + Cr48 &lt;ths8_reaclib__reverse&gt;)
-Ni56 ⟶ He4 + Fe52              [Q =  -8.00 MeV] (Ni56 --&gt; He4 + Fe52 &lt;ths8_reaclib__reverse&gt;)
+O16 ⟶ He4 + C12                [Q =  -7.16 MeV] (O16 --&gt; He4 + C12 &lt;nac2_reaclib__derived_from_inverse&gt;)
+Ne20 ⟶ He4 + O16               [Q =  -4.73 MeV] (Ne20 --&gt; He4 + O16 &lt;co10_reaclib__derived_from_inverse&gt;)
+Mg24 ⟶ He4 + Ne20              [Q =  -9.32 MeV] (Mg24 --&gt; He4 + Ne20 &lt;il10_reaclib__derived_from_inverse&gt;)
+Si28 ⟶ He4 + Mg24              [Q =  -9.98 MeV] (Si28 --&gt; He4 + Mg24 &lt;st08_reaclib__derived_from_inverse&gt;)
+S32 ⟶ He4 + Si28               [Q =  -6.95 MeV] (S32 --&gt; He4 + Si28 &lt;ths8_reaclib__derived_from_inverse&gt;)
+Ar36 ⟶ He4 + S32               [Q =  -6.64 MeV] (Ar36 --&gt; He4 + S32 &lt;ths8_reaclib__derived_from_inverse&gt;)
+Ca40 ⟶ He4 + Ar36              [Q =  -7.04 MeV] (Ca40 --&gt; He4 + Ar36 &lt;ths8_reaclib__derived_from_inverse&gt;)
+Ti44 ⟶ He4 + Ca40              [Q =  -5.13 MeV] (Ti44 --&gt; He4 + Ca40 &lt;chw0_reaclib__derived_from_inverse&gt;)
+Cr48 ⟶ He4 + Ti44              [Q =  -7.70 MeV] (Cr48 --&gt; He4 + Ti44 &lt;ths8_reaclib__derived_from_inverse&gt;)
+Fe52 ⟶ He4 + Cr48              [Q =  -7.94 MeV] (Fe52 --&gt; He4 + Cr48 &lt;ths8_reaclib__derived_from_inverse&gt;)
+Ni56 ⟶ He4 + Fe52              [Q =  -8.00 MeV] (Ni56 --&gt; He4 + Fe52 &lt;ths8_reaclib__derived_from_inverse&gt;)
 </pre></div>
 </div>
 </div>
@@ -916,7 +924,7 @@ Ni56 ⟶ He4 + Fe52              [Q =  -8.00 MeV] (Ni56 --&gt; He4 + Fe52 &lt;th
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/a97bcdae381dd19b7532c99db79c745aeec0c15ff5788de39c1a8a4c90c7d419.png" src="_images/a97bcdae381dd19b7532c99db79c745aeec0c15ff5788de39c1a8a4c90c7d419.png" />
+<img alt="_images/190b4d2adcfcbfd7f045572370294e862b1a9d2503aab21edc1a99346417631e.png" src="_images/190b4d2adcfcbfd7f045572370294e862b1a9d2503aab21edc1a99346417631e.png" />
 </div>
 </div>
 <div class="admonition note">

@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>Assessing the Stiffness of a Network &#8212; pynucastro 2.6.0.post57+gd3a17fba2 documentation</title>
+    <title>Assessing the Stiffness of a Network &#8212; pynucastro 2.6.0.post140+g7d01fa58a documentation</title>
   
   
   
@@ -39,7 +39,7 @@
 <link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
   <script src="_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
 
-    <script src="_static/documentation_options.js?v=e47bdb58"></script>
+    <script src="_static/documentation_options.js?v=507d7f94"></script>
     <script src="_static/doctools.js?v=9bcbadda"></script>
     <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="_static/clipboard.min.js?v=a7894cd8"></script>
@@ -51,7 +51,7 @@
     <script>DOCUMENTATION_OPTIONS.pagename = 'stiffness';</script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="NSE Demonstrations" href="NSE-example.html" />
+    <link rel="next" title="Network Reduction" href="reduction.html" />
     <link rel="prev" title="Finding Cycles (with NetworkX)" href="network-cycles.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
@@ -195,6 +195,7 @@
 <li class="toctree-l1"><a class="reference internal" href="electron-capture-example.html">Tabulated Weak Rate Example</a></li>
 <li class="toctree-l1"><a class="reference internal" href="electron-captures.html">Combining ReacLib Rates with Electron Capture Tables</a></li>
 <li class="toctree-l1"><a class="reference internal" href="alternate-rates.html"><code class="docutils literal notranslate"><span class="pre">alternate_rates</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="inert-nuclei.html">Inert Nuclei</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Advanced Rate Operations</span></p>
 <ul class="nav bd-sidenav">
@@ -215,11 +216,19 @@
 <li class="toctree-l1"><a class="reference internal" href="unimportant-rates.html">Removing Unimportant Rates</a></li>
 <li class="toctree-l1"><a class="reference internal" href="network-cycles.html">Finding Cycles (with NetworkX)</a></li>
 <li class="toctree-l1 current active"><a class="current reference internal" href="#">Assessing the Stiffness of a Network</a></li>
+<li class="toctree-l1"><a class="reference internal" href="reduction.html">Network Reduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sens_analysis_example.html">Sensitivity Analysis</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Nuclear Statistical Equilibrium</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="NSE-example.html">NSE Demonstrations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="NSE-example.html">NSE Examples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="NSE-direct-integration.html">NSE vs. Direct Integration</a></li>
 <li class="toctree-l1"><a class="reference internal" href="nse_table.html">Creating an NSE table</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Thermodynamics</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="fermi-integrals.html">Fermi-Dirac Integrals</a></li>
+<li class="toctree-l1"><a class="reference internal" href="electron-eos.html">The Electron-Positron EOS</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Plasma Neutrinos</span></p>
 <ul class="nav bd-sidenav">
@@ -263,6 +272,8 @@
 </ul>
 </details></li>
 <li class="toctree-l3 has-children"><a class="reference internal" href="pynucastro.eos.html">pynucastro.eos package</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l4"><a class="reference internal" href="pynucastro.eos.difference_utils.html">pynucastro.eos.difference_utils module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="pynucastro.eos.electron_eos.html">pynucastro.eos.electron_eos module</a></li>
 <li class="toctree-l4"><a class="reference internal" href="pynucastro.eos.fermi_integrals.html">pynucastro.eos.fermi_integrals module</a></li>
 <li class="toctree-l4"><a class="reference internal" href="pynucastro.eos.quadrature_weights.html">pynucastro.eos.quadrature_weights module</a></li>
 </ul>
@@ -273,7 +284,6 @@
 <li class="toctree-l4"><a class="reference internal" href="pynucastro.networks.fortran_network.html">pynucastro.networks.fortran_network module</a></li>
 <li class="toctree-l4"><a class="reference internal" href="pynucastro.networks.helper.html">pynucastro.networks.helper module</a></li>
 <li class="toctree-l4"><a class="reference internal" href="pynucastro.networks.nse_network.html">pynucastro.networks.nse_network module</a></li>
-<li class="toctree-l4"><a class="reference internal" href="pynucastro.networks.numpy_network.html">pynucastro.networks.numpy_network module</a></li>
 <li class="toctree-l4"><a class="reference internal" href="pynucastro.networks.python_network.html">pynucastro.networks.python_network module</a></li>
 <li class="toctree-l4"><a class="reference internal" href="pynucastro.networks.rate_collection.html">pynucastro.networks.rate_collection module</a></li>
 <li class="toctree-l4"><a class="reference internal" href="pynucastro.networks.simple_cxx_network.html">pynucastro.networks.simple_cxx_network module</a></li>
@@ -308,11 +318,7 @@
 </ul>
 </details></li>
 <li class="toctree-l3 has-children"><a class="reference internal" href="pynucastro.reduction.html">pynucastro.reduction package</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l4"><a class="reference internal" href="pynucastro.reduction.drgep.html">pynucastro.reduction.drgep module</a></li>
-<li class="toctree-l4"><a class="reference internal" href="pynucastro.reduction.generate_data.html">pynucastro.reduction.generate_data module</a></li>
-<li class="toctree-l4"><a class="reference internal" href="pynucastro.reduction.load_network.html">pynucastro.reduction.load_network module</a></li>
-<li class="toctree-l4"><a class="reference internal" href="pynucastro.reduction.reduction.html">pynucastro.reduction.reduction module</a></li>
-<li class="toctree-l4"><a class="reference internal" href="pynucastro.reduction.reduction_utils.html">pynucastro.reduction.reduction_utils module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="pynucastro.reduction.drgep_module.html">pynucastro.reduction.drgep_module module</a></li>
 <li class="toctree-l4"><a class="reference internal" href="pynucastro.reduction.sensitivity_analysis.html">pynucastro.reduction.sensitivity_analysis module</a></li>
 </ul>
 </details></li>
@@ -321,7 +327,9 @@
 <li class="toctree-l4"><a class="reference internal" href="pynucastro.screening.screening_util.html">pynucastro.screening.screening_util module</a></li>
 </ul>
 </details></li>
+<li class="toctree-l3"><a class="reference internal" href="pynucastro.mpi_utils.html">pynucastro.mpi_utils module</a></li>
 <li class="toctree-l3"><a class="reference internal" href="pynucastro.numba_util.html">pynucastro.numba_util module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pynucastro.utils.html">pynucastro.utils module</a></li>
 <li class="toctree-l3"><a class="reference internal" href="pynucastro.yt_utils.html">pynucastro.yt_utils module</a></li>
 </ul>
 </details></li>
@@ -594,7 +602,7 @@ document.write(`
 \[\rho({\bf J}) = \max_i\{|\lambda_i|\}\]</div>
 <p>Some integrators (like Runge-Kutta-Chebyshev) use this to determine the number of stages needed for each integration
 step.</p>
-<p>In pynucastro, the spectral radius of a network can be computed using <a class="reference internal" href="pynucastro.networks.rate_collection.html#pynucastro.networks.rate_collection.RateCollection.spectral_radius" title="pynucastro.networks.rate_collection.RateCollection.spectral_radius"><code class="xref py py-func docutils literal notranslate"><span class="pre">pynucastro.networks.rate_collection.RateCollection.spectral_radius()</span></code></a>.</p>
+<p>In pynucastro, the spectral radius of a network can be computed using <a class="reference internal" href="pynucastro.networks.rate_collection.html#pynucastro.networks.rate_collection.RateCollection.spectral_radius" title="pynucastro.networks.rate_collection.RateCollection.spectral_radius"><code class="xref py py-func docutils literal notranslate"><span class="pre">spectral_radius</span></code></a>.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">pynucastro</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pyna</span>
@@ -632,7 +640,7 @@ step.</p>
 </div>
 </div>
 </div>
-<div class="cell docutils container">
+<div class="cell tag_nbval-ignore-output docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span> <span class="o">=</span> <span class="n">net</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">hide_xalpha</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">hide_xp</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
                <span class="n">node_size</span><span class="o">=</span><span class="mi">500</span><span class="p">,</span> <span class="n">node_font_size</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span>
@@ -641,7 +649,7 @@ step.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/20583e25bfc11facfae2c7293f88d378e2e490050c8146b34af68f8d520ea86f.png" src="_images/20583e25bfc11facfae2c7293f88d378e2e490050c8146b34af68f8d520ea86f.png" />
+<img alt="_images/b33d6b4062849ac4029efc6a45555f9767cf5caec8a0efae8f6799830dce61a0.png" src="_images/b33d6b4062849ac4029efc6a45555f9767cf5caec8a0efae8f6799830dce61a0.png" />
 </div>
 </div>
 </section>
@@ -666,25 +674,26 @@ step.</p>
 </div>
 </div>
 </div>
-<div class="cell docutils container">
+<div class="cell tag_nbval-ignore-output docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span> <span class="o">=</span> <span class="n">comp</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">trace_threshold</span><span class="o">=</span><span class="mf">0.01</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/ccd44fcdc1d68ace96be95394d34c8716cdb4eb35b90ed4a34190fd98babe033.png" src="_images/ccd44fcdc1d68ace96be95394d34c8716cdb4eb35b90ed4a34190fd98babe033.png" />
+<img alt="_images/9227a914062ba2d705f79178c39bd097a017b9b5190e29648f14cd6da2ffb9df.png" src="_images/9227a914062ba2d705f79178c39bd097a017b9b5190e29648f14cd6da2ffb9df.png" />
 </div>
 </div>
 <p>If we evaluate the spectral radius, we see that it is reasonably large.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">net</span><span class="o">.</span><span class="n">spectral_radius</span><span class="p">(</span><span class="n">rho</span><span class="p">,</span> <span class="n">T</span><span class="p">,</span> <span class="n">comp</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sprad</span> <span class="o">=</span> <span class="n">net</span><span class="o">.</span><span class="n">spectral_radius</span><span class="p">(</span><span class="n">rho</span><span class="p">,</span> <span class="n">T</span><span class="p">,</span> <span class="n">comp</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">sprad</span><span class="si">:</span><span class="s2">12.7g</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>np.float64(345703.34445394535)
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>    345703.3
 </pre></div>
 </div>
 </div>
@@ -714,12 +723,14 @@ B8__He4_He4__weak__wc12             ( 18.07):  345703.34
 p_p__d__weak__bet_pos_              (  1.44):  345703.34
 p_p__d__weak__electron_capture      (  1.44):  345703.34
 p_d__He3                            (  5.49):  345703.34
-d_d__He4                            ( 23.85):  345703.34
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>He4_d__Li6                          (  1.47):  345703.34
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>d_d__He4                            ( 23.85):  345703.34
+He4_d__Li6                          (  1.47):  345703.34
 p_He3__He4__weak__bet_pos_          ( 19.80):  345703.34
-He4_He3__Be7                        (  1.59):  345703.34
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>He4_He3__Be7                        (  1.59):  345703.34
 p_Li6__Be7                          (  5.61):  345691.74
 p_Be7__B8                           (  0.14):  345703.34
 p_C12__N13                          (  1.94):  345703.34
@@ -735,7 +746,9 @@ He4_N15__F19                        (  4.01):  345703.34
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>He4_O14__Ne18                       (  5.11):  345703.34
 He4_O15__Ne19                       (  3.53):  345703.34
 p_O16__F17                          (  0.60):  345703.34
-He4_O16__Ne20                       (  4.73):  345703.34
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>He4_O16__Ne20                       (  4.73):  345703.34
 p_O17__F18                          (  5.61):  345703.34
 He4_O17__Ne21                       (  7.35):  345703.34
 p_O18__F19                          (  7.99):  345703.34
@@ -745,13 +758,15 @@ p_F19__Ne20                         ( 12.84):  345703.34
 d_He3__p_He4                        ( 18.35):  345703.34
 p_Li6__He4_He3                      (  4.02):    7094.29
 d_Li6__p_Li7                        (  5.03):  345703.19
+p_Li7__He4_He4                      ( 17.35):  345703.34
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>p_Li7__He4_He4                      ( 17.35):  345703.34
-C12_C12__He4_Ne20                   (  4.62):  345703.34
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>C12_C12__He4_Ne20                   (  4.62):  345703.34
 He4_N13__p_O16                      (  5.22):  345703.34
 p_N15__He4_C12                      (  4.97):  345703.34
-He4_O14__p_F17                      (  1.19):  345703.34
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>He4_O14__p_F17                      (  1.19):  345703.34
 p_O17__He4_N14                      (  1.19):  345703.34
 p_O18__He4_N15                      (  3.98):  345703.34
 p_F18__He4_O15                      (  2.88):  345703.34
@@ -760,9 +775,7 @@ p_F19__He4_O16                      (  8.11):  345703.34
 p_Ne20__He4_F17                     ( -4.13):  345703.34
 He3_He3__p_p_He4                    ( 12.86):  345703.34
 d_Be7__p_He4_He4                    ( 16.77):  345703.34
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>He3_Be7__p_p_He4_He4                ( 11.27):  345703.34
+He3_Be7__p_p_He4_He4                ( 11.27):  345703.34
 He4_He4_He4__C12                    (  7.28):  345703.34
 </pre></div>
 </div>
@@ -845,11 +858,11 @@ Be7 + H2 ⟶ p + He4 + He4 6.126324691465521e-11
       </div>
     </a>
     <a class="right-next"
-       href="NSE-example.html"
+       href="reduction.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">NSE Demonstrations</p>
+        <p class="prev-next-title">Network Reduction</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
