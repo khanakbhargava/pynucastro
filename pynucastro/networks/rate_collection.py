@@ -198,29 +198,112 @@ class Composition(collections.UserDict):
         """
         return math.fsum(self.values())
 
-    def set_solar_like(self, *, Z=0.02, half_life_thresh=None):
-        """Approximate a solar abundance, setting p to 0.7, He4 to 0.3
-        - Z and the remainder evenly distributed with Z.
+    # def set_solar_like(self, *, Z=0.02, half_life_thresh=None):
+    #     """Approximate a solar abundance, setting p to 0.7, He4 to 0.3
+    #     - Z and the remainder evenly distributed with Z.
 
-        Parameters
-        ----------
-        Z : float
-            The desired metalicity
-        half_life_thresh : float
-            The half life value below which to zero the mass fraction
-            of a nucleus.  This prevents us from making a composition
-            that is not really stable.
+    #     Parameters
+    #     ----------
+    #     Z : float
+    #         The desired metalicity
+    #     half_life_thresh : float
+    #         The half life value below which to zero the mass fraction
+    #         of a nucleus.  This prevents us from making a composition
+    #         that is not really stable.
 
-        """
+    #     """
 
-        rem = Z/(len(self)-2)
-        for k in self:
-            if k == Nucleus("p"):
-                self[k] = 0.7
-            elif k.raw == "he4":
-                self[k] = 0.3 - Z
+    #     rem = Z/(len(self)-2)
+    #     for k in self:
+    #         if k == Nucleus("p"):
+    #             self[k] = 0.7
+    #         elif k.raw == "he4":
+    #             self[k] = 0.3 - Z
+    #         else:
+    #             self[k] = rem
+
+    #     self.normalize(half_life_thresh=half_life_thresh)
+
+    def load_solar_data():
+
+        """Read in Lodders isotopic abundances"""
+
+        solar_data_dir = Path(__file__).resolve().parent/"solar_comp_data"
+        solar_data_file = solar_data_dir/"solar_isotropic_mass_fractions.txt"
+
+        solar_data = {}
+
+        with solar_data_file.open() as f:
+            for line in f:
+                line = line.strip()
+
+                if not line or line.startswith("#"):
+                    continue
+
+                parts = line.split()
+                if len(parts) < 4:
+                    continue
+
+                symbol, Z_str, A_str, X_str = parts[:4]
+
+                Z = int(Z_str)
+                A = int(A_str)
+                X = float(X_str)
+
+                if symbol == "h" and A == 1:
+                    nuc = Nucleus("p")
+                else:
+                    nuc = Nucleus(f"{symbol}{A}")
+
+                solar_data[nuc] = X
+        return solar_data
+
+    solar_comp = load_solar_data() #This ensures we don't open the file again and again.
+
+    def set_solar_like(self, *, z=None, half_life_thresh=None):
+
+        # Without scaling z: we use the Lodders composition as is
+
+        if z is None:
+            full_comp = Composition(list(solar_comp.keys()))
+            for nuc, X in solar_comp.items():
+                full_comp[nuc] = X
+
+            binned_comp = full_comp.bin_as(list(self.keys()))
+
+            for k in self:
+                self[k] = binned_comp.get(k, 0.0)
+
+            self.normalize(half_life_thresh=half_life_thresh)
+            return
+
+        # If user gives a desired metalicity, we scale the solar composition
+
+        z_target = float(z)
+        if z_target < 0.0 or z_target >= 1.0:
+            raise ValueError("Requested metallicity is unphysical")
+
+        x_solar = sum(X for nuc, X in solar_comp.items() if nuc.Z == 1)
+        y_solar = sum(X for nuc, X in solar_comp.items() if nuc.Z == 2)
+        z_solar = 1.0 - x_solar - y_solar
+
+        sum_xy = x_solar + y_solar
+
+        # Scaling factors
+        z_scale = z_target / z_solar
+        xy_scale = (1.0 - z_target) / sum_xy
+
+        full_comp = Composition(list(solar_comp.keys()))
+        for nuc, X in solar_comp.items():
+            if nuc.Z == 1 or nuc.Z == 2:
+                full_comp[nuc] = X * xy_scale
             else:
-                self[k] = rem
+                full_comp[nuc] = X * z_scale
+
+        binned_comp = full_comp.bin_as(list(self.keys()))
+
+        for k in self:
+            self[k] = binned_comp.get(k, 0.0)
 
         self.normalize(half_life_thresh=half_life_thresh)
 
