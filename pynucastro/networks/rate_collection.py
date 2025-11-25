@@ -198,53 +198,24 @@ class Composition(collections.UserDict):
         """
         return math.fsum(self.values())
 
-    # def set_solar_like(self, *, Z=0.02, half_life_thresh=None):
-    #     """Approximate a solar abundance, setting p to 0.7, He4 to 0.3
-    #     - Z and the remainder evenly distributed with Z.
 
-    #     Parameters
-    #     ----------
-    #     Z : float
-    #         The desired metalicity
-    #     half_life_thresh : float
-    #         The half life value below which to zero the mass fraction
-    #         of a nucleus.  This prevents us from making a composition
-    #         that is not really stable.
+    def set_solar_like(self, *, z=None, half_life_thresh=None):
 
-    #     """
+        solar_data_dir = Path(__file__).resolve().parent / "solar_comp_data"
+        solar_data_file = solar_data_dir / "solar_isotopic_mass_fractions.txt"
 
-    #     rem = Z/(len(self)-2)
-    #     for k in self:
-    #         if k == Nucleus("p"):
-    #             self[k] = 0.7
-    #         elif k.raw == "he4":
-    #             self[k] = 0.3 - Z
-    #         else:
-    #             self[k] = rem
-
-    #     self.normalize(half_life_thresh=half_life_thresh)
-
-    def load_solar_data():
-
-        """Read in Lodders isotopic abundances"""
-
-        solar_data_dir = Path(__file__).resolve().parent/"solar_comp_data"
-        solar_data_file = solar_data_dir/"solar_isotropic_mass_fractions.txt"
-
-        solar_data = {}
+        solar_comp = {}
 
         with solar_data_file.open() as f:
             for line in f:
                 line = line.strip()
-
                 if not line or line.startswith("#"):
                     continue
 
                 parts = line.split()
-                if len(parts) < 4:
-                    continue
 
                 symbol, Z_str, A_str, X_str = parts[:4]
+
 
                 Z = int(Z_str)
                 A = int(A_str)
@@ -255,12 +226,7 @@ class Composition(collections.UserDict):
                 else:
                     nuc = Nucleus(f"{symbol}{A}")
 
-                solar_data[nuc] = X
-        return solar_data
-
-    solar_comp = load_solar_data() #This ensures we don't open the file again and again.
-
-    def set_solar_like(self, *, z=None, half_life_thresh=None):
+                solar_comp[nuc] = X
 
         # Without scaling z: we use the Lodders composition as is
 
