@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>A Supernova Lightcurve &#8212; pynucastro 2.6.0.post158+g75bcf4394 documentation</title>
+    <title>A Supernova Lightcurve &#8212; pynucastro 2.6.0.post169+g41e4a615b documentation</title>
   
   
   
@@ -39,7 +39,7 @@
 <link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
   <script src="../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
 
-    <script src="../_static/documentation_options.js?v=ccf87974"></script>
+    <script src="../_static/documentation_options.js?v=f168f3b5"></script>
     <script src="../_static/doctools.js?v=9bcbadda"></script>
     <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
@@ -175,6 +175,7 @@
 <ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../sources.html">Third Party Data</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../nucleus.html">Nuclear Properties</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../lodders_composition.html">Solar Composition</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">pynucastro Overview</span></p>
 <ul class="nav bd-sidenav">
@@ -185,7 +186,7 @@
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Working with Libraries</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../library-examples.html">Selecting Rates from a Library</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../finding-rates.html">Finding Available Rates</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../tabulated-weak-rates.html">Tabulated Weak Rate Sources</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Building Networks</span></p>
@@ -272,10 +273,12 @@
 </ul>
 </details></li>
 <li class="toctree-l3 has-children"><a class="reference internal" href="../pynucastro.eos.html">pynucastro.eos package</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l4"><a class="reference internal" href="../pynucastro.eos.degeneracy_parameter_bounds.html">pynucastro.eos.degeneracy_parameter_bounds module</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../pynucastro.eos.difference_utils.html">pynucastro.eos.difference_utils module</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../pynucastro.eos.electron_eos.html">pynucastro.eos.electron_eos module</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../pynucastro.eos.fermi_integrals.html">pynucastro.eos.fermi_integrals module</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../pynucastro.eos.quadrature_weights.html">pynucastro.eos.quadrature_weights module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../pynucastro.eos.stellar_eos.html">pynucastro.eos.stellar_eos module</a></li>
 </ul>
 </details></li>
 <li class="toctree-l3 has-children"><a class="reference internal" href="../pynucastro.networks.html">pynucastro.networks package</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
@@ -315,6 +318,7 @@
 <li class="toctree-l4"><a class="reference internal" href="../pynucastro.rates.rate.html">pynucastro.rates.rate module</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../pynucastro.rates.reaclib_rate.html">pynucastro.rates.reaclib_rate module</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../pynucastro.rates.tabular_rate.html">pynucastro.rates.tabular_rate module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../pynucastro.rates.temperature_tabular_rate.html">pynucastro.rates.temperature_tabular_rate module</a></li>
 </ul>
 </details></li>
 <li class="toctree-l3 has-children"><a class="reference internal" href="../pynucastro.reduction.html">pynucastro.reduction package</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
@@ -699,7 +703,7 @@ Ni56 ⟶ Co56 + e⁺ + 𝜈           [Q =   2.13 MeV] (Ni56 --&gt; Co56 &lt;wc1
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Text(0, 0.5, &#39;X&#39;)
 </pre></div>
 </div>
-<img alt="../_images/9bcc155d8002234ca25a14190e92563ddfb9dc50fbf8441b3880faa8efbbb59b.png" src="../_images/9bcc155d8002234ca25a14190e92563ddfb9dc50fbf8441b3880faa8efbbb59b.png" />
+<img alt="../_images/a7d1051fc1c60a3d8ad1bdbb0d66c413e2f80660c13dbe493eb2a23a8507e8be.png" src="../_images/a7d1051fc1c60a3d8ad1bdbb0d66c413e2f80660c13dbe493eb2a23a8507e8be.png" />
 </div>
 </div>
 <p>If we want the luminosity, we can compute that as the instantaneous energy release.  Note: this assumes that all of the energy release is given to photons.  For this, we need the rates, which we can get these by iterating over the solution</p>
@@ -747,7 +751,7 @@ Ni56 ⟶ Co56 + e⁺ + 𝜈           [Q =   2.13 MeV] (Ni56 --&gt; Co56 &lt;wc1
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Text(0, 0.5, &#39;luminosity (solar)&#39;)
 </pre></div>
 </div>
-<img alt="../_images/0c849c0cdf587b38db894dd053c28731b5892ad1c440ab878cb70d87ecf4c11e.png" src="../_images/0c849c0cdf587b38db894dd053c28731b5892ad1c440ab878cb70d87ecf4c11e.png" />
+<img alt="../_images/ea6cbd2bcdaecbe919a8ef85ed44728ee52a407d349318677f72bd034d1bafc2.png" src="../_images/ea6cbd2bcdaecbe919a8ef85ed44728ee52a407d349318677f72bd034d1bafc2.png" />
 </div>
 </div>
 </section>

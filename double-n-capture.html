@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>Approximating double n-capture &#8212; pynucastro 2.6.0.post158+g75bcf4394 documentation</title>
+    <title>Approximating double n-capture &#8212; pynucastro 2.6.0.post169+g41e4a615b documentation</title>
   
   
   
@@ -39,7 +39,7 @@
 <link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
   <script src="_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
 
-    <script src="_static/documentation_options.js?v=ccf87974"></script>
+    <script src="_static/documentation_options.js?v=f168f3b5"></script>
     <script src="_static/doctools.js?v=9bcbadda"></script>
     <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="_static/clipboard.min.js?v=a7894cd8"></script>
@@ -175,6 +175,7 @@
 <ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="sources.html">Third Party Data</a></li>
 <li class="toctree-l1"><a class="reference internal" href="nucleus.html">Nuclear Properties</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lodders_composition.html">Solar Composition</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">pynucastro Overview</span></p>
 <ul class="nav bd-sidenav">
@@ -185,7 +186,7 @@
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Working with Libraries</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="library-examples.html">Selecting Rates from a Library</a></li>
+<li class="toctree-l1"><a class="reference internal" href="finding-rates.html">Finding Available Rates</a></li>
 <li class="toctree-l1"><a class="reference internal" href="tabulated-weak-rates.html">Tabulated Weak Rate Sources</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Building Networks</span></p>
@@ -272,10 +273,12 @@
 </ul>
 </details></li>
 <li class="toctree-l3 has-children"><a class="reference internal" href="pynucastro.eos.html">pynucastro.eos package</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l4"><a class="reference internal" href="pynucastro.eos.degeneracy_parameter_bounds.html">pynucastro.eos.degeneracy_parameter_bounds module</a></li>
 <li class="toctree-l4"><a class="reference internal" href="pynucastro.eos.difference_utils.html">pynucastro.eos.difference_utils module</a></li>
 <li class="toctree-l4"><a class="reference internal" href="pynucastro.eos.electron_eos.html">pynucastro.eos.electron_eos module</a></li>
 <li class="toctree-l4"><a class="reference internal" href="pynucastro.eos.fermi_integrals.html">pynucastro.eos.fermi_integrals module</a></li>
 <li class="toctree-l4"><a class="reference internal" href="pynucastro.eos.quadrature_weights.html">pynucastro.eos.quadrature_weights module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="pynucastro.eos.stellar_eos.html">pynucastro.eos.stellar_eos module</a></li>
 </ul>
 </details></li>
 <li class="toctree-l3 has-children"><a class="reference internal" href="pynucastro.networks.html">pynucastro.networks package</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
@@ -315,6 +318,7 @@
 <li class="toctree-l4"><a class="reference internal" href="pynucastro.rates.rate.html">pynucastro.rates.rate module</a></li>
 <li class="toctree-l4"><a class="reference internal" href="pynucastro.rates.reaclib_rate.html">pynucastro.rates.reaclib_rate module</a></li>
 <li class="toctree-l4"><a class="reference internal" href="pynucastro.rates.tabular_rate.html">pynucastro.rates.tabular_rate module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="pynucastro.rates.temperature_tabular_rate.html">pynucastro.rates.temperature_tabular_rate module</a></li>
 </ul>
 </details></li>
 <li class="toctree-l3 has-children"><a class="reference internal" href="pynucastro.reduction.html">pynucastro.reduction package</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
@@ -635,7 +639,7 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/2e6fc4768618c0f56ab7b9c01ddb6598af2fb6bc9579bdf5b844741fe57ff7f1.png" src="_images/2e6fc4768618c0f56ab7b9c01ddb6598af2fb6bc9579bdf5b844741fe57ff7f1.png" />
+<img alt="_images/673c84e4c777a614ba3ed93b49fc98ba53bd340b4e08001c3cdc41c509ba725a.png" src="_images/673c84e4c777a614ba3ed93b49fc98ba53bd340b4e08001c3cdc41c509ba725a.png" />
 </div>
 </div>
 <p>Now we’ll integrate it, starting with a mix of <span class="math notranslate nohighlight">\({}^{52}\mathrm{Fe}\)</span> and <span class="math notranslate nohighlight">\(n\)</span>.</p>
@@ -691,7 +695,7 @@ document.write(`
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Text(0, 0.5, &#39;X&#39;)
 </pre></div>
 </div>
-<img alt="_images/e4c44ab4cc23eb14d2ac29019c0d8171f3e859eb246067a472c83f34dbe738b0.png" src="_images/e4c44ab4cc23eb14d2ac29019c0d8171f3e859eb246067a472c83f34dbe738b0.png" />
+<img alt="_images/f53ada14eacdeb06da363e937536e1785098e00367f5c0e79ca45a08a81645ee.png" src="_images/f53ada14eacdeb06da363e937536e1785098e00367f5c0e79ca45a08a81645ee.png" />
 </div>
 </div>
 <p>We see that the long term evolution is that all the iron winds up as <span class="math notranslate nohighlight">\({}^{54}\mathrm{Fe}\)</span>.</p>
@@ -758,7 +762,7 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/d38f2d5023bea2598bb3729bf1a42ff2e90b3ec7b058915940e0461432fa82e7.png" src="_images/d38f2d5023bea2598bb3729bf1a42ff2e90b3ec7b058915940e0461432fa82e7.png" />
+<img alt="_images/e6ede961805bdecbee43ea4494a06087fa8a81a5f507446bfb75c27b73ddf20e.png" src="_images/e6ede961805bdecbee43ea4494a06087fa8a81a5f507446bfb75c27b73ddf20e.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -805,7 +809,7 @@ document.write(`
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Text(0, 0.5, &#39;X&#39;)
 </pre></div>
 </div>
-<img alt="_images/13b060c1743ff6c7a5e7e3a9c64ffee1ad7b767ab6a2c352c556e254b0af71ae.png" src="_images/13b060c1743ff6c7a5e7e3a9c64ffee1ad7b767ab6a2c352c556e254b0af71ae.png" />
+<img alt="_images/fa1aba76722bb3add5cdcf23574cc987b95a864d0ada4cb2435df916ad2a9427.png" src="_images/fa1aba76722bb3add5cdcf23574cc987b95a864d0ada4cb2435df916ad2a9427.png" />
 </div>
 </div>
 </section>
@@ -836,7 +840,7 @@ document.write(`
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(1e-06, 1)
 </pre></div>
 </div>
-<img alt="_images/b1057a5a8646cb343c9debc59e24c3e2a9871929d5563db1a19f91639b06ead7.png" src="_images/b1057a5a8646cb343c9debc59e24c3e2a9871929d5563db1a19f91639b06ead7.png" />
+<img alt="_images/f89ae3b003c8cd10417fe681255faf84f7c213ae14ed30b83a0422750ab6dc63.png" src="_images/f89ae3b003c8cd10417fe681255faf84f7c213ae14ed30b83a0422750ab6dc63.png" />
 </div>
 </div>
 <p>Here the dotted line is the approximate version.  We see that the <span class="math notranslate nohighlight">\({}^{52}\mathrm{Fe}\)</span> is consumed at the same rate.  The approximate net produces <span class="math notranslate nohighlight">\({}^{54}\mathrm{Fe}\)</span> faster simply because there is no intermediate <span class="math notranslate nohighlight">\({}^{53}\mathrm{Fe}\)</span> in the network.</p>

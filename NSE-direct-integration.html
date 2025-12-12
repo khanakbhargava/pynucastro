@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>NSE vs. Direct Integration &#8212; pynucastro 2.6.0.post158+g75bcf4394 documentation</title>
+    <title>NSE vs. Direct Integration &#8212; pynucastro 2.6.0.post169+g41e4a615b documentation</title>
   
   
   
@@ -39,7 +39,7 @@
 <link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
   <script src="_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
 
-    <script src="_static/documentation_options.js?v=ccf87974"></script>
+    <script src="_static/documentation_options.js?v=f168f3b5"></script>
     <script src="_static/doctools.js?v=9bcbadda"></script>
     <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="_static/clipboard.min.js?v=a7894cd8"></script>
@@ -175,6 +175,7 @@
 <ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="sources.html">Third Party Data</a></li>
 <li class="toctree-l1"><a class="reference internal" href="nucleus.html">Nuclear Properties</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lodders_composition.html">Solar Composition</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">pynucastro Overview</span></p>
 <ul class="nav bd-sidenav">
@@ -185,7 +186,7 @@
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Working with Libraries</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="library-examples.html">Selecting Rates from a Library</a></li>
+<li class="toctree-l1"><a class="reference internal" href="finding-rates.html">Finding Available Rates</a></li>
 <li class="toctree-l1"><a class="reference internal" href="tabulated-weak-rates.html">Tabulated Weak Rate Sources</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Building Networks</span></p>
@@ -272,10 +273,12 @@
 </ul>
 </details></li>
 <li class="toctree-l3 has-children"><a class="reference internal" href="pynucastro.eos.html">pynucastro.eos package</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l4"><a class="reference internal" href="pynucastro.eos.degeneracy_parameter_bounds.html">pynucastro.eos.degeneracy_parameter_bounds module</a></li>
 <li class="toctree-l4"><a class="reference internal" href="pynucastro.eos.difference_utils.html">pynucastro.eos.difference_utils module</a></li>
 <li class="toctree-l4"><a class="reference internal" href="pynucastro.eos.electron_eos.html">pynucastro.eos.electron_eos module</a></li>
 <li class="toctree-l4"><a class="reference internal" href="pynucastro.eos.fermi_integrals.html">pynucastro.eos.fermi_integrals module</a></li>
 <li class="toctree-l4"><a class="reference internal" href="pynucastro.eos.quadrature_weights.html">pynucastro.eos.quadrature_weights module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="pynucastro.eos.stellar_eos.html">pynucastro.eos.stellar_eos module</a></li>
 </ul>
 </details></li>
 <li class="toctree-l3 has-children"><a class="reference internal" href="pynucastro.networks.html">pynucastro.networks package</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
@@ -315,6 +318,7 @@
 <li class="toctree-l4"><a class="reference internal" href="pynucastro.rates.rate.html">pynucastro.rates.rate module</a></li>
 <li class="toctree-l4"><a class="reference internal" href="pynucastro.rates.reaclib_rate.html">pynucastro.rates.reaclib_rate module</a></li>
 <li class="toctree-l4"><a class="reference internal" href="pynucastro.rates.tabular_rate.html">pynucastro.rates.tabular_rate module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="pynucastro.rates.temperature_tabular_rate.html">pynucastro.rates.temperature_tabular_rate module</a></li>
 </ul>
 </details></li>
 <li class="toctree-l3 has-children"><a class="reference internal" href="pynucastro.reduction.html">pynucastro.reduction package</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
@@ -681,9 +685,9 @@ In pynucastro, this is the <a class="reference internal" href="pynucastro.rates.
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/opt/hostedtoolcache/Python/3.11.14/x64/lib/python3.11/site-packages/pynucastro/rates/derived_rate.py:135: UserWarning: C12 partition function is not supported by tables: set pf = 1.0 by default
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/opt/hostedtoolcache/Python/3.14.2/x64/lib/python3.14/site-packages/pynucastro/rates/derived_rate.py:135: UserWarning: C12 partition function is not supported by tables: set pf = 1.0 by default
   warnings.warn(UserWarning(f&#39;{nuc} partition function is not supported by tables: set pf = 1.0 by default&#39;))
-/opt/hostedtoolcache/Python/3.11.14/x64/lib/python3.11/site-packages/pynucastro/rates/derived_rate.py:135: UserWarning: N13 partition function is not supported by tables: set pf = 1.0 by default
+/opt/hostedtoolcache/Python/3.14.2/x64/lib/python3.14/site-packages/pynucastro/rates/derived_rate.py:135: UserWarning: N13 partition function is not supported by tables: set pf = 1.0 by default
   warnings.warn(UserWarning(f&#39;{nuc} partition function is not supported by tables: set pf = 1.0 by default&#39;))
 </pre></div>
 </div>
@@ -764,7 +768,7 @@ In pynucastro, this is the <a class="reference internal" href="pynucastro.rates.
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/8f84d2f8ebead9625fa55a1eadd8c28525c13353bafc9b03087667afa76a1ec2.png" src="_images/8f84d2f8ebead9625fa55a1eadd8c28525c13353bafc9b03087667afa76a1ec2.png" />
+<img alt="_images/992b5088a3b4250b43e08c2a2d386f4d940c1fe7a41df7d336d6b57aac36ac28.png" src="_images/992b5088a3b4250b43e08c2a2d386f4d940c1fe7a41df7d336d6b57aac36ac28.png" />
 </div>
 </div>
 </section>
@@ -792,7 +796,8 @@ network</p>
   hidden rates: 39
 
   reaclib rates: 45
-  tabular rates: 0
+  weak tabular rates: 0
+  temperature tabular rates: 0
   approximate rates: 12
   derived rates: 45
   modified rates: 3
@@ -833,7 +838,7 @@ network</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/d1fdafebe4b19d4309e6d47933cd11b2752fc724f5b830012f3f1dd98aa2bc72.png" src="_images/d1fdafebe4b19d4309e6d47933cd11b2752fc724f5b830012f3f1dd98aa2bc72.png" />
+<img alt="_images/23ce6869f03ad644afd28f0aa0de6e22850215139541ddea6b29e530ea463d8e.png" src="_images/23ce6869f03ad644afd28f0aa0de6e22850215139541ddea6b29e530ea463d8e.png" />
 </div>
 </div>
 <p>Now a plot of absolute and relative difference shows that the mass fraction obtained from direct integration matches with NSE equations to machine precision. The differences between the two are largely set by the tolerances of both the NSE solver and the ODE integrator.</p>
@@ -856,7 +861,7 @@ network</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/1b982deaf1b111e1efcfa8c58e627eebe152bcaf54d84a706591caa8a465a8a3.png" src="_images/1b982deaf1b111e1efcfa8c58e627eebe152bcaf54d84a706591caa8a465a8a3.png" />
+<img alt="_images/f49f33de28782441c2d9853c946ae25f6a2abf7be936bf82f595bad4213e2177.png" src="_images/f49f33de28782441c2d9853c946ae25f6a2abf7be936bf82f595bad4213e2177.png" />
 </div>
 </div>
 </section>
@@ -888,13 +893,13 @@ by the total activity of the rate (forward + reverse) by doing <code class="docu
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/opt/hostedtoolcache/Python/3.11.14/x64/lib/python3.11/site-packages/pynucastro/rates/derived_rate.py:135: UserWarning: C12 partition function is not supported by tables: set pf = 1.0 by default
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/opt/hostedtoolcache/Python/3.14.2/x64/lib/python3.14/site-packages/pynucastro/rates/derived_rate.py:135: UserWarning: C12 partition function is not supported by tables: set pf = 1.0 by default
   warnings.warn(UserWarning(f&#39;{nuc} partition function is not supported by tables: set pf = 1.0 by default&#39;))
-/opt/hostedtoolcache/Python/3.11.14/x64/lib/python3.11/site-packages/pynucastro/rates/derived_rate.py:135: UserWarning: N13 partition function is not supported by tables: set pf = 1.0 by default
+/opt/hostedtoolcache/Python/3.14.2/x64/lib/python3.14/site-packages/pynucastro/rates/derived_rate.py:135: UserWarning: N13 partition function is not supported by tables: set pf = 1.0 by default
   warnings.warn(UserWarning(f&#39;{nuc} partition function is not supported by tables: set pf = 1.0 by default&#39;))
 </pre></div>
 </div>
-<img alt="_images/522a897efd04c1239256a3eb902a6e2f39979eee88e323ad9ee3a67bd094f824.png" src="_images/522a897efd04c1239256a3eb902a6e2f39979eee88e323ad9ee3a67bd094f824.png" />
+<img alt="_images/1eddbe5634cf980af4f9a2d108beb97e25967c3f6ce37af7ed46601a07dcade1.png" src="_images/1eddbe5634cf980af4f9a2d108beb97e25967c3f6ce37af7ed46601a07dcade1.png" />
 </div>
 </div>
 <p>Here we see that the normalized net rates are all &lt; <span class="math notranslate nohighlight">\(10^{-12}\)</span>, so we are effectively seeing the integration tolerance, and are very close to machine precision.</p>

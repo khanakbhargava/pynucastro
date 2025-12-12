@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>Binding Energy per Nucleon &#8212; pynucastro 2.6.0.post158+g75bcf4394 documentation</title>
+    <title>Binding Energy per Nucleon &#8212; pynucastro 2.6.0.post169+g41e4a615b documentation</title>
   
   
   
@@ -39,7 +39,7 @@
 <link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
   <script src="../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
 
-    <script src="../_static/documentation_options.js?v=ccf87974"></script>
+    <script src="../_static/documentation_options.js?v=f168f3b5"></script>
     <script src="../_static/doctools.js?v=9bcbadda"></script>
     <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
@@ -175,6 +175,7 @@
 <ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../sources.html">Third Party Data</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../nucleus.html">Nuclear Properties</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../lodders_composition.html">Solar Composition</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">pynucastro Overview</span></p>
 <ul class="nav bd-sidenav">
@@ -185,7 +186,7 @@
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Working with Libraries</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../library-examples.html">Selecting Rates from a Library</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../finding-rates.html">Finding Available Rates</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../tabulated-weak-rates.html">Tabulated Weak Rate Sources</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Building Networks</span></p>
@@ -272,10 +273,12 @@
 </ul>
 </details></li>
 <li class="toctree-l3 has-children"><a class="reference internal" href="../pynucastro.eos.html">pynucastro.eos package</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l4"><a class="reference internal" href="../pynucastro.eos.degeneracy_parameter_bounds.html">pynucastro.eos.degeneracy_parameter_bounds module</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../pynucastro.eos.difference_utils.html">pynucastro.eos.difference_utils module</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../pynucastro.eos.electron_eos.html">pynucastro.eos.electron_eos module</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../pynucastro.eos.fermi_integrals.html">pynucastro.eos.fermi_integrals module</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../pynucastro.eos.quadrature_weights.html">pynucastro.eos.quadrature_weights module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../pynucastro.eos.stellar_eos.html">pynucastro.eos.stellar_eos module</a></li>
 </ul>
 </details></li>
 <li class="toctree-l3 has-children"><a class="reference internal" href="../pynucastro.networks.html">pynucastro.networks package</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
@@ -315,6 +318,7 @@
 <li class="toctree-l4"><a class="reference internal" href="../pynucastro.rates.rate.html">pynucastro.rates.rate module</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../pynucastro.rates.reaclib_rate.html">pynucastro.rates.reaclib_rate module</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../pynucastro.rates.tabular_rate.html">pynucastro.rates.tabular_rate module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../pynucastro.rates.temperature_tabular_rate.html">pynucastro.rates.temperature_tabular_rate module</a></li>
 </ul>
 </details></li>
 <li class="toctree-l3 has-children"><a class="reference internal" href="../pynucastro.reduction.html">pynucastro.reduction package</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
@@ -664,7 +668,7 @@ document.write(`
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Text(0, 0.5, &#39;binding energy per nucleon (MeV)&#39;)
 </pre></div>
 </div>
-<img alt="../_images/50875e667d643cc6fa7618c7f769b76db589c90d3f263019bce7d5319b51af12.png" src="../_images/50875e667d643cc6fa7618c7f769b76db589c90d3f263019bce7d5319b51af12.png" />
+<img alt="../_images/a95afd538226e75a51c2917f8087068de9a88ba2316682a0b456f442099507bf.png" src="../_images/a95afd538226e75a51c2917f8087068de9a88ba2316682a0b456f442099507bf.png" />
 </div>
 </div>
 </section>
@@ -738,7 +742,7 @@ only consider those that are stable (or have half lives &gt; 1 million years)</p
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/f3abaf7ad25fbe5689e2e61a31551e8060aa17bb26a369360cf8343d5f8963c6.png" src="../_images/f3abaf7ad25fbe5689e2e61a31551e8060aa17bb26a369360cf8343d5f8963c6.png" />
+<img alt="../_images/c8ed6eb5971ee62ba534b59c1fe5625b00ff17cd8d245c7ac99abd5117ed3ea8.png" src="../_images/c8ed6eb5971ee62ba534b59c1fe5625b00ff17cd8d245c7ac99abd5117ed3ea8.png" />
 </div>
 </div>
 </section>
@@ -838,10 +842,10 @@ First let’s get the extent of <span class="math notranslate nohighlight">\(N\)
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.colorbar.Colorbar at 0x7f9d7874d310&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.colorbar.Colorbar at 0x7fa960c2d6a0&gt;
 </pre></div>
 </div>
-<img alt="../_images/cc052c4ffe732bab19fe719fba35f2662a2d91682bd3445f8bb1050debf8afbf.png" src="../_images/cc052c4ffe732bab19fe719fba35f2662a2d91682bd3445f8bb1050debf8afbf.png" />
+<img alt="../_images/275b75a4aaaa20e7817d574bc7b8db090bf37db0fce6b86673e20fd3163de83f.png" src="../_images/275b75a4aaaa20e7817d574bc7b8db090bf37db0fce6b86673e20fd3163de83f.png" />
 </div>
 </div>
 <div class="cell tag_nbval-ignore-output docutils container">
@@ -861,10 +865,10 @@ First let’s get the extent of <span class="math notranslate nohighlight">\(N\)
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.colorbar.Colorbar at 0x7f9d78732a90&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.colorbar.Colorbar at 0x7fa960d012b0&gt;
 </pre></div>
 </div>
-<img alt="../_images/5528d11cc99c360303e54c095c3cfeb33139dc453a23f3706d9b83ab2ce017a0.png" src="../_images/5528d11cc99c360303e54c095c3cfeb33139dc453a23f3706d9b83ab2ce017a0.png" />
+<img alt="../_images/ffb598e8153db8efca4b955201e0e68178dad2c2709371d8a80f729d49f4ab6a.png" src="../_images/ffb598e8153db8efca4b955201e0e68178dad2c2709371d8a80f729d49f4ab6a.png" />
 </div>
 </div>
 </section>
