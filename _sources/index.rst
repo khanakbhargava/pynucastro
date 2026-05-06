@@ -42,6 +42,7 @@ and interactively exploring nuclear reaction networks.
    plot-types.ipynb
    basic_network.ipynb
    pynucastro-integration.ipynb
+   starlib.ipynb
 
 
 .. toctree::
@@ -72,7 +73,7 @@ and interactively exploring nuclear reaction networks.
    screening-examples
    modify-example.ipynb
    custom-rates.ipynb
-   partition-function
+   derived-rates
 
 .. toctree::
    :maxdepth: 1
@@ -92,6 +93,7 @@ and interactively exploring nuclear reaction networks.
    :caption: Nuclear Statistical Equilibrium
    :hidden:
 
+   nse-intro
    NSE-example
    NSE-direct-integration
    nse_table
@@ -103,6 +105,8 @@ and interactively exploring nuclear reaction networks.
 
    fermi-integrals
    electron-eos
+   stellar-eos
+   temperature-evolution
 
 .. toctree::
    :maxdepth: 1
@@ -141,6 +145,14 @@ and interactively exploring nuclear reaction networks.
    examples/triple_alpha_eval.ipynb
    examples/he-burning.ipynb
    examples/supernova-lightcurve.ipynb
+
+.. toctree::
+   :maxdepth: 1
+   :caption: Developer Documentation
+   :hidden:
+
+   rates-devel
+   testing
 
 .. toctree::
    :maxdepth: 1

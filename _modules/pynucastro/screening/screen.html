@@ -7,7 +7,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>pynucastro.screening.screen &#8212; pynucastro 2.6.0.post172+gc4bc1319b documentation</title>
+    <title>pynucastro.screening.screen &#8212; pynucastro 2.6.0.post288+gd107e174c documentation</title>
   
   
   
@@ -15,41 +15,45 @@
     document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
     document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
   </script>
+  <!--
+    this give us a css class that will be invisible only if js is disabled
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
   
   <!-- Loaded before other Sphinx assets -->
-  <link href="../../../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
-<link href="../../../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
-<link href="../../../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
-
-  
-  <link href="../../../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
-  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="../../../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="../../../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+  <link href="../../../_static/styles/theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+<link href="../../../_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
 
     <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=03e43079" />
-    <link rel="stylesheet" type="text/css" href="../../../_static/styles/sphinx-book-theme.css?v=eba8b062" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/styles/sphinx-book-theme.css?v=3c74b3bc" />
     <link rel="stylesheet" type="text/css" href="../../../_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="../../../_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/mystnb.11b39860a7a0cbfd473a3ad8a317855267ff0bd372690045ca344a6b62be495e.css" />
     <link rel="stylesheet" type="text/css" href="../../../_static/myfile.css?v=15ab05d9" />
   
+  <!-- So that users can add custom icons -->
+  <script src="../../../_static/scripts/fontawesome.js?digest=8878045cc6db502f8baf"></script>
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="../../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
-<link rel="preload" as="script" href="../../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
-  <script src="../../../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+  <link rel="preload" as="script" href="../../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
+<link rel="preload" as="script" href="../../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
 
-    <script src="../../../_static/documentation_options.js?v=70759304"></script>
-    <script src="../../../_static/doctools.js?v=9bcbadda"></script>
-    <script src="../../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../../_static/documentation_options.js?v=7d039038"></script>
+    <script src="../../../_static/doctools.js?v=fd6eb6e6"></script>
+    <script src="../../../_static/sphinx_highlight.js?v=6ffebe34"></script>
     <script src="../../../_static/clipboard.min.js?v=a7894cd8"></script>
     <script src="../../../_static/copybutton.js?v=eaa7b67c"></script>
-    <script src="../../../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script src="../../../_static/scripts/sphinx-book-theme.js?v=fab101a9"></script>
     <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = '_modules/pynucastro/screening/screen';</script>
     <link rel="index" title="Index" href="../../../genindex.html" />
     <link rel="search" title="Search" href="../../../search.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:version" content="2.6" />
   </head>
   
   
@@ -65,19 +69,8 @@
     <i class="fa-solid fa-arrow-up"></i>Back to top</button>
 
   
-  <input type="checkbox"
-          class="sidebar-toggle"
-          id="pst-primary-sidebar-checkbox"/>
-  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
-  
-  <input type="checkbox"
-          class="sidebar-toggle"
-          id="pst-secondary-sidebar-checkbox"/>
-  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
-  
-  <div class="search-button__wrapper">
-    <div class="search-button__overlay"></div>
-    <div class="search-button__search-container">
+  <dialog id="pst-search-dialog">
+    
 <form class="bd-search d-flex align-items-center"
       action="../../../search.html"
       method="get">
@@ -85,7 +78,6 @@
   <input type="search"
          class="form-control"
          name="q"
-         id="search-input"
          placeholder="Search..."
          aria-label="Search..."
          autocomplete="off"
@@ -93,8 +85,8 @@
          autocapitalize="off"
          spellcheck="false"/>
   <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
-</form></div>
-  </div>
+</form>
+  </dialog>
 
   <div class="pst-async-banner-revealer d-none">
   <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
@@ -112,7 +104,8 @@
       
         
       
-      <div class="bd-sidebar-primary bd-sidebar">
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
         
 
   
@@ -142,7 +135,7 @@
     
     
     <img src="../../../_static/logo.png" class="logo__image only-light" alt=""/>
-    <script>document.write(`<img src="../../../_static/logo.png" class="logo__image only-dark" alt=""/>`);</script>
+    <img src="../../../_static/logo.png" class="logo__image only-dark pst-js-only" alt=""/>
   
   
     <p class="title logo__title">pynucastro 2.6</p>
@@ -150,15 +143,11 @@
 </a></div>
         <div class="sidebar-primary-item">
 
- <script>
- document.write(`
-   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <i class="fa-solid fa-magnifying-glass"></i>
-    <span class="search-button__default-text">Search</span>
-    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
-   </button>
- `);
- </script></div>
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button></div>
         <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item navbar-nav active">
         <p aria-level="2" class="caption" role="heading"><span class="caption-text">Introduction</span></p>
@@ -180,6 +169,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../../../plot-types.html">Plotting Examples</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../basic_network.html">Basic Networks</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../pynucastro-integration.html">Integrating a Network</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../starlib.html">Networks with StarLib rates</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Working with Libraries</span></p>
 <ul class="nav bd-sidenav">
@@ -200,7 +190,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../../../screening-examples.html">Screening Rates</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../modify-example.html">Modifying Rates</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../custom-rates.html">Creating a Custom Rate</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../../partition-function.html">Reverse Rates</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../derived-rates.html">Derived Rates</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Advanced Network Operations</span></p>
 <ul class="nav bd-sidenav">
@@ -219,6 +209,7 @@
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Nuclear Statistical Equilibrium</span></p>
 <ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../../nse-intro.html">NSE Intro</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../NSE-example.html">NSE Examples</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../NSE-direct-integration.html">NSE vs. Direct Integration</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../nse_table.html">Creating an NSE table</a></li>
@@ -227,6 +218,8 @@
 <ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../../../fermi-integrals.html">Fermi-Dirac Integrals</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../electron-eos.html">The Electron-Positron EOS</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../stellar-eos.html">Stellar EOS</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../temperature-evolution.html">Integrating Networks with Temperature Evolution</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Plasma Neutrinos</span></p>
 <ul class="nav bd-sidenav">
@@ -259,6 +252,11 @@
 <li class="toctree-l1"><a class="reference internal" href="../../../examples/he-burning.html">Ratio of C/O from He burning</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../examples/supernova-lightcurve.html">A Supernova Lightcurve</a></li>
 </ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Developer Documentation</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../../rates-devel.html">Notes on Working with <code class="docutils literal notranslate"><span class="pre">Rate</span></code> Objects</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../testing.html">Testing and Comparing Backends</a></li>
+</ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Reference</span></p>
 <ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../../../citing.html">Citing pynucastro</a></li>
@@ -273,6 +271,7 @@
 <li class="toctree-l4"><a class="reference internal" href="../../../pynucastro.eos.degeneracy_parameter_bounds.html">pynucastro.eos.degeneracy_parameter_bounds module</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../../pynucastro.eos.difference_utils.html">pynucastro.eos.difference_utils module</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../../pynucastro.eos.electron_eos.html">pynucastro.eos.electron_eos module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../pynucastro.eos.eos_components.html">pynucastro.eos.eos_components module</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../../pynucastro.eos.fermi_integrals.html">pynucastro.eos.fermi_integrals module</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../../pynucastro.eos.quadrature_weights.html">pynucastro.eos.quadrature_weights module</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../../pynucastro.eos.stellar_eos.html">pynucastro.eos.stellar_eos module</a></li>
@@ -283,6 +282,7 @@
 <li class="toctree-l4"><a class="reference internal" href="../../../pynucastro.networks.base_cxx_network.html">pynucastro.networks.base_cxx_network module</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../../pynucastro.networks.fortran_network.html">pynucastro.networks.fortran_network module</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../../pynucastro.networks.helper.html">pynucastro.networks.helper module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../pynucastro.networks.network_compare.html">pynucastro.networks.network_compare module</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../../pynucastro.networks.nse_network.html">pynucastro.networks.nse_network module</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../../pynucastro.networks.python_network.html">pynucastro.networks.python_network module</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../../pynucastro.networks.rate_collection.html">pynucastro.networks.rate_collection module</a></li>
@@ -296,6 +296,7 @@
 </ul>
 </details></li>
 <li class="toctree-l3 has-children"><a class="reference internal" href="../../../pynucastro.nucdata.html">pynucastro.nucdata package</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../pynucastro.nucdata.composition.html">pynucastro.nucdata.composition module</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../../pynucastro.nucdata.elements.html">pynucastro.nucdata.elements module</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../../pynucastro.nucdata.halflife_table.html">pynucastro.nucdata.halflife_table module</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../../pynucastro.nucdata.mass_table.html">pynucastro.nucdata.mass_table module</a></li>
@@ -314,6 +315,7 @@
 <li class="toctree-l4"><a class="reference internal" href="../../../pynucastro.rates.modified_rate.html">pynucastro.rates.modified_rate module</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../../pynucastro.rates.rate.html">pynucastro.rates.rate module</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../../pynucastro.rates.reaclib_rate.html">pynucastro.rates.reaclib_rate module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../pynucastro.rates.starlib_rate.html">pynucastro.rates.starlib_rate module</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../../pynucastro.rates.tabular_rate.html">pynucastro.rates.tabular_rate module</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../../pynucastro.rates.temperature_tabular_rate.html">pynucastro.rates.temperature_tabular_rate module</a></li>
 </ul>
@@ -328,6 +330,7 @@
 <li class="toctree-l4"><a class="reference internal" href="../../../pynucastro.screening.screening_util.html">pynucastro.screening.screening_util module</a></li>
 </ul>
 </details></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../pynucastro.mesa_utils.html">pynucastro.mesa_utils module</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../../pynucastro.mpi_utils.html">pynucastro.mpi_utils module</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../../pynucastro.numba_util.html">pynucastro.numba_util module</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../../pynucastro.utils.html">pynucastro.utils module</a></li>
@@ -350,9 +353,14 @@
   
   
   <div class="sidebar-primary-items__end sidebar-primary__section">
+      <div class="sidebar-primary-item">
+<div id="ethical-ad-placement"
+      class="flat"
+      data-ea-publisher="readthedocs"
+      data-ea-type="readthedocs-sidebar"
+      data-ea-manual="true">
+</div></div>
   </div>
-  
-  <div id="rtd-footer-container"></div>
 
 
       </div>
@@ -434,7 +442,7 @@
 
 
 <button onclick="toggleFullScreen()"
-  class="btn btn-sm btn-fullscreen-button"
+  class="btn btn-sm btn-fullscreen-button pst-navbar-icon"
   title="Fullscreen mode"
   data-bs-placement="bottom" data-bs-toggle="tooltip"
 >
@@ -448,24 +456,16 @@
 
 
 
-<script>
-document.write(`
-  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
-    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
-    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
-  </button>
-`);
-</script>
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button>
 
 
-<script>
-document.write(`
-  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+<button class="btn btn-sm pst-navbar-icon search-button search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
     <i class="fa-solid fa-magnifying-glass fa-lg"></i>
-  </button>
-`);
-</script>
+</button>
 
 </div></div>
       
@@ -496,6 +496,7 @@ document.write(`
 
 <span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
 
+<span class="kn">import</span><span class="w"> </span><span class="nn">pynucastro.numba_util</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">numba</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">pynucastro.constants</span><span class="w"> </span><span class="kn">import</span> <span class="n">constants</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">pynucastro.nucdata</span><span class="w"> </span><span class="kn">import</span> <span class="n">Nucleus</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">pynucastro.numba_util</span><span class="w"> </span><span class="kn">import</span> <span class="n">jitclass</span><span class="p">,</span> <span class="n">njit</span>
@@ -505,22 +506,41 @@ document.write(`
 <span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;NseState&quot;</span><span class="p">,</span> <span class="s2">&quot;PlasmaState&quot;</span><span class="p">,</span> <span class="s2">&quot;ScreenFactors&quot;</span><span class="p">,</span>
            <span class="s2">&quot;chugunov_2007&quot;</span><span class="p">,</span> <span class="s2">&quot;chugunov_2009&quot;</span><span class="p">,</span> <span class="s2">&quot;f0&quot;</span><span class="p">,</span> <span class="s2">&quot;debye_huckel&quot;</span><span class="p">,</span>
            <span class="s2">&quot;make_plasma_state&quot;</span><span class="p">,</span> <span class="s2">&quot;make_screen_factors&quot;</span><span class="p">,</span>
-           <span class="s2">&quot;potekhin_1998&quot;</span><span class="p">,</span> <span class="s2">&quot;screen5&quot;</span><span class="p">,</span> <span class="s2">&quot;smooth_clip&quot;</span><span class="p">,</span> <span class="s2">&quot;screening_check&quot;</span><span class="p">]</span>
+           <span class="s2">&quot;potekhin_1998&quot;</span><span class="p">,</span> <span class="s2">&quot;screen5&quot;</span><span class="p">,</span> <span class="s2">&quot;smooth_clip&quot;</span><span class="p">,</span> <span class="s2">&quot;screening_check&quot;</span><span class="p">,</span>
+           <span class="s2">&quot;get_screening_func&quot;</span><span class="p">]</span>
 
 
 <div class="viewcode-block" id="PlasmaState">
 <a class="viewcode-back" href="../../../pynucastro.screening.screen.html#pynucastro.screening.screen.PlasmaState">[docs]</a>
-<span class="nd">@jitclass</span><span class="p">()</span>
+<span class="nd">@jitclass</span><span class="p">([</span>
+    <span class="p">(</span><span class="s2">&quot;temp&quot;</span><span class="p">,</span> <span class="n">numba</span><span class="o">.</span><span class="n">float64</span><span class="p">),</span>
+    <span class="p">(</span><span class="s2">&quot;dens&quot;</span><span class="p">,</span> <span class="n">numba</span><span class="o">.</span><span class="n">float64</span><span class="p">),</span>
+    <span class="p">(</span><span class="s2">&quot;qlam0z&quot;</span><span class="p">,</span> <span class="n">numba</span><span class="o">.</span><span class="n">float64</span><span class="p">),</span>
+    <span class="p">(</span><span class="s2">&quot;taufac&quot;</span><span class="p">,</span> <span class="n">numba</span><span class="o">.</span><span class="n">float64</span><span class="p">),</span>
+    <span class="p">(</span><span class="s2">&quot;aa&quot;</span><span class="p">,</span> <span class="n">numba</span><span class="o">.</span><span class="n">float64</span><span class="p">),</span>
+    <span class="p">(</span><span class="s2">&quot;abar&quot;</span><span class="p">,</span> <span class="n">numba</span><span class="o">.</span><span class="n">float64</span><span class="p">),</span>
+    <span class="p">(</span><span class="s2">&quot;zbar&quot;</span><span class="p">,</span> <span class="n">numba</span><span class="o">.</span><span class="n">float64</span><span class="p">),</span>
+    <span class="p">(</span><span class="s2">&quot;z2bar&quot;</span><span class="p">,</span> <span class="n">numba</span><span class="o">.</span><span class="n">float64</span><span class="p">),</span>
+    <span class="p">(</span><span class="s2">&quot;n_e&quot;</span><span class="p">,</span> <span class="n">numba</span><span class="o">.</span><span class="n">float64</span><span class="p">),</span>
+    <span class="p">(</span><span class="s2">&quot;gamma_e_fac&quot;</span><span class="p">,</span> <span class="n">numba</span><span class="o">.</span><span class="n">float64</span><span class="p">)</span>
+<span class="p">])</span>
 <span class="k">class</span><span class="w"> </span><span class="nc">PlasmaState</span><span class="p">:</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Store precomputed values that are reused for all screening</span>
 <span class="sd">    correction factor calculations.</span>
 
-<span class="sd">    Attributes</span>
+<span class="sd">    Parameters</span>
 <span class="sd">    ----------</span>
 <span class="sd">    temp : float</span>
 <span class="sd">        temperature in K</span>
 <span class="sd">    dens : float</span>
 <span class="sd">        density in g/cm^3</span>
+<span class="sd">    Ys : Iterable</span>
+<span class="sd">        molar fractions of the composition</span>
+<span class="sd">    Zs : Iterable</span>
+<span class="sd">         proton numbers of the composition</span>
+
+<span class="sd">    Attributes</span>
+<span class="sd">    ----------</span>
 <span class="sd">    qlam0z : float</span>
 <span class="sd">        a common factor from Graboske 1973</span>
 <span class="sd">    taufac : float</span>
@@ -539,17 +559,6 @@ document.write(`
 <span class="sd">         temperature-independent part of Gamma_e</span>
 
 <span class="sd">    &quot;&quot;&quot;</span>
-
-    <span class="n">temp</span><span class="p">:</span> <span class="nb">float</span>
-    <span class="n">dens</span><span class="p">:</span> <span class="nb">float</span>
-    <span class="n">qlam0z</span><span class="p">:</span> <span class="nb">float</span>
-    <span class="n">taufac</span><span class="p">:</span> <span class="nb">float</span>
-    <span class="n">aa</span><span class="p">:</span> <span class="nb">float</span>
-    <span class="n">abar</span><span class="p">:</span> <span class="nb">float</span>
-    <span class="n">zbar</span><span class="p">:</span> <span class="nb">float</span>
-    <span class="n">z2bar</span><span class="p">:</span> <span class="nb">float</span>
-    <span class="n">n_e</span><span class="p">:</span> <span class="nb">float</span>
-    <span class="n">gamma_e_fac</span><span class="p">:</span> <span class="nb">float</span>
 
     <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">temp</span><span class="p">,</span> <span class="n">dens</span><span class="p">,</span> <span class="n">Ys</span><span class="p">,</span> <span class="n">Zs</span><span class="p">):</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">temp</span> <span class="o">=</span> <span class="n">temp</span>
@@ -596,7 +605,12 @@ document.write(`
 
 <div class="viewcode-block" id="NseState">
 <a class="viewcode-back" href="../../../pynucastro.screening.screen.html#pynucastro.screening.screen.NseState">[docs]</a>
-<span class="nd">@jitclass</span><span class="p">()</span>
+<span class="nd">@jitclass</span><span class="p">([</span>
+    <span class="p">(</span><span class="s2">&quot;temp&quot;</span><span class="p">,</span> <span class="n">numba</span><span class="o">.</span><span class="n">float64</span><span class="p">),</span>
+    <span class="p">(</span><span class="s2">&quot;dens&quot;</span><span class="p">,</span> <span class="n">numba</span><span class="o">.</span><span class="n">float64</span><span class="p">),</span>
+    <span class="p">(</span><span class="s2">&quot;ye&quot;</span><span class="p">,</span> <span class="n">numba</span><span class="o">.</span><span class="n">float64</span><span class="p">),</span>
+    <span class="p">(</span><span class="s2">&quot;gamma_e_fac&quot;</span><span class="p">,</span> <span class="n">numba</span><span class="o">.</span><span class="n">float64</span><span class="p">)</span>
+<span class="p">])</span>
 <span class="k">class</span><span class="w"> </span><span class="nc">NseState</span><span class="p">:</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Store precomputed values that are reused in the NSE state</span>
 <span class="sd">    screening calculations</span>
@@ -616,11 +630,6 @@ document.write(`
 <span class="sd">        Temperature-independent part of Gamma_e.</span>
 
 <span class="sd">    &quot;&quot;&quot;</span>
-
-    <span class="n">temp</span><span class="p">:</span> <span class="nb">float</span>
-    <span class="n">dens</span><span class="p">:</span> <span class="nb">float</span>
-    <span class="n">ye</span><span class="p">:</span> <span class="nb">float</span>
-    <span class="n">gamma_e_fac</span><span class="p">:</span> <span class="nb">float</span>
 
     <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">temp</span><span class="p">,</span> <span class="n">dens</span><span class="p">,</span> <span class="n">ye</span><span class="p">):</span>
 
@@ -660,12 +669,23 @@ document.write(`
 
 <div class="viewcode-block" id="ScreenFactors">
 <a class="viewcode-back" href="../../../pynucastro.screening.screen.html#pynucastro.screening.screen.ScreenFactors">[docs]</a>
-<span class="nd">@jitclass</span><span class="p">()</span>
+<span class="nd">@jitclass</span><span class="p">([</span>
+    <span class="p">(</span><span class="s2">&quot;z1&quot;</span><span class="p">,</span> <span class="n">numba</span><span class="o">.</span><span class="n">int32</span><span class="p">),</span>
+    <span class="p">(</span><span class="s2">&quot;z2&quot;</span><span class="p">,</span> <span class="n">numba</span><span class="o">.</span><span class="n">int32</span><span class="p">),</span>
+    <span class="p">(</span><span class="s2">&quot;a1&quot;</span><span class="p">,</span> <span class="n">numba</span><span class="o">.</span><span class="n">int32</span><span class="p">),</span>
+    <span class="p">(</span><span class="s2">&quot;a2&quot;</span><span class="p">,</span> <span class="n">numba</span><span class="o">.</span><span class="n">int32</span><span class="p">),</span>
+    <span class="p">(</span><span class="s2">&quot;zs13&quot;</span><span class="p">,</span> <span class="n">numba</span><span class="o">.</span><span class="n">float64</span><span class="p">),</span>
+    <span class="p">(</span><span class="s2">&quot;zhat&quot;</span><span class="p">,</span> <span class="n">numba</span><span class="o">.</span><span class="n">float64</span><span class="p">),</span>
+    <span class="p">(</span><span class="s2">&quot;zhat2&quot;</span><span class="p">,</span> <span class="n">numba</span><span class="o">.</span><span class="n">float64</span><span class="p">),</span>
+    <span class="p">(</span><span class="s2">&quot;lzav&quot;</span><span class="p">,</span> <span class="n">numba</span><span class="o">.</span><span class="n">float64</span><span class="p">),</span>
+    <span class="p">(</span><span class="s2">&quot;aznut&quot;</span><span class="p">,</span> <span class="n">numba</span><span class="o">.</span><span class="n">float64</span><span class="p">),</span>
+    <span class="p">(</span><span class="s2">&quot;ztilde&quot;</span><span class="p">,</span> <span class="n">numba</span><span class="o">.</span><span class="n">float64</span><span class="p">)</span>
+<span class="p">])</span>
 <span class="k">class</span><span class="w"> </span><span class="nc">ScreenFactors</span><span class="p">:</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Store values that will be used to calculate the screening</span>
 <span class="sd">    correction factor for a specific pair of nuclei.</span>
 
-<span class="sd">    Attributes</span>
+<span class="sd">    Parameters</span>
 <span class="sd">    ----------</span>
 <span class="sd">    z1 : float</span>
 <span class="sd">        atomic number of first nucleus</span>
@@ -675,6 +695,9 @@ document.write(`
 <span class="sd">        atomic mass of first nucleus</span>
 <span class="sd">    a2 : float</span>
 <span class="sd">        atomic mass of second nucleus</span>
+
+<span class="sd">    Attributes</span>
+<span class="sd">    ----------</span>
 <span class="sd">    zs13 : float</span>
 <span class="sd">        (z1+z2)**(1/3)</span>
 <span class="sd">    zhat : float</span>
@@ -689,17 +712,6 @@ document.write(`
 <span class="sd">        effective ion radius factor for a MCP</span>
 
 <span class="sd">    &quot;&quot;&quot;</span>
-
-    <span class="n">z1</span><span class="p">:</span> <span class="nb">int</span>
-    <span class="n">z2</span><span class="p">:</span> <span class="nb">int</span>
-    <span class="n">a1</span><span class="p">:</span> <span class="nb">int</span>
-    <span class="n">a2</span><span class="p">:</span> <span class="nb">int</span>
-    <span class="n">zs13</span><span class="p">:</span> <span class="nb">float</span>
-    <span class="n">zhat</span><span class="p">:</span> <span class="nb">float</span>
-    <span class="n">zhat2</span><span class="p">:</span> <span class="nb">float</span>
-    <span class="n">lzav</span><span class="p">:</span> <span class="nb">float</span>
-    <span class="n">aznut</span><span class="p">:</span> <span class="nb">float</span>
-    <span class="n">ztilde</span><span class="p">:</span> <span class="nb">float</span>
 
     <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">z1</span><span class="p">,</span> <span class="n">a1</span><span class="p">,</span> <span class="n">z2</span><span class="p">,</span> <span class="n">a2</span><span class="p">):</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">z1</span> <span class="o">=</span> <span class="n">z1</span>
@@ -766,10 +778,7 @@ document.write(`
     <span class="c1"># eq. A1</span>
     <span class="n">h_DH</span> <span class="o">=</span> <span class="n">z1z2</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="mi">3</span> <span class="o">*</span> <span class="n">Gamma_e</span><span class="o">**</span><span class="mi">3</span> <span class="o">*</span> <span class="n">state</span><span class="o">.</span><span class="n">z2bar</span> <span class="o">/</span> <span class="n">state</span><span class="o">.</span><span class="n">zbar</span><span class="p">)</span>
 
-    <span class="c1"># machine limit the output</span>
-    <span class="n">h_max</span> <span class="o">=</span> <span class="mi">300</span>
-    <span class="n">h</span> <span class="o">=</span> <span class="nb">min</span><span class="p">(</span><span class="n">h_DH</span><span class="p">,</span> <span class="n">h_max</span><span class="p">)</span>
-    <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="n">h</span><span class="p">)</span></div>
+    <span class="k">return</span> <span class="n">h_DH</span></div>
 
 
 
@@ -799,7 +808,6 @@ document.write(`
     <span class="n">fact</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">cbrt</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
     <span class="n">gamefx</span> <span class="o">=</span> <span class="mf">0.3e0</span>  <span class="c1"># lower gamma limit for intermediate screening</span>
     <span class="n">gamefs</span> <span class="o">=</span> <span class="mf">0.8e0</span>  <span class="c1"># upper gamma limit for intermediate screening</span>
-    <span class="n">h12_max</span> <span class="o">=</span> <span class="mf">300.e0</span>
 
     <span class="c1"># Get the ion data based on the input index</span>
     <span class="n">z1</span> <span class="o">=</span> <span class="n">scn_fac</span><span class="o">.</span><span class="n">z1</span>
@@ -913,12 +921,10 @@ document.write(`
 
         <span class="c1"># end of intermediate and strong screening</span>
 
-    <span class="c1"># machine limit the output</span>
-    <span class="c1"># further limit to avoid the pycnonuclear regime</span>
-    <span class="n">h12</span> <span class="o">=</span> <span class="nb">max</span><span class="p">(</span><span class="nb">min</span><span class="p">(</span><span class="n">h12</span><span class="p">,</span> <span class="n">h12_max</span><span class="p">),</span> <span class="mf">0.0</span><span class="p">)</span>
-    <span class="n">scor</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="n">h12</span><span class="p">)</span>
+    <span class="c1"># limit to avoid the pycnonuclear regime</span>
+    <span class="n">log_scor</span> <span class="o">=</span> <span class="nb">max</span><span class="p">(</span><span class="n">h12</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">)</span>
 
-    <span class="k">return</span> <span class="n">scor</span></div>
+    <span class="k">return</span> <span class="n">log_scor</span></div>
 
 
 
@@ -1065,12 +1071,10 @@ document.write(`
 
     <span class="n">h</span> <span class="o">=</span> <span class="n">gamtilde</span><span class="o">**</span><span class="p">(</span><span class="mi">3</span> <span class="o">/</span> <span class="mi">2</span><span class="p">)</span> <span class="o">*</span> <span class="p">(</span><span class="n">A1</span> <span class="o">*</span> <span class="n">term1</span> <span class="o">+</span> <span class="n">A3</span> <span class="o">*</span> <span class="n">term2</span><span class="p">)</span> <span class="o">+</span> <span class="n">B1</span> <span class="o">*</span> <span class="n">term3</span> <span class="o">+</span> <span class="n">B3</span> <span class="o">*</span> <span class="n">term4</span>
 
-    <span class="c1"># machine limit the output</span>
-    <span class="n">h_max</span> <span class="o">=</span> <span class="mi">300</span>
-    <span class="n">h</span> <span class="o">=</span> <span class="nb">min</span><span class="p">(</span><span class="n">h</span><span class="p">,</span> <span class="n">h_max</span><span class="p">)</span>
-    <span class="n">scor</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="n">h</span><span class="p">)</span>
+    <span class="c1"># Assume h &gt;= 0</span>
+    <span class="n">log_scor</span> <span class="o">=</span> <span class="nb">max</span><span class="p">(</span><span class="n">h</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">)</span>
 
-    <span class="k">return</span> <span class="n">scor</span></div>
+    <span class="k">return</span> <span class="n">log_scor</span></div>
 
 
 
@@ -1182,12 +1186,10 @@ document.write(`
     <span class="n">denom</span> <span class="o">=</span> <span class="mi">1</span> <span class="o">+</span> <span class="n">Gamma_12_2</span>
     <span class="n">h12</span> <span class="o">=</span> <span class="n">numer</span> <span class="o">/</span> <span class="n">denom</span> <span class="o">*</span> <span class="n">h_fit</span>
 
-    <span class="c1"># machine limit the output</span>
-    <span class="n">h12_max</span> <span class="o">=</span> <span class="mi">300</span>
-    <span class="n">h12</span> <span class="o">=</span> <span class="nb">min</span><span class="p">(</span><span class="n">h12</span><span class="p">,</span> <span class="n">h12_max</span><span class="p">)</span>
-    <span class="n">scor</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="n">h12</span><span class="p">)</span>
+    <span class="c1"># Assume h &gt;= 0</span>
+    <span class="n">log_scor</span> <span class="o">=</span> <span class="nb">max</span><span class="p">(</span><span class="n">h12</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">)</span>
 
-    <span class="k">return</span> <span class="n">scor</span></div>
+    <span class="k">return</span> <span class="n">log_scor</span></div>
 
 
 
@@ -1233,18 +1235,16 @@ document.write(`
 
     <span class="n">h12</span> <span class="o">=</span> <span class="n">f1</span> <span class="o">+</span> <span class="n">f2</span> <span class="o">-</span> <span class="n">f12</span>
 
-    <span class="c1"># machine limit the output</span>
-    <span class="n">h12_max</span> <span class="o">=</span> <span class="mi">300</span>
-    <span class="n">h12</span> <span class="o">=</span> <span class="nb">min</span><span class="p">(</span><span class="n">h12</span><span class="p">,</span> <span class="n">h12_max</span><span class="p">)</span>
-    <span class="n">scor</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="n">h12</span><span class="p">)</span>
+    <span class="c1"># Assume h &gt;= 0</span>
+    <span class="n">log_scor</span> <span class="o">=</span> <span class="nb">max</span><span class="p">(</span><span class="n">h12</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">)</span>
 
-    <span class="k">return</span> <span class="n">scor</span></div>
+    <span class="k">return</span> <span class="n">log_scor</span></div>
 
 
 
 <div class="viewcode-block" id="screening_check">
 <a class="viewcode-back" href="../../../pynucastro.screening.screen.html#pynucastro.screening.screen.screening_check">[docs]</a>
-<span class="k">def</span><span class="w"> </span><span class="nf">screening_check</span><span class="p">(</span><span class="n">check_func</span><span class="o">=</span><span class="n">debye_huckel</span><span class="p">,</span> <span class="n">threshold</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="mf">1.01</span><span class="p">):</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">screening_check</span><span class="p">(</span><span class="n">check_func</span><span class="o">=</span><span class="n">debye_huckel</span><span class="p">,</span> <span class="n">threshold</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="mf">1e-2</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Create a decorator factory that wraps a screening function with</span>
 <span class="sd">    a check that determines whether that function can be skipped for a</span>
 <span class="sd">    given plasma state and screening pair.</span>
@@ -1272,6 +1272,44 @@ document.write(`
             <span class="k">return</span> <span class="n">screen_func</span><span class="p">(</span><span class="n">state</span><span class="p">,</span> <span class="n">scn_fac</span><span class="p">)</span>
         <span class="k">return</span> <span class="n">screening_wrapper</span>
     <span class="k">return</span> <span class="n">screening_decorator</span></div>
+
+
+
+<span class="c1"># A list of all different screening functions</span>
+<span class="n">SCREEN_METHODS</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s2">&quot;screen5&quot;</span><span class="p">:</span> <span class="n">screen5</span><span class="p">,</span>
+    <span class="s2">&quot;chugunov_2007&quot;</span><span class="p">:</span> <span class="n">chugunov_2007</span><span class="p">,</span>
+    <span class="s2">&quot;chugunov_2009&quot;</span><span class="p">:</span> <span class="n">chugunov_2009</span><span class="p">,</span>
+    <span class="s2">&quot;potekhin_1998&quot;</span><span class="p">:</span> <span class="n">potekhin_1998</span><span class="p">,</span>
+    <span class="s2">&quot;debye_huckel&quot;</span><span class="p">:</span> <span class="n">debye_huckel</span>
+<span class="p">}</span>
+
+
+<div class="viewcode-block" id="get_screening_func">
+<a class="viewcode-back" href="../../../pynucastro.screening.screen.html#pynucastro.screening.screen.get_screening_func">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">get_screening_func</span><span class="p">(</span><span class="n">screen_method</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Return the screening function by its name</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    screen_method : str</span>
+<span class="sd">        name of the screening function</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    Callable</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="k">if</span> <span class="n">screen_method</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="k">return</span> <span class="kc">None</span>
+
+    <span class="k">try</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">SCREEN_METHODS</span><span class="p">[</span><span class="n">screen_method</span><span class="p">]</span>
+    <span class="k">except</span> <span class="ne">KeyError</span> <span class="k">as</span> <span class="n">exc</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span>
+            <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">screen_method</span><span class="si">}</span><span class="s2"> is not a valid screening method. &quot;</span>
+            <span class="sa">f</span><span class="s2">&quot;Choose from </span><span class="si">{</span><span class="nb">list</span><span class="p">(</span><span class="n">SCREEN_METHODS</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span>
+        <span class="p">)</span> <span class="kn">from</span><span class="w"> </span><span class="nn">exc</span></div>
 
 </pre></div>
 
@@ -1311,7 +1349,7 @@ By pynucastro development team
 
   <p class="copyright">
     
-      © Copyright 2024-2025, pynucastro development team.
+      © Copyright 2024-2026, pynucastro development team.
       <br/>
     
   </p>
@@ -1335,8 +1373,8 @@ By pynucastro development team
   </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script src="../../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
-<script src="../../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+  <script defer src="../../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf"></script>
+<script defer src="../../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf"></script>
 
   <footer class="bd-footer">
   </footer>
