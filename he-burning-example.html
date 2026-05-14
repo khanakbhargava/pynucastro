@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>A He-burning Network &#8212; pynucastro 2.6.0.post288+gd107e174c documentation</title>
+    <title>A He-burning Network &#8212; pynucastro 2.6.0.post300+g5d35f46c4 documentation</title>
   
   
   
@@ -42,21 +42,20 @@
   <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
 <link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
 
-    <script src="_static/documentation_options.js?v=7d039038"></script>
+    <script src="_static/documentation_options.js?v=92736bf3"></script>
     <script src="_static/doctools.js?v=fd6eb6e6"></script>
     <script src="_static/sphinx_highlight.js?v=6ffebe34"></script>
     <script src="_static/clipboard.min.js?v=a7894cd8"></script>
     <script src="_static/copybutton.js?v=eaa7b67c"></script>
     <script src="_static/scripts/sphinx-book-theme.js?v=fab101a9"></script>
     <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
-    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script>window.MathJax = {"tex": {"inlineMath": [["$", "$"], ["\\(", "\\)"]], "processEscapes": true}, "options": {"ignoreHtmlClass": "tex2jax_ignore|mathjax_ignore|document", "processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-mml-chtml.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'he-burning-example';</script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
     <link rel="next" title="Binding Energy per Nucleon" href="examples/binding-energy.html" />
-    <link rel="prev" title="Example of Integrating a Network" href="Example-Integrating-Network-diffeqpy.html" />
+    <link rel="prev" title="The “aprox13” network" href="aprox13.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   <meta name="docsearch:version" content="2.6" />
@@ -202,6 +201,7 @@
 <li class="toctree-l2"><a class="reference internal" href="alpha-gamma-approx.html">Approximating alpha-capture</a></li>
 <li class="toctree-l2"><a class="reference internal" href="double-n-capture.html">Approximating double n-capture</a></li>
 <li class="toctree-l2"><a class="reference internal" href="modified-rates.html">Modified Rates</a></li>
+<li class="toctree-l2"><a class="reference internal" href="co-approximations.html">Approximating C and O Burning</a></li>
 </ul>
 </details></li>
 <li class="toctree-l1"><a class="reference internal" href="nse-protons.html">Using NSE Protons</a></li>
@@ -245,6 +245,7 @@
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Some Useful Networks</span></p>
 <ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="aprox13.html">The “aprox13” network</a></li>
 <li class="toctree-l1 current active"><a class="current reference internal" href="#">A He-burning Network</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Examples in Nuclear Astrophysics</span></p>
@@ -312,6 +313,7 @@
 <li class="toctree-l3 has-children"><a class="reference internal" href="pynucastro.rates.html">pynucastro.rates package</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l4"><a class="reference internal" href="pynucastro.rates.alternate_rates.html">pynucastro.rates.alternate_rates module</a></li>
 <li class="toctree-l4"><a class="reference internal" href="pynucastro.rates.approximate_rates.html">pynucastro.rates.approximate_rates module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="pynucastro.rates.aprox_family_rates.html">pynucastro.rates.aprox_family_rates module</a></li>
 <li class="toctree-l4"><a class="reference internal" href="pynucastro.rates.derived_rate.html">pynucastro.rates.derived_rate module</a></li>
 <li class="toctree-l4"><a class="reference internal" href="pynucastro.rates.files.html">pynucastro.rates.files module</a></li>
 <li class="toctree-l4"><a class="reference internal" href="pynucastro.rates.known_duplicates.html">pynucastro.rates.known_duplicates module</a></li>
@@ -795,6 +797,8 @@ warning: Fe54 was not able to be linked in TabularLibrary
   approximated-out nuclei: 7
   inert nuclei (included in carried): 0
 
+  NSE compatible? False
+
   total number of rates: 154
 
   rates explicitly connecting nuclei: 115
@@ -820,7 +824,7 @@ warning: Fe54 was not able to be linked in TabularLibrary
 <p>Let’s visualize the network</p>
 <div class="cell tag_nbval-ignore-output docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span> <span class="o">=</span> <span class="n">net</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">rotated</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">hide_xalpha</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span> <span class="o">=</span> <span class="n">net</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">rotated</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
                <span class="n">size</span><span class="o">=</span><span class="p">(</span><span class="mi">1500</span><span class="p">,</span> <span class="mi">550</span><span class="p">),</span>
                <span class="n">node_size</span><span class="o">=</span><span class="mi">550</span><span class="p">,</span> <span class="n">node_font_size</span><span class="o">=</span><span class="mi">11</span><span class="p">)</span>
 </pre></div>
@@ -842,11 +846,11 @@ warning: Fe54 was not able to be linked in TabularLibrary
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/opt/hostedtoolcache/Python/3.14.4/x64/lib/python3.14/site-packages/pynucastro/rates/derived_rate.py:120: UserWarning: C12 partition function is not supported by tables: set log_pf = 0.0 by default
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/opt/hostedtoolcache/Python/3.14.5/x64/lib/python3.14/site-packages/pynucastro/rates/derived_rate.py:120: UserWarning: C12 partition function is not supported by tables: set log_pf = 0.0 by default
   warnings.warn(UserWarning(f&#39;{nuc} partition function is not supported by tables: set log_pf = 0.0 by default&#39;))
-/opt/hostedtoolcache/Python/3.14.4/x64/lib/python3.14/site-packages/pynucastro/rates/derived_rate.py:120: UserWarning: N13 partition function is not supported by tables: set log_pf = 0.0 by default
+/opt/hostedtoolcache/Python/3.14.5/x64/lib/python3.14/site-packages/pynucastro/rates/derived_rate.py:120: UserWarning: N13 partition function is not supported by tables: set log_pf = 0.0 by default
   warnings.warn(UserWarning(f&#39;{nuc} partition function is not supported by tables: set log_pf = 0.0 by default&#39;))
-/opt/hostedtoolcache/Python/3.14.4/x64/lib/python3.14/site-packages/pynucastro/rates/derived_rate.py:120: UserWarning: N14 partition function is not supported by tables: set log_pf = 0.0 by default
+/opt/hostedtoolcache/Python/3.14.5/x64/lib/python3.14/site-packages/pynucastro/rates/derived_rate.py:120: UserWarning: N14 partition function is not supported by tables: set log_pf = 0.0 by default
   warnings.warn(UserWarning(f&#39;{nuc} partition function is not supported by tables: set log_pf = 0.0 by default&#39;))
 </pre></div>
 </div>
@@ -975,26 +979,26 @@ warning: Fe54 was not able to be linked in TabularLibrary
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span> <span class="o">=</span> <span class="n">net</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">rho</span><span class="p">,</span> <span class="n">T</span><span class="p">,</span> <span class="n">comp</span><span class="p">,</span>
                <span class="n">screen_func</span><span class="o">=</span><span class="n">chugunov_2007</span><span class="p">,</span>
-               <span class="n">rotated</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">curved_edges</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
-               <span class="n">hide_xalpha</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+               <span class="n">rotated</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
                <span class="n">color_nodes_by_abundance</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
                <span class="n">size</span><span class="o">=</span><span class="p">(</span><span class="mi">1500</span><span class="p">,</span> <span class="mi">550</span><span class="p">),</span>
                <span class="n">ydot_cutoff_value</span><span class="o">=</span><span class="mf">1.e-20</span><span class="p">,</span>
+               <span class="n">use_net_rate</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
                <span class="n">Z_range</span><span class="o">=</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">29</span><span class="p">),</span>
                <span class="n">node_size</span><span class="o">=</span><span class="mi">550</span><span class="p">,</span> <span class="n">node_font_size</span><span class="o">=</span><span class="mi">11</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/opt/hostedtoolcache/Python/3.14.4/x64/lib/python3.14/site-packages/pynucastro/rates/derived_rate.py:120: UserWarning: C12 partition function is not supported by tables: set log_pf = 0.0 by default
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/opt/hostedtoolcache/Python/3.14.5/x64/lib/python3.14/site-packages/pynucastro/rates/derived_rate.py:120: UserWarning: C12 partition function is not supported by tables: set log_pf = 0.0 by default
   warnings.warn(UserWarning(f&#39;{nuc} partition function is not supported by tables: set log_pf = 0.0 by default&#39;))
-/opt/hostedtoolcache/Python/3.14.4/x64/lib/python3.14/site-packages/pynucastro/rates/derived_rate.py:120: UserWarning: N13 partition function is not supported by tables: set log_pf = 0.0 by default
+/opt/hostedtoolcache/Python/3.14.5/x64/lib/python3.14/site-packages/pynucastro/rates/derived_rate.py:120: UserWarning: N13 partition function is not supported by tables: set log_pf = 0.0 by default
   warnings.warn(UserWarning(f&#39;{nuc} partition function is not supported by tables: set log_pf = 0.0 by default&#39;))
-/opt/hostedtoolcache/Python/3.14.4/x64/lib/python3.14/site-packages/pynucastro/rates/derived_rate.py:120: UserWarning: N14 partition function is not supported by tables: set log_pf = 0.0 by default
+/opt/hostedtoolcache/Python/3.14.5/x64/lib/python3.14/site-packages/pynucastro/rates/derived_rate.py:120: UserWarning: N14 partition function is not supported by tables: set log_pf = 0.0 by default
   warnings.warn(UserWarning(f&#39;{nuc} partition function is not supported by tables: set log_pf = 0.0 by default&#39;))
 </pre></div>
 </div>
-<img alt="_images/abc49066a1f93681ea4bfb5a1da0129f56fff02b7f96a3a4023b8e90a8598bce.png" src="_images/abc49066a1f93681ea4bfb5a1da0129f56fff02b7f96a3a4023b8e90a8598bce.png" />
+<img alt="_images/e6b2938ab22fd6a3590101fffd145413756c2484d6d74be1699ed3ec0a1e1b1b.png" src="_images/e6b2938ab22fd6a3590101fffd145413756c2484d6d74be1699ed3ec0a1e1b1b.png" />
 </div>
 </div>
 <p>At this point we see that we are really in the iron-group, with some lingering He.</p>
@@ -1030,12 +1034,12 @@ warning: Fe54 was not able to be linked in TabularLibrary
                   
 <div class="prev-next-area">
     <a class="left-prev"
-       href="Example-Integrating-Network-diffeqpy.html"
+       href="aprox13.html"
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">Example of Integrating a Network</p>
+        <p class="prev-next-title">The “aprox13” network</p>
       </div>
     </a>
     <a class="right-next"

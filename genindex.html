@@ -7,7 +7,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Index &#8212; pynucastro 2.6.0.post288+gd107e174c documentation</title>
+    <title>Index &#8212; pynucastro 2.6.0.post300+g5d35f46c4 documentation</title>
   
   
   
@@ -41,7 +41,7 @@
   <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
 <link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
 
-    <script src="_static/documentation_options.js?v=7d039038"></script>
+    <script src="_static/documentation_options.js?v=92736bf3"></script>
     <script src="_static/doctools.js?v=fd6eb6e6"></script>
     <script src="_static/sphinx_highlight.js?v=6ffebe34"></script>
     <script src="_static/clipboard.min.js?v=a7894cd8"></script>
@@ -196,6 +196,7 @@
 <li class="toctree-l2"><a class="reference internal" href="alpha-gamma-approx.html">Approximating alpha-capture</a></li>
 <li class="toctree-l2"><a class="reference internal" href="double-n-capture.html">Approximating double n-capture</a></li>
 <li class="toctree-l2"><a class="reference internal" href="modified-rates.html">Modified Rates</a></li>
+<li class="toctree-l2"><a class="reference internal" href="co-approximations.html">Approximating C and O Burning</a></li>
 </ul>
 </details></li>
 <li class="toctree-l1"><a class="reference internal" href="nse-protons.html">Using NSE Protons</a></li>
@@ -239,6 +240,7 @@
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Some Useful Networks</span></p>
 <ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="aprox13.html">The “aprox13” network</a></li>
 <li class="toctree-l1"><a class="reference internal" href="he-burning-example.html">A He-burning Network</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Examples in Nuclear Astrophysics</span></p>
@@ -306,6 +308,7 @@
 <li class="toctree-l3 has-children"><a class="reference internal" href="pynucastro.rates.html">pynucastro.rates package</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l4"><a class="reference internal" href="pynucastro.rates.alternate_rates.html">pynucastro.rates.alternate_rates module</a></li>
 <li class="toctree-l4"><a class="reference internal" href="pynucastro.rates.approximate_rates.html">pynucastro.rates.approximate_rates module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="pynucastro.rates.aprox_family_rates.html">pynucastro.rates.aprox_family_rates module</a></li>
 <li class="toctree-l4"><a class="reference internal" href="pynucastro.rates.derived_rate.html">pynucastro.rates.derived_rate module</a></li>
 <li class="toctree-l4"><a class="reference internal" href="pynucastro.rates.files.html">pynucastro.rates.files module</a></li>
 <li class="toctree-l4"><a class="reference internal" href="pynucastro.rates.known_duplicates.html">pynucastro.rates.known_duplicates module</a></li>
@@ -766,6 +769,8 @@
 </li>
       <li><a href="pynucastro.networks.rate_collection.html#pynucastro.networks.rate_collection.RateCollection.find_reverse">find_reverse() (pynucastro.networks.rate_collection.RateCollection method)</a>
 </li>
+      <li><a href="pynucastro.networks.rate_collection.html#pynucastro.networks.rate_collection.RateCollection.find_stiffest_rate">find_stiffest_rate() (pynucastro.networks.rate_collection.RateCollection method)</a>
+</li>
       <li><a href="pynucastro.networks.rate_collection.html#pynucastro.networks.rate_collection.RateCollection.find_unimportant_rates">find_unimportant_rates() (pynucastro.networks.rate_collection.RateCollection method)</a>
 </li>
       <li><a href="pynucastro.networks.fortran_network.html#pynucastro.networks.fortran_network.FortranNetwork">FortranNetwork (class in pynucastro.networks.fortran_network)</a>
@@ -842,6 +847,8 @@
 </li>
       <li><a href="pynucastro.nucdata.nucleus.html#pynucastro.nucdata.nucleus.get_all_nuclei">get_all_nuclei() (in module pynucastro.nucdata.nucleus)</a>
 </li>
+      <li><a href="pynucastro.nucdata.composition.html#pynucastro.nucdata.composition.Composition.get_array">get_array() (pynucastro.nucdata.composition.Composition method)</a>
+</li>
       <li><a href="pynucastro.rates.approximate_rates.html#pynucastro.rates.approximate_rates.ApproximateRate.get_child_rates">get_child_rates() (pynucastro.rates.approximate_rates.ApproximateRate method)</a>
 </li>
       <li><a href="pynucastro.networks.nse_network.html#pynucastro.networks.nse_network.NSENetwork.get_comp_nse">get_comp_nse() (pynucastro.networks.nse_network.NSENetwork method)</a>
@@ -859,6 +866,8 @@
       <li><a href="pynucastro.nucdata.mass_table.html#pynucastro.nucdata.mass_table.MassTable.get_mass_diff">get_mass_diff() (pynucastro.nucdata.mass_table.MassTable method)</a>
 </li>
       <li><a href="pynucastro.nucdata.composition.html#pynucastro.nucdata.composition.Composition.get_molar">get_molar() (pynucastro.nucdata.composition.Composition method)</a>
+</li>
+      <li><a href="pynucastro.nucdata.composition.html#pynucastro.nucdata.composition.Composition.get_molar_array">get_molar_array() (pynucastro.nucdata.composition.Composition method)</a>
 </li>
       <li><a href="pynucastro.rates.tabular_rate.html#pynucastro.rates.tabular_rate.TabularRate.get_nu_loss">get_nu_loss() (pynucastro.rates.tabular_rate.TabularRate method)</a>
 </li>
@@ -880,10 +889,10 @@
 </li>
       <li><a href="pynucastro.networks.rate_collection.html#pynucastro.networks.rate_collection.RateCollection.get_nuclei_latex_string">get_nuclei_latex_string() (pynucastro.networks.rate_collection.RateCollection method)</a>
 </li>
-      <li><a href="pynucastro.networks.rate_collection.html#pynucastro.networks.rate_collection.RateCollection.get_nuclei_needing_partition_functions">get_nuclei_needing_partition_functions() (pynucastro.networks.rate_collection.RateCollection method)</a>
-</li>
   </ul></td>
   <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="pynucastro.networks.rate_collection.html#pynucastro.networks.rate_collection.RateCollection.get_nuclei_needing_partition_functions">get_nuclei_needing_partition_functions() (pynucastro.networks.rate_collection.RateCollection method)</a>
+</li>
       <li><a href="pynucastro.nucdata.nucleus.html#pynucastro.nucdata.nucleus.Nucleus.get_part_func_threshold_temp">get_part_func_threshold_temp() (pynucastro.nucdata.nucleus.Nucleus method)</a>
 </li>
       <li><a href="pynucastro.nucdata.partition_function.html#pynucastro.nucdata.partition_function.PartitionFunctionCollection.get_partition_function">get_partition_function() (pynucastro.nucdata.partition_function.PartitionFunctionCollection method)</a>
@@ -992,7 +1001,7 @@
 </li>
       <li><a href="pynucastro.rates.known_duplicates.html#pynucastro.rates.known_duplicates.is_allowed_dupe">is_allowed_dupe() (in module pynucastro.rates.known_duplicates)</a>
 </li>
-      <li><a href="pynucastro.networks.rate_collection.html#pynucastro.networks.rate_collection.RateCollection.isNSECompatible">isNSECompatible() (pynucastro.networks.rate_collection.RateCollection method)</a>
+      <li><a href="pynucastro.networks.rate_collection.html#pynucastro.networks.rate_collection.RateCollection.is_NSE_compatible">is_NSE_compatible() (pynucastro.networks.rate_collection.RateCollection method)</a>
 </li>
   </ul></td>
 </tr></table>
@@ -1120,6 +1129,10 @@
 </li>
       <li><a href="pynucastro.networks.rate_collection.html#pynucastro.networks.rate_collection.RateCollection.make_ap_pg_approx">make_ap_pg_approx() (pynucastro.networks.rate_collection.RateCollection method)</a>
 </li>
+      <li><a href="pynucastro.rates.aprox_family_rates.html#pynucastro.rates.aprox_family_rates.make_CO_approx_rates">make_CO_approx_rates() (in module pynucastro.rates.aprox_family_rates)</a>
+</li>
+      <li><a href="pynucastro.networks.rate_collection.html#pynucastro.networks.rate_collection.RateCollection.make_CO_burning_approx">make_CO_burning_approx() (pynucastro.networks.rate_collection.RateCollection method)</a>
+</li>
       <li><a href="pynucastro.networks.rate_collection.html#pynucastro.networks.rate_collection.RateCollection.make_nn_g_approx">make_nn_g_approx() (pynucastro.networks.rate_collection.RateCollection method)</a>
 </li>
       <li><a href="pynucastro.networks.rate_collection.html#pynucastro.networks.rate_collection.RateCollection.make_nse_protons">make_nse_protons() (pynucastro.networks.rate_collection.RateCollection method)</a>
@@ -1221,6 +1234,8 @@
         <li><a href="pynucastro.rates.alternate_rates.html#module-pynucastro.rates.alternate_rates">pynucastro.rates.alternate_rates</a>
 </li>
         <li><a href="pynucastro.rates.approximate_rates.html#module-pynucastro.rates.approximate_rates">pynucastro.rates.approximate_rates</a>
+</li>
+        <li><a href="pynucastro.rates.aprox_family_rates.html#module-pynucastro.rates.aprox_family_rates">pynucastro.rates.aprox_family_rates</a>
 </li>
         <li><a href="pynucastro.rates.derived_rate.html#module-pynucastro.rates.derived_rate">pynucastro.rates.derived_rate</a>
 </li>
@@ -1658,6 +1673,13 @@
 
       <ul>
         <li><a href="pynucastro.rates.approximate_rates.html#module-pynucastro.rates.approximate_rates">module</a>
+</li>
+      </ul></li>
+      <li>
+    pynucastro.rates.aprox_family_rates
+
+      <ul>
+        <li><a href="pynucastro.rates.aprox_family_rates.html#module-pynucastro.rates.aprox_family_rates">module</a>
 </li>
       </ul></li>
       <li>
