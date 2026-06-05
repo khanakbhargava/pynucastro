@@ -7,7 +7,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>pynucastro.networks.rate_collection &#8212; pynucastro 2.6.0.post300+g5d35f46c4 documentation</title>
+    <title>pynucastro.networks.rate_collection &#8212; pynucastro 2.6.0.post320+gebf46c4fe documentation</title>
   
   
   
@@ -41,7 +41,7 @@
   <link rel="preload" as="script" href="../../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
 <link rel="preload" as="script" href="../../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
 
-    <script src="../../../_static/documentation_options.js?v=92736bf3"></script>
+    <script src="../../../_static/documentation_options.js?v=1b341df9"></script>
     <script src="../../../_static/doctools.js?v=fd6eb6e6"></script>
     <script src="../../../_static/sphinx_highlight.js?v=6ffebe34"></script>
     <script src="../../../_static/clipboard.min.js?v=a7894cd8"></script>
@@ -257,6 +257,7 @@
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Developer Documentation</span></p>
 <ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../../../rates-devel.html">Notes on Working with <code class="docutils literal notranslate"><span class="pre">Rate</span></code> Objects</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../adding-rates.html">Adding Rates from the Literature</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../testing.html">Testing and Comparing Backends</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Reference</span></p>
@@ -502,10 +503,8 @@
 
 <span class="kn">import</span><span class="w"> </span><span class="nn">collections</span>
 <span class="kn">import</span><span class="w"> </span><span class="nn">copy</span>
-<span class="kn">import</span><span class="w"> </span><span class="nn">functools</span>
 <span class="kn">import</span><span class="w"> </span><span class="nn">math</span>
 <span class="kn">import</span><span class="w"> </span><span class="nn">warnings</span>
-<span class="kn">from</span><span class="w"> </span><span class="nn">operator</span><span class="w"> </span><span class="kn">import</span> <span class="n">mul</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">pathlib</span><span class="w"> </span><span class="kn">import</span> <span class="n">Path</span>
 
 <span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">mpl</span>
@@ -1653,7 +1652,8 @@
 
 <div class="viewcode-block" id="RateCollection.evaluate_rates">
 <a class="viewcode-back" href="../../../pynucastro.networks.rate_collection.html#pynucastro.networks.rate_collection.RateCollection.evaluate_rates">[docs]</a>
-    <span class="k">def</span><span class="w"> </span><span class="nf">evaluate_rates</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">rho</span><span class="p">,</span> <span class="n">T</span><span class="p">,</span> <span class="n">composition</span><span class="p">,</span> <span class="n">screen_func</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">evaluate_rates</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">rho</span><span class="p">,</span> <span class="n">T</span><span class="p">,</span> <span class="n">composition</span><span class="p">,</span>
+                       <span class="n">screen_func</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Evaluate the rates for a specific density, temperature, and</span>
 <span class="sd">        composition, with optional screening.  Note: this returns that</span>
 <span class="sd">        rate as dY/dt, where Y is the molar fraction.  For a 2 body</span>
@@ -1691,13 +1691,9 @@
         <span class="n">y_e</span> <span class="o">=</span> <span class="n">composition</span><span class="o">.</span><span class="n">ye</span>
 
         <span class="k">for</span> <span class="n">r</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">rates</span><span class="p">:</span>
-            <span class="c1"># Note screening effect is already included</span>
-            <span class="n">val</span> <span class="o">=</span> <span class="n">r</span><span class="o">.</span><span class="n">prefactor</span> <span class="o">*</span> <span class="n">rho</span><span class="o">**</span><span class="n">r</span><span class="o">.</span><span class="n">dens_exp</span> <span class="o">*</span> <span class="n">r</span><span class="o">.</span><span class="n">eval</span><span class="p">(</span><span class="n">T</span><span class="p">,</span> <span class="n">rho</span><span class="o">=</span><span class="n">rho</span><span class="p">,</span> <span class="n">comp</span><span class="o">=</span><span class="n">composition</span><span class="p">,</span>
-                                                         <span class="n">screen_func</span><span class="o">=</span><span class="n">screen_func</span><span class="p">)</span>
-            <span class="k">if</span> <span class="p">(</span><span class="n">r</span><span class="o">.</span><span class="n">weak_type</span> <span class="o">==</span> <span class="s1">&#39;electron_capture&#39;</span> <span class="ow">and</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">r</span><span class="p">,</span> <span class="n">TabularRate</span><span class="p">)):</span>
-                <span class="n">val</span> <span class="o">=</span> <span class="n">val</span> <span class="o">*</span> <span class="n">y_e</span>
-            <span class="n">yfac</span> <span class="o">=</span> <span class="n">functools</span><span class="o">.</span><span class="n">reduce</span><span class="p">(</span><span class="n">mul</span><span class="p">,</span> <span class="p">[</span><span class="n">ys</span><span class="p">[</span><span class="n">q</span><span class="p">]</span> <span class="k">for</span> <span class="n">q</span> <span class="ow">in</span> <span class="n">r</span><span class="o">.</span><span class="n">reactants</span><span class="p">])</span>
-            <span class="n">rvals</span><span class="p">[</span><span class="n">r</span><span class="p">]</span> <span class="o">=</span> <span class="n">yfac</span> <span class="o">*</span> <span class="n">val</span>
+            <span class="n">rvals</span><span class="p">[</span><span class="n">r</span><span class="p">]</span> <span class="o">=</span> <span class="n">r</span><span class="o">.</span><span class="n">eval_full_rate</span><span class="p">(</span><span class="n">rho</span><span class="p">,</span> <span class="n">T</span><span class="p">,</span> <span class="n">composition</span><span class="p">,</span>
+                                        <span class="n">screen_func</span><span class="o">=</span><span class="n">screen_func</span><span class="p">,</span>
+                                        <span class="n">y_molar</span><span class="o">=</span><span class="n">ys</span><span class="p">,</span> <span class="n">y_e</span><span class="o">=</span><span class="n">y_e</span><span class="p">)</span>
 
         <span class="k">return</span> <span class="n">rvals</span></div>
 
@@ -1849,13 +1845,23 @@
 
 <div class="viewcode-block" id="RateCollection.validate">
 <a class="viewcode-back" href="../../../pynucastro.networks.rate_collection.html#pynucastro.networks.rate_collection.RateCollection.validate">[docs]</a>
-    <span class="k">def</span><span class="w"> </span><span class="nf">validate</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other_library</span><span class="p">,</span> <span class="o">*</span><span class="p">,</span> <span class="n">forward_only</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">validate</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other_library</span><span class="p">,</span> <span class="o">*</span><span class="p">,</span>
+                 <span class="n">forward_only</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">return_dict</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">skip_duplicates</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Perform various checks on the library, comparing to</span>
 <span class="sd">        ``other_library``, to ensure that we are not missing important</span>
-<span class="sd">        rates.  The idea is that the current library should be a</span>
-<span class="sd">        reduced library (perhaps the result of filtering) and then we</span>
-<span class="sd">        want to compare to the larger ``other_library`` to see if we</span>
-<span class="sd">        missed something important.</span>
+<span class="sd">        rates.  The idea is that the current network represents a</span>
+<span class="sd">        reduced set of rates (perhaps the result of filtering) and</span>
+<span class="sd">        then we want to compare to the larger ``other_library`` to see</span>
+<span class="sd">        if we missed something important.</span>
+
+<span class="sd">        Currently we check:</span>
+
+<span class="sd">        * If there are any additional rates in ``other_library`` that</span>
+<span class="sd">          have the same reactants as rates we already carry.</span>
+
+<span class="sd">        * If we are missing any p, n, or α-captures on the nuclei in</span>
+<span class="sd">          our network (only checked if p, n or α already exist in the</span>
+<span class="sd">          network).</span>
 
 <span class="sd">        Parameters</span>
 <span class="sd">        ----------</span>
@@ -1863,12 +1869,21 @@
 <span class="sd">            the library to compare to</span>
 <span class="sd">        forward_only : bool</span>
 <span class="sd">            do we only check the forward rates?</span>
+<span class="sd">        return_dict : bool</span>
+<span class="sd">            do we return a dictionary of the rates that are missing?</span>
+<span class="sd">            if so, we suppress their output to stdout and include the</span>
+<span class="sd">            reason as the dictionary value.</span>
+<span class="sd">        skip_duplicates : bool</span>
+<span class="sd">            if a rate in `other_library` represents the same process</span>
+<span class="sd">            as one already in the network, don&#39;t consider it missing</span>
 
 <span class="sd">        Returns</span>
 <span class="sd">        -------</span>
-<span class="sd">        bool</span>
+<span class="sd">        bool, dict(Rate)</span>
 
 <span class="sd">        &quot;&quot;&quot;</span>
+
+        <span class="n">missing_rates</span> <span class="o">=</span> <span class="p">{}</span>
 
         <span class="n">current_rates</span> <span class="o">=</span> <span class="nb">sorted</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">get_rates</span><span class="p">())</span>
 
@@ -1895,7 +1910,8 @@
                     <span class="n">msg</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;validation: </span><span class="si">{</span><span class="n">p</span><span class="si">}</span><span class="s2"> produced in </span><span class="si">{</span><span class="n">rate</span><span class="si">}</span><span class="s2"> never consumed.&quot;</span>
                     <span class="nb">print</span><span class="p">(</span><span class="n">msg</span><span class="p">)</span>
 
-        <span class="c1"># now check if we are missing any rates from other_library with the exact same reactants</span>
+        <span class="c1"># now check if we are missing any rates from other_library</span>
+        <span class="c1"># with the exact same reactants</span>
 
         <span class="n">other_by_reactants</span> <span class="o">=</span> <span class="n">collections</span><span class="o">.</span><span class="n">defaultdict</span><span class="p">(</span><span class="nb">list</span><span class="p">)</span>
         <span class="k">for</span> <span class="n">rate</span> <span class="ow">in</span> <span class="nb">sorted</span><span class="p">(</span><span class="n">other_library</span><span class="o">.</span><span class="n">get_rates</span><span class="p">()):</span>
@@ -1908,14 +1924,50 @@
             <span class="n">key</span> <span class="o">=</span> <span class="nb">tuple</span><span class="p">(</span><span class="nb">sorted</span><span class="p">(</span><span class="n">rate</span><span class="o">.</span><span class="n">reactants</span><span class="p">))</span>
             <span class="k">for</span> <span class="n">other_rate</span> <span class="ow">in</span> <span class="n">other_by_reactants</span><span class="p">[</span><span class="n">key</span><span class="p">]:</span>
                 <span class="c1"># check to see if other_rate is already in current_rates</span>
+                <span class="c1"># start by assuming we already have other_rate</span>
                 <span class="n">found</span> <span class="o">=</span> <span class="kc">True</span>
                 <span class="k">if</span> <span class="n">other_rate</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">current_rates</span><span class="p">:</span>
                     <span class="n">found</span> <span class="o">=</span> <span class="kc">False</span>
 
+                <span class="c1"># now check to see if perhaps it is a duplicate of</span>
+                <span class="c1"># something we already have</span>
+                <span class="k">if</span> <span class="n">skip_duplicates</span><span class="p">:</span>
+                    <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">find_duplicate_rates</span><span class="p">([</span><span class="n">other_rate</span><span class="p">]</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_rates</span><span class="p">()))</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+                        <span class="n">found</span> <span class="o">=</span> <span class="kc">True</span>
+
                 <span class="k">if</span> <span class="ow">not</span> <span class="n">found</span><span class="p">:</span>
                     <span class="n">msg</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;validation: missing </span><span class="si">{</span><span class="n">other_rate</span><span class="si">}</span><span class="s2"> as alternative to </span><span class="si">{</span><span class="n">rate</span><span class="si">}</span><span class="s2"> (Q = </span><span class="si">{</span><span class="n">other_rate</span><span class="o">.</span><span class="n">Q</span><span class="si">}</span><span class="s2"> MeV).&quot;</span>
-                    <span class="nb">print</span><span class="p">(</span><span class="n">msg</span><span class="p">)</span>
+                    <span class="k">if</span> <span class="n">return_dict</span><span class="p">:</span>
+                        <span class="n">missing_rates</span><span class="p">[</span><span class="n">other_rate</span><span class="p">]</span> <span class="o">=</span> <span class="n">msg</span>
+                    <span class="k">else</span><span class="p">:</span>
+                        <span class="nb">print</span><span class="p">(</span><span class="n">msg</span><span class="p">)</span>
 
+        <span class="c1"># next loop over the nuclei in our network and check if we are missing</span>
+        <span class="c1"># any alpha, p, or n captures</span>
+        <span class="n">net_has_n</span> <span class="o">=</span> <span class="nb">bool</span><span class="p">(</span><span class="n">Nucleus</span><span class="p">(</span><span class="s2">&quot;n&quot;</span><span class="p">)</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">unique_nuclei</span><span class="p">)</span>
+        <span class="n">net_has_p</span> <span class="o">=</span> <span class="nb">bool</span><span class="p">(</span><span class="n">Nucleus</span><span class="p">(</span><span class="s2">&quot;p&quot;</span><span class="p">)</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">unique_nuclei</span><span class="p">)</span>
+        <span class="n">net_has_alpha</span> <span class="o">=</span> <span class="nb">bool</span><span class="p">(</span><span class="n">Nucleus</span><span class="p">(</span><span class="s2">&quot;he4&quot;</span><span class="p">)</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">unique_nuclei</span><span class="p">)</span>
+        <span class="k">for</span> <span class="n">nuc</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">unique_nuclei</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">net_has_n</span><span class="p">:</span>
+                <span class="n">key</span> <span class="o">=</span> <span class="nb">tuple</span><span class="p">(</span><span class="nb">sorted</span><span class="p">([</span><span class="n">Nucleus</span><span class="p">(</span><span class="s2">&quot;n&quot;</span><span class="p">),</span> <span class="n">nuc</span><span class="p">]))</span>
+                <span class="k">for</span> <span class="n">rate</span> <span class="ow">in</span> <span class="n">other_by_reactants</span><span class="p">[</span><span class="n">key</span><span class="p">]:</span>
+                    <span class="k">if</span> <span class="n">rate</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">current_rates</span> <span class="ow">and</span> <span class="n">rate</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">missing_rates</span><span class="p">:</span>
+                        <span class="n">missing_rates</span><span class="p">[</span><span class="n">rate</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;neutron capture&quot;</span>
+
+            <span class="k">if</span> <span class="n">net_has_p</span><span class="p">:</span>
+                <span class="n">key</span> <span class="o">=</span> <span class="nb">tuple</span><span class="p">(</span><span class="nb">sorted</span><span class="p">([</span><span class="n">Nucleus</span><span class="p">(</span><span class="s2">&quot;p&quot;</span><span class="p">),</span> <span class="n">nuc</span><span class="p">]))</span>
+                <span class="k">for</span> <span class="n">rate</span> <span class="ow">in</span> <span class="n">other_by_reactants</span><span class="p">[</span><span class="n">key</span><span class="p">]:</span>
+                    <span class="k">if</span> <span class="n">rate</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">current_rates</span> <span class="ow">and</span> <span class="n">rate</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">missing_rates</span><span class="p">:</span>
+                        <span class="n">missing_rates</span><span class="p">[</span><span class="n">rate</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;proton capture&quot;</span>
+
+            <span class="k">if</span> <span class="n">net_has_alpha</span><span class="p">:</span>
+                <span class="n">key</span> <span class="o">=</span> <span class="nb">tuple</span><span class="p">(</span><span class="nb">sorted</span><span class="p">([</span><span class="n">Nucleus</span><span class="p">(</span><span class="s2">&quot;he4&quot;</span><span class="p">),</span> <span class="n">nuc</span><span class="p">]))</span>
+                <span class="k">for</span> <span class="n">rate</span> <span class="ow">in</span> <span class="n">other_by_reactants</span><span class="p">[</span><span class="n">key</span><span class="p">]:</span>
+                    <span class="k">if</span> <span class="n">rate</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">current_rates</span> <span class="ow">and</span> <span class="n">rate</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">missing_rates</span><span class="p">:</span>
+                        <span class="n">missing_rates</span><span class="p">[</span><span class="n">rate</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;alpha capture&quot;</span>
+
+        <span class="k">if</span> <span class="n">return_dict</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">passed_validation</span><span class="p">,</span> <span class="n">missing_rates</span>
         <span class="k">return</span> <span class="n">passed_validation</span></div>
 
 
@@ -2969,8 +3021,8 @@
         <span class="n">ax</span><span class="o">.</span><span class="n">xaxis</span><span class="o">.</span><span class="n">set_ticks_position</span><span class="p">(</span><span class="s1">&#39;bottom&#39;</span><span class="p">)</span>
         <span class="n">ax</span><span class="o">.</span><span class="n">yaxis</span><span class="o">.</span><span class="n">set_ticks_position</span><span class="p">(</span><span class="s1">&#39;left&#39;</span><span class="p">)</span>
 
-        <span class="n">ax</span><span class="o">.</span><span class="n">xaxis</span><span class="o">.</span><span class="n">set_major_locator</span><span class="p">(</span><span class="n">MaxNLocator</span><span class="p">(</span><span class="n">integer</span><span class="o">=</span><span class="kc">True</span><span class="p">))</span>
-        <span class="n">ax</span><span class="o">.</span><span class="n">yaxis</span><span class="o">.</span><span class="n">set_major_locator</span><span class="p">(</span><span class="n">MaxNLocator</span><span class="p">(</span><span class="n">integer</span><span class="o">=</span><span class="kc">True</span><span class="p">))</span>
+        <span class="n">ax</span><span class="o">.</span><span class="n">xaxis</span><span class="o">.</span><span class="n">set_major_locator</span><span class="p">(</span><span class="n">MaxNLocator</span><span class="p">(</span><span class="n">integer</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">min_n_ticks</span><span class="o">=</span><span class="mi">1</span><span class="p">))</span>
+        <span class="n">ax</span><span class="o">.</span><span class="n">yaxis</span><span class="o">.</span><span class="n">set_major_locator</span><span class="p">(</span><span class="n">MaxNLocator</span><span class="p">(</span><span class="n">integer</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">min_n_ticks</span><span class="o">=</span><span class="mi">1</span><span class="p">))</span>
 
         <span class="k">if</span> <span class="ow">not</span> <span class="n">rotated</span><span class="p">:</span>
             <span class="k">if</span> <span class="n">Z_range</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="ow">and</span> <span class="n">N_range</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>

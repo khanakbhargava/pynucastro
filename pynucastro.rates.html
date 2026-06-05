@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>pynucastro.rates package &#8212; pynucastro 2.6.0.post300+g5d35f46c4 documentation</title>
+    <title>pynucastro.rates package &#8212; pynucastro 2.6.0.post320+gebf46c4fe documentation</title>
   
   
   
@@ -42,7 +42,7 @@
   <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
 <link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
 
-    <script src="_static/documentation_options.js?v=92736bf3"></script>
+    <script src="_static/documentation_options.js?v=1b341df9"></script>
     <script src="_static/doctools.js?v=fd6eb6e6"></script>
     <script src="_static/sphinx_highlight.js?v=6ffebe34"></script>
     <script src="_static/clipboard.min.js?v=a7894cd8"></script>
@@ -258,6 +258,7 @@
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Developer Documentation</span></p>
 <ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="rates-devel.html">Notes on Working with <code class="docutils literal notranslate"><span class="pre">Rate</span></code> Objects</a></li>
+<li class="toctree-l1"><a class="reference internal" href="adding-rates.html">Adding Rates from the Literature</a></li>
 <li class="toctree-l1"><a class="reference internal" href="testing.html">Testing and Comparing Backends</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Reference</span></p>
@@ -695,7 +696,6 @@
 </li>
 <li class="toctree-l2"><a class="reference internal" href="pynucastro.rates.library.html#pynucastro.rates.library.StarLibLibrary"><code class="docutils literal notranslate"><span class="pre">StarLibLibrary</span></code></a><ul>
 <li class="toctree-l3"><a class="reference internal" href="pynucastro.rates.library.html#pynucastro.rates.library.StarLibLibrary.INTERACTION_MAP"><code class="docutils literal notranslate"><span class="pre">StarLibLibrary.INTERACTION_MAP</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="pynucastro.rates.library.html#pynucastro.rates.library.StarLibLibrary.LOG_RATE_FLOOR"><code class="docutils literal notranslate"><span class="pre">StarLibLibrary.LOG_RATE_FLOOR</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="pynucastro.rates.library.html#pynucastro.rates.library.StarLibLibrary.NLINES"><code class="docutils literal notranslate"><span class="pre">StarLibLibrary.NLINES</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="pynucastro.rates.library.html#pynucastro.rates.library.StarLibLibrary.UNSUPPORTED_NUCLIDES"><code class="docutils literal notranslate"><span class="pre">StarLibLibrary.UNSUPPORTED_NUCLIDES</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="pynucastro.rates.library.html#pynucastro.rates.library.StarLibLibrary.file_path"><code class="docutils literal notranslate"><span class="pre">StarLibLibrary.file_path</span></code></a></li>
@@ -726,6 +726,7 @@
 <li class="toctree-l2"><a class="reference internal" href="pynucastro.rates.rate.html#pynucastro.rates.rate.BaryonConservationError"><code class="docutils literal notranslate"><span class="pre">BaryonConservationError</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="pynucastro.rates.rate.html#pynucastro.rates.rate.Rate"><code class="docutils literal notranslate"><span class="pre">Rate</span></code></a><ul>
 <li class="toctree-l3"><a class="reference internal" href="pynucastro.rates.rate.html#pynucastro.rates.rate.Rate.eval"><code class="docutils literal notranslate"><span class="pre">Rate.eval()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="pynucastro.rates.rate.html#pynucastro.rates.rate.Rate.eval_full_rate"><code class="docutils literal notranslate"><span class="pre">Rate.eval_full_rate()</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="pynucastro.rates.rate.html#pynucastro.rates.rate.Rate.eval_jacobian_term"><code class="docutils literal notranslate"><span class="pre">Rate.eval_jacobian_term()</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="pynucastro.rates.rate.html#pynucastro.rates.rate.Rate.evaluate_screening"><code class="docutils literal notranslate"><span class="pre">Rate.evaluate_screening()</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="pynucastro.rates.rate.html#pynucastro.rates.rate.Rate.function_string_py"><code class="docutils literal notranslate"><span class="pre">Rate.function_string_py()</span></code></a></li>

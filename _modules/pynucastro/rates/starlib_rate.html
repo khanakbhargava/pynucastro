@@ -7,7 +7,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>pynucastro.rates.starlib_rate &#8212; pynucastro 2.6.0.post300+g5d35f46c4 documentation</title>
+    <title>pynucastro.rates.starlib_rate &#8212; pynucastro 2.6.0.post320+gebf46c4fe documentation</title>
   
   
   
@@ -41,7 +41,7 @@
   <link rel="preload" as="script" href="../../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
 <link rel="preload" as="script" href="../../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
 
-    <script src="../../../_static/documentation_options.js?v=92736bf3"></script>
+    <script src="../../../_static/documentation_options.js?v=1b341df9"></script>
     <script src="../../../_static/doctools.js?v=fd6eb6e6"></script>
     <script src="../../../_static/sphinx_highlight.js?v=6ffebe34"></script>
     <script src="../../../_static/clipboard.min.js?v=a7894cd8"></script>
@@ -257,6 +257,7 @@
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Developer Documentation</span></p>
 <ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../../../rates-devel.html">Notes on Working with <code class="docutils literal notranslate"><span class="pre">Rate</span></code> Objects</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../adding-rates.html">Adding Rates from the Literature</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../testing.html">Testing and Comparing Backends</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Reference</span></p>
@@ -540,11 +541,14 @@
         <span class="n">rate_source</span> <span class="o">=</span> <span class="n">labelprops</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="mi">4</span><span class="p">]</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span>
         <span class="c1">#Check for electron capture</span>
         <span class="n">weak_type</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span>
+        <span class="n">use_ye_weighting</span> <span class="o">=</span> <span class="kc">False</span>
         <span class="k">if</span> <span class="n">rate_source</span> <span class="o">==</span> <span class="s1">&#39;ec&#39;</span><span class="p">:</span>
             <span class="n">weak_type</span> <span class="o">=</span> <span class="s2">&quot;electron_capture&quot;</span>
+            <span class="n">use_ye_weighting</span> <span class="o">=</span> <span class="kc">True</span>
 
         <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">log_t9_data</span><span class="p">,</span> <span class="n">log_rate_data</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="n">label</span><span class="p">,</span>
                          <span class="n">rate_source</span><span class="o">=</span><span class="n">rate_source</span><span class="p">,</span> <span class="n">weak_type</span><span class="o">=</span><span class="n">weak_type</span><span class="p">,</span>
+                         <span class="n">use_ye_weighting</span><span class="o">=</span><span class="n">use_ye_weighting</span><span class="p">,</span>
                          <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
 
         <span class="c1">#Set relevant flags</span>
