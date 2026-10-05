@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>Using NSE Protons &#8212; pynucastro 2.6.0.post361+g42130cd32 documentation</title>
+    <title>Using NSE Protons &#8212; pynucastro 2.6.0.post464+g1516d7558 documentation</title>
   
   
   
@@ -42,7 +42,7 @@
   <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=90905a2f556bf617f1a9" />
 <link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=90905a2f556bf617f1a9" />
 
-    <script src="_static/documentation_options.js?v=6dc0a0bf"></script>
+    <script src="_static/documentation_options.js?v=9b191038"></script>
     <script src="_static/doctools.js?v=fd6eb6e6"></script>
     <script src="_static/sphinx_highlight.js?v=6ffebe34"></script>
     <script src="_static/clipboard.min.js?v=a7894cd8"></script>
@@ -55,7 +55,7 @@
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
     <link rel="next" title="Removing Unimportant Rates" href="unimportant-rates.html" />
-    <link rel="prev" title="Approximating C and O Burning" href="co-approximations.html" />
+    <link rel="prev" title="Rate Sequences with Extra Reactants" href="not_in_ydot_term.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   <meta name="docsearch:version" content="2.6" />
@@ -198,22 +198,24 @@
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Advanced Rate Operations</span></p>
 <ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="screening-examples.html">Screening Rates</a></li>
-<li class="toctree-l1"><a class="reference internal" href="modify-example.html">Modifying Rates</a></li>
 <li class="toctree-l1"><a class="reference internal" href="custom-rates.html">Creating a Custom Rate</a></li>
 <li class="toctree-l1"><a class="reference internal" href="derived-rates.html">Derived Rates</a></li>
 </ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Approximating Rates</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="alpha-gamma-approx.html">Approximating alpha-capture</a></li>
+<li class="toctree-l1"><a class="reference internal" href="double-n-capture.html">Approximating double n-capture</a></li>
+<li class="toctree-l1"><a class="reference internal" href="modified-rates.html">Modified Rates</a></li>
+<li class="toctree-l1"><a class="reference internal" href="co-approximations.html">Approximating C and O Burning</a></li>
+<li class="toctree-l1"><a class="reference internal" href="branched-rates.html"><code class="docutils literal notranslate"><span class="pre">BranchedRate</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="not_in_ydot_term.html">Rate Sequences with Extra Reactants</a></li>
+</ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Advanced Network Operations</span></p>
 <ul class="current nav bd-sidenav">
-<li class="toctree-l1 has-children"><a class="reference internal" href="approximate-rates.html">Approximate and Modified Rates</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l2"><a class="reference internal" href="alpha-gamma-approx.html">Approximating alpha-capture</a></li>
-<li class="toctree-l2"><a class="reference internal" href="double-n-capture.html">Approximating double n-capture</a></li>
-<li class="toctree-l2"><a class="reference internal" href="modified-rates.html">Modified Rates</a></li>
-<li class="toctree-l2"><a class="reference internal" href="co-approximations.html">Approximating C and O Burning</a></li>
-</ul>
-</details></li>
 <li class="toctree-l1 current active"><a class="current reference internal" href="#">Using NSE Protons</a></li>
 <li class="toctree-l1"><a class="reference internal" href="unimportant-rates.html">Removing Unimportant Rates</a></li>
 <li class="toctree-l1"><a class="reference internal" href="network-cycles.html">Finding Cycles (with NetworkX)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="most-probable-path.html">Finding the Likely Path Between Nuclei (with NetworkX)</a></li>
 <li class="toctree-l1"><a class="reference internal" href="stiffness.html">Assessing the Stiffness of a Network</a></li>
 <li class="toctree-l1"><a class="reference internal" href="reduction.html">Network Reduction</a></li>
 <li class="toctree-l1"><a class="reference internal" href="sens_analysis_example.html">Sensitivity Analysis</a></li>
@@ -253,8 +255,15 @@
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Some Useful Networks</span></p>
 <ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="common-nets.html">Common Networks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="mesa-basic.html">MESA <code class="docutils literal notranslate"><span class="pre">basic.net</span></code> Network</a></li>
+<li class="toctree-l1"><a class="reference internal" href="cno-network.html">CNO burning network</a></li>
 <li class="toctree-l1"><a class="reference internal" href="aprox13.html">The “aprox13” network</a></li>
 <li class="toctree-l1"><a class="reference internal" href="he-burning-example.html">A He-burning Network</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Working With Simulation Codes</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="mesa-nova.html">Importing MESA Models and Visualizing Reactive Flow</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Examples in Nuclear Astrophysics</span></p>
 <ul class="nav bd-sidenav">
@@ -263,12 +272,14 @@
 <li class="toctree-l1"><a class="reference internal" href="examples/hot-CNO-breakout-example.html">hot-CNO and breakout</a></li>
 <li class="toctree-l1"><a class="reference internal" href="examples/triple_alpha_eval.html">Computing the Screened Triple-alpha rate</a></li>
 <li class="toctree-l1"><a class="reference internal" href="examples/he-burning.html">Ratio of C/O from He burning</a></li>
+<li class="toctree-l1"><a class="reference internal" href="examples/c-burning-products.html">Products of Carbon Burning</a></li>
 <li class="toctree-l1"><a class="reference internal" href="examples/supernova-lightcurve.html">A Supernova Lightcurve</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Developer Documentation</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="rates-devel.html">Notes on Working with <code class="docutils literal notranslate"><span class="pre">Rate</span></code> Objects</a></li>
+<li class="toctree-l1"><a class="reference internal" href="rates-devel.html">Working with <code class="docutils literal notranslate"><span class="pre">Rate</span></code> Objects</a></li>
 <li class="toctree-l1"><a class="reference internal" href="adding-rates.html">Adding Rates from the Literature</a></li>
+<li class="toctree-l1"><a class="reference internal" href="nets-devel.html">Working with Network Objects</a></li>
 <li class="toctree-l1"><a class="reference internal" href="testing.html">Testing and Comparing Backends</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Reference</span></p>
@@ -294,6 +305,7 @@
 <li class="toctree-l3 has-children"><a class="reference internal" href="pynucastro.networks.html">pynucastro.networks package</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l4"><a class="reference internal" href="pynucastro.networks.amrexastro_cxx_network.html">pynucastro.networks.amrexastro_cxx_network module</a></li>
 <li class="toctree-l4"><a class="reference internal" href="pynucastro.networks.base_cxx_network.html">pynucastro.networks.base_cxx_network module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="pynucastro.networks.common_networks.html">pynucastro.networks.common_networks module</a></li>
 <li class="toctree-l4"><a class="reference internal" href="pynucastro.networks.fortran_network.html">pynucastro.networks.fortran_network module</a></li>
 <li class="toctree-l4"><a class="reference internal" href="pynucastro.networks.helper.html">pynucastro.networks.helper module</a></li>
 <li class="toctree-l4"><a class="reference internal" href="pynucastro.networks.network_compare.html">pynucastro.networks.network_compare module</a></li>
@@ -323,6 +335,7 @@
 <li class="toctree-l4"><a class="reference internal" href="pynucastro.rates.alternate_rates.html">pynucastro.rates.alternate_rates module</a></li>
 <li class="toctree-l4"><a class="reference internal" href="pynucastro.rates.approximate_rates.html">pynucastro.rates.approximate_rates module</a></li>
 <li class="toctree-l4"><a class="reference internal" href="pynucastro.rates.aprox_family_rates.html">pynucastro.rates.aprox_family_rates module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="pynucastro.rates.branched_rate.html">pynucastro.rates.branched_rate module</a></li>
 <li class="toctree-l4"><a class="reference internal" href="pynucastro.rates.derived_rate.html">pynucastro.rates.derived_rate module</a></li>
 <li class="toctree-l4"><a class="reference internal" href="pynucastro.rates.files.html">pynucastro.rates.files module</a></li>
 <li class="toctree-l4"><a class="reference internal" href="pynucastro.rates.known_duplicates.html">pynucastro.rates.known_duplicates module</a></li>
@@ -348,6 +361,7 @@
 <li class="toctree-l3"><a class="reference internal" href="pynucastro.mesa_utils.html">pynucastro.mesa_utils module</a></li>
 <li class="toctree-l3"><a class="reference internal" href="pynucastro.mpi_utils.html">pynucastro.mpi_utils module</a></li>
 <li class="toctree-l3"><a class="reference internal" href="pynucastro.numba_util.html">pynucastro.numba_util module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pynucastro.sort_utils.html">pynucastro.sort_utils module</a></li>
 <li class="toctree-l3"><a class="reference internal" href="pynucastro.utils.html">pynucastro.utils module</a></li>
 <li class="toctree-l3"><a class="reference internal" href="pynucastro.yt_utils.html">pynucastro.yt_utils module</a></li>
 </ul>
@@ -630,14 +644,14 @@ and network integration easier.</p>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">nuclei</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;p&quot;</span><span class="p">,</span> <span class="s2">&quot;n&quot;</span><span class="p">,</span> <span class="s2">&quot;d&quot;</span><span class="p">,</span> <span class="s2">&quot;he3&quot;</span><span class="p">,</span> <span class="s2">&quot;he4&quot;</span><span class="p">,</span>
-          <span class="s2">&quot;c12&quot;</span><span class="p">,</span> <span class="s2">&quot;c13&quot;</span><span class="p">,</span> <span class="s2">&quot;n13&quot;</span><span class="p">,</span> <span class="s2">&quot;n14&quot;</span><span class="p">,</span> <span class="s2">&quot;n15&quot;</span><span class="p">,</span>
-          <span class="s2">&quot;o14&quot;</span><span class="p">,</span> <span class="s2">&quot;o15&quot;</span><span class="p">,</span> <span class="s2">&quot;o16&quot;</span><span class="p">,</span>
-          <span class="s2">&quot;ne20&quot;</span><span class="p">,</span> <span class="s2">&quot;na23&quot;</span><span class="p">,</span> <span class="s2">&quot;mg24&quot;</span><span class="p">,</span> <span class="s2">&quot;al27&quot;</span><span class="p">,</span> <span class="s2">&quot;p31&quot;</span><span class="p">,</span>
-          <span class="s2">&quot;si28&quot;</span><span class="p">,</span> <span class="s2">&quot;s32&quot;</span><span class="p">,</span> <span class="s2">&quot;ar36&quot;</span><span class="p">,</span> <span class="s2">&quot;ca40&quot;</span><span class="p">,</span> <span class="s2">&quot;ti44&quot;</span><span class="p">,</span>
-          <span class="s2">&quot;cr48&quot;</span><span class="p">,</span> <span class="s2">&quot;mn51&quot;</span><span class="p">,</span>
-          <span class="s2">&quot;fe52&quot;</span><span class="p">,</span> <span class="s2">&quot;fe53&quot;</span><span class="p">,</span> <span class="s2">&quot;fe54&quot;</span><span class="p">,</span> <span class="s2">&quot;fe55&quot;</span><span class="p">,</span> <span class="s2">&quot;fe56&quot;</span><span class="p">,</span>
-          <span class="s2">&quot;co55&quot;</span><span class="p">,</span> <span class="s2">&quot;co56&quot;</span><span class="p">,</span> <span class="s2">&quot;co57&quot;</span><span class="p">,</span> <span class="s2">&quot;ni56&quot;</span><span class="p">,</span> <span class="s2">&quot;ni57&quot;</span><span class="p">,</span> <span class="s2">&quot;ni58&quot;</span><span class="p">]</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">nuclei</span> <span class="o">=</span> <span class="p">[</span><span class="s2">"p"</span><span class="p">,</span> <span class="s2">"n"</span><span class="p">,</span> <span class="s2">"d"</span><span class="p">,</span> <span class="s2">"he3"</span><span class="p">,</span> <span class="s2">"he4"</span><span class="p">,</span>
+          <span class="s2">"c12"</span><span class="p">,</span> <span class="s2">"c13"</span><span class="p">,</span> <span class="s2">"n13"</span><span class="p">,</span> <span class="s2">"n14"</span><span class="p">,</span> <span class="s2">"n15"</span><span class="p">,</span>
+          <span class="s2">"o14"</span><span class="p">,</span> <span class="s2">"o15"</span><span class="p">,</span> <span class="s2">"o16"</span><span class="p">,</span>
+          <span class="s2">"ne20"</span><span class="p">,</span> <span class="s2">"na23"</span><span class="p">,</span> <span class="s2">"mg24"</span><span class="p">,</span> <span class="s2">"al27"</span><span class="p">,</span> <span class="s2">"p31"</span><span class="p">,</span>
+          <span class="s2">"si28"</span><span class="p">,</span> <span class="s2">"s32"</span><span class="p">,</span> <span class="s2">"ar36"</span><span class="p">,</span> <span class="s2">"ca40"</span><span class="p">,</span> <span class="s2">"ti44"</span><span class="p">,</span>
+          <span class="s2">"cr48"</span><span class="p">,</span> <span class="s2">"mn51"</span><span class="p">,</span>
+          <span class="s2">"fe52"</span><span class="p">,</span> <span class="s2">"fe53"</span><span class="p">,</span> <span class="s2">"fe54"</span><span class="p">,</span> <span class="s2">"fe55"</span><span class="p">,</span> <span class="s2">"fe56"</span><span class="p">,</span>
+          <span class="s2">"co55"</span><span class="p">,</span> <span class="s2">"co56"</span><span class="p">,</span> <span class="s2">"co57"</span><span class="p">,</span> <span class="s2">"ni56"</span><span class="p">,</span> <span class="s2">"ni57"</span><span class="p">,</span> <span class="s2">"ni58"</span><span class="p">]</span>
 </pre></div>
 </div>
 </div>
@@ -666,12 +680,12 @@ and network integration easier.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span> <span class="o">=</span> <span class="n">rc</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">rotated</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
-              <span class="n">node_size</span><span class="o">=</span><span class="mi">400</span><span class="p">,</span> <span class="n">node_font_size</span><span class="o">=</span><span class="s2">&quot;9&quot;</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="p">(</span><span class="mi">1100</span><span class="p">,</span> <span class="mi">700</span><span class="p">))</span>
+              <span class="n">node_size</span><span class="o">=</span><span class="mi">400</span><span class="p">,</span> <span class="n">node_font_size</span><span class="o">=</span><span class="s2">"9"</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="p">(</span><span class="mi">1100</span><span class="p">,</span> <span class="mi">700</span><span class="p">))</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/cf875107c59084a5732e972b1f20c636c207afc4ab430d8f34cd5bd3d48356e7.png" src="_images/cf875107c59084a5732e972b1f20c636c207afc4ab430d8f34cd5bd3d48356e7.png" />
+<img alt="_images/6c4fe02801b3e30eb4edd1823079c2c1caef6c88ca80ca49378a7a34482cc945.png" src="_images/6c4fe02801b3e30eb4edd1823079c2c1caef6c88ca80ca49378a7a34482cc945.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -703,11 +717,11 @@ and network integration easier.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/tmp/ipykernel_3648/2895805150.py:1: DeprecationWarning: plot_jacobian(rho, T, comp, ...) is deprecated, use plot_jacobian(ThermoState(rho=rho, T=T, comp=comp,  ...) instead
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/tmp/ipykernel_3885/2895805150.py:1: DeprecationWarning: plot_jacobian(rho, T, comp, ...) is deprecated, use plot_jacobian(ThermoState(rho=rho, T=T, comp=comp,  ...) instead
   fig = rc.plot_jacobian(rho, T, comp, rate_scaling=1.e16)
 </pre></div>
 </div>
-<img alt="_images/8c7bd16f609f1d20815d53eaf35f045ae9b73e8c9fb93c38f16ac09415c6d281.png" src="_images/8c7bd16f609f1d20815d53eaf35f045ae9b73e8c9fb93c38f16ac09415c6d281.png" />
+<img alt="_images/07c9b253fe7e97fb207e786dc8fe522aa98fd917645e18170e0ea45e017db97f.png" src="_images/07c9b253fe7e97fb207e786dc8fe522aa98fd917645e18170e0ea45e017db97f.png" />
 </div>
 </div>
 <p>From the Jacobian, we can see that the protons are split into two groups, those participating in reactions with <span class="math notranslate nohighlight">\(A \le 32\)</span> and those participating in reactions with <span class="math notranslate nohighlight">\(A \ge 51\)</span>.</p>
@@ -717,8 +731,8 @@ and network integration easier.</p>
 <p>We can split these by adding an “NSE proton”.  This evaluates the same as a regular proton, but tests as distinct, allowing the network to have 2 separate protons.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">p</span> <span class="o">=</span> <span class="n">pyna</span><span class="o">.</span><span class="n">Nucleus</span><span class="p">(</span><span class="s2">&quot;p&quot;</span><span class="p">)</span>
-<span class="n">p_nse</span> <span class="o">=</span> <span class="n">pyna</span><span class="o">.</span><span class="n">Nucleus</span><span class="p">(</span><span class="s2">&quot;p_NSE&quot;</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">p</span> <span class="o">=</span> <span class="n">pyna</span><span class="o">.</span><span class="n">Nucleus</span><span class="p">(</span><span class="s2">"p"</span><span class="p">)</span>
+<span class="n">p_nse</span> <span class="o">=</span> <span class="n">pyna</span><span class="o">.</span><span class="n">Nucleus</span><span class="p">(</span><span class="s2">"p_NSE"</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -803,11 +817,11 @@ in the network (<code class="docutils literal notranslate"><span class="pre">p_n
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/tmp/ipykernel_3648/2184551706.py:1: DeprecationWarning: plot_jacobian(rho, T, comp, ...) is deprecated, use plot_jacobian(ThermoState(rho=rho, T=T, comp=comp,  ...) instead
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/tmp/ipykernel_3885/2184551706.py:1: DeprecationWarning: plot_jacobian(rho, T, comp, ...) is deprecated, use plot_jacobian(ThermoState(rho=rho, T=T, comp=comp,  ...) instead
   fig = rc.plot_jacobian(rho, T, comp_new, rate_scaling=1.e16)
 </pre></div>
 </div>
-<img alt="_images/41c4590cce75a1eb6ec33ef3caa182d72f9d3eb3356337c08c466159bd9d7b98.png" src="_images/41c4590cce75a1eb6ec33ef3caa182d72f9d3eb3356337c08c466159bd9d7b98.png" />
+<img alt="_images/078c49ba8ba4f7930181b281b26cbc94dff3b674e36e3f7aa3684ee062b870b7.png" src="_images/078c49ba8ba4f7930181b281b26cbc94dff3b674e36e3f7aa3684ee062b870b7.png" />
 </div>
 </div>
 <p>The Jacobian now shows that the reactions involving heavy nuclei are using <code class="docutils literal notranslate"><span class="pre">p_nse</span></code> protons, decoupling them from the lower mass nuclei.</p>
@@ -826,12 +840,12 @@ in the network (<code class="docutils literal notranslate"><span class="pre">p_n
                   
 <div class="prev-next-area">
     <a class="left-prev"
-       href="co-approximations.html"
+       href="not_in_ydot_term.html"
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">Approximating C and O Burning</p>
+        <p class="prev-next-title">Rate Sequences with Extra Reactants</p>
       </div>
     </a>
     <a class="right-next"

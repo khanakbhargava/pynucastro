@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>p-p chain vs. CNO &#8212; pynucastro 2.6.0.post361+g42130cd32 documentation</title>
+    <title>p-p chain vs. CNO &#8212; pynucastro 2.6.0.post464+g1516d7558 documentation</title>
   
   
   
@@ -42,7 +42,7 @@
   <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=90905a2f556bf617f1a9" />
 <link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=90905a2f556bf617f1a9" />
 
-    <script src="../_static/documentation_options.js?v=6dc0a0bf"></script>
+    <script src="../_static/documentation_options.js?v=9b191038"></script>
     <script src="../_static/doctools.js?v=fd6eb6e6"></script>
     <script src="../_static/sphinx_highlight.js?v=6ffebe34"></script>
     <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
@@ -198,22 +198,24 @@
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Advanced Rate Operations</span></p>
 <ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../screening-examples.html">Screening Rates</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../modify-example.html">Modifying Rates</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../custom-rates.html">Creating a Custom Rate</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../derived-rates.html">Derived Rates</a></li>
 </ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Approximating Rates</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../alpha-gamma-approx.html">Approximating alpha-capture</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../double-n-capture.html">Approximating double n-capture</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../modified-rates.html">Modified Rates</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../co-approximations.html">Approximating C and O Burning</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../branched-rates.html"><code class="docutils literal notranslate"><span class="pre">BranchedRate</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../not_in_ydot_term.html">Rate Sequences with Extra Reactants</a></li>
+</ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Advanced Network Operations</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1 has-children"><a class="reference internal" href="../approximate-rates.html">Approximate and Modified Rates</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l2"><a class="reference internal" href="../alpha-gamma-approx.html">Approximating alpha-capture</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../double-n-capture.html">Approximating double n-capture</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../modified-rates.html">Modified Rates</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../co-approximations.html">Approximating C and O Burning</a></li>
-</ul>
-</details></li>
 <li class="toctree-l1"><a class="reference internal" href="../nse-protons.html">Using NSE Protons</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../unimportant-rates.html">Removing Unimportant Rates</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../network-cycles.html">Finding Cycles (with NetworkX)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../most-probable-path.html">Finding the Likely Path Between Nuclei (with NetworkX)</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../stiffness.html">Assessing the Stiffness of a Network</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../reduction.html">Network Reduction</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../sens_analysis_example.html">Sensitivity Analysis</a></li>
@@ -253,8 +255,15 @@
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Some Useful Networks</span></p>
 <ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../common-nets.html">Common Networks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../mesa-basic.html">MESA <code class="docutils literal notranslate"><span class="pre">basic.net</span></code> Network</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../cno-network.html">CNO burning network</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../aprox13.html">The “aprox13” network</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../he-burning-example.html">A He-burning Network</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Working With Simulation Codes</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../mesa-nova.html">Importing MESA Models and Visualizing Reactive Flow</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Examples in Nuclear Astrophysics</span></p>
 <ul class="current nav bd-sidenav">
@@ -263,12 +272,14 @@
 <li class="toctree-l1"><a class="reference internal" href="hot-CNO-breakout-example.html">hot-CNO and breakout</a></li>
 <li class="toctree-l1"><a class="reference internal" href="triple_alpha_eval.html">Computing the Screened Triple-alpha rate</a></li>
 <li class="toctree-l1"><a class="reference internal" href="he-burning.html">Ratio of C/O from He burning</a></li>
+<li class="toctree-l1"><a class="reference internal" href="c-burning-products.html">Products of Carbon Burning</a></li>
 <li class="toctree-l1"><a class="reference internal" href="supernova-lightcurve.html">A Supernova Lightcurve</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Developer Documentation</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../rates-devel.html">Notes on Working with <code class="docutils literal notranslate"><span class="pre">Rate</span></code> Objects</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../rates-devel.html">Working with <code class="docutils literal notranslate"><span class="pre">Rate</span></code> Objects</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../adding-rates.html">Adding Rates from the Literature</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../nets-devel.html">Working with Network Objects</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../testing.html">Testing and Comparing Backends</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Reference</span></p>
@@ -294,6 +305,7 @@
 <li class="toctree-l3 has-children"><a class="reference internal" href="../pynucastro.networks.html">pynucastro.networks package</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l4"><a class="reference internal" href="../pynucastro.networks.amrexastro_cxx_network.html">pynucastro.networks.amrexastro_cxx_network module</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../pynucastro.networks.base_cxx_network.html">pynucastro.networks.base_cxx_network module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../pynucastro.networks.common_networks.html">pynucastro.networks.common_networks module</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../pynucastro.networks.fortran_network.html">pynucastro.networks.fortran_network module</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../pynucastro.networks.helper.html">pynucastro.networks.helper module</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../pynucastro.networks.network_compare.html">pynucastro.networks.network_compare module</a></li>
@@ -323,6 +335,7 @@
 <li class="toctree-l4"><a class="reference internal" href="../pynucastro.rates.alternate_rates.html">pynucastro.rates.alternate_rates module</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../pynucastro.rates.approximate_rates.html">pynucastro.rates.approximate_rates module</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../pynucastro.rates.aprox_family_rates.html">pynucastro.rates.aprox_family_rates module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../pynucastro.rates.branched_rate.html">pynucastro.rates.branched_rate module</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../pynucastro.rates.derived_rate.html">pynucastro.rates.derived_rate module</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../pynucastro.rates.files.html">pynucastro.rates.files module</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../pynucastro.rates.known_duplicates.html">pynucastro.rates.known_duplicates module</a></li>
@@ -348,6 +361,7 @@
 <li class="toctree-l3"><a class="reference internal" href="../pynucastro.mesa_utils.html">pynucastro.mesa_utils module</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../pynucastro.mpi_utils.html">pynucastro.mpi_utils module</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../pynucastro.numba_util.html">pynucastro.numba_util module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../pynucastro.sort_utils.html">pynucastro.sort_utils module</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../pynucastro.utils.html">pynucastro.utils module</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../pynucastro.yt_utils.html">pynucastro.yt_utils module</a></li>
 </ul>
@@ -630,9 +644,9 @@
 <p>We’ll focus on the main <a class="reference external" href="https://en.wikipedia.org/wiki/Proton%E2%80%93proton_chain">p-p chain</a>  and get the 3 rates involved in that.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pp_rates</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;p(p,)d&quot;</span><span class="p">,</span>
-            <span class="s2">&quot;d(p,g)he3&quot;</span><span class="p">,</span>
-            <span class="s2">&quot;he3(he3,pp)he4&quot;</span><span class="p">]</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pp_rates</span> <span class="o">=</span> <span class="p">[</span><span class="s2">"p(p,)d"</span><span class="p">,</span>
+            <span class="s2">"d(p,g)he3"</span><span class="p">,</span>
+            <span class="s2">"he3(he3,pp)he4"</span><span class="p">]</span>
 <span class="n">rates</span> <span class="o">=</span> <span class="n">rl</span><span class="o">.</span><span class="n">get_rate_by_name</span><span class="p">(</span><span class="n">pp_rates</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -665,7 +679,7 @@ He3 + He3 ⟶ p + p + He4
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/253057d3a39efd8c8450976d06d384fa92db68c39d6baf9dbaec158a583284a1.png" src="../_images/253057d3a39efd8c8450976d06d384fa92db68c39d6baf9dbaec158a583284a1.png" />
+<img alt="../_images/8951efd8505cb6146c016b85e498cc17d66c5bca7cf759b59478c6185e80098f.png" src="../_images/8951efd8505cb6146c016b85e498cc17d66c5bca7cf759b59478c6185e80098f.png" />
 </div>
 </div>
 <p>We see that it is very temperature dependent</p>
@@ -712,7 +726,7 @@ He3 + He3 ⟶ p + p + He4
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/b24912534abf2099e633c1dc6df81d1d5ff1174792dbd6ca2f186bbb7b29c7ae.png" src="../_images/b24912534abf2099e633c1dc6df81d1d5ff1174792dbd6ca2f186bbb7b29c7ae.png" />
+<img alt="../_images/de3ff7dff7fc46eeda7bfa46ed10a65beb958c3c8cd0a61bcd34478c16924320.png" src="../_images/de3ff7dff7fc46eeda7bfa46ed10a65beb958c3c8cd0a61bcd34478c16924320.png" />
 </div>
 </div>
 <p>We can therefore approximate the p-p chain based on the slowest rate.  If we express the rate as:</p>
@@ -721,14 +735,14 @@ He3 + He3 ⟶ p + p + He4
 <p>then we can find the exponent <span class="math notranslate nohighlight">\(\nu\)</span> about some temperature <span class="math notranslate nohighlight">\(T_0\)</span></p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">r_pp</span> <span class="o">=</span> <span class="n">net_pp</span><span class="o">.</span><span class="n">get_rate_by_name</span><span class="p">(</span><span class="s2">&quot;p(p,)d&quot;</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">r_pp</span> <span class="o">=</span> <span class="n">net_pp</span><span class="o">.</span><span class="n">get_rate_by_name</span><span class="p">(</span><span class="s2">"p(p,)d"</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
 <span class="n">T0</span> <span class="o">=</span> <span class="mf">1.5e7</span>
 <span class="n">r_pp</span><span class="o">.</span><span class="n">get_rate_exponent</span><span class="p">(</span><span class="n">T0</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>3.9735120801889896
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>np.float64(3.973513244659443)
 </pre></div>
 </div>
 </div>
@@ -740,12 +754,12 @@ He3 + He3 ⟶ p + p + He4
 <p>Now we consider the main CNO cycle.  This involves 6 rates</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">cno_rates</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;c12(p,g)n13&quot;</span><span class="p">,</span>
-             <span class="s2">&quot;c13(p,g)n14&quot;</span><span class="p">,</span>
-             <span class="s2">&quot;n13(,)c13&quot;</span><span class="p">,</span>
-             <span class="s2">&quot;n14(p,g)o15&quot;</span><span class="p">,</span>
-             <span class="s2">&quot;n15(p,a)c12&quot;</span><span class="p">,</span>
-             <span class="s2">&quot;o15(,)n15&quot;</span><span class="p">]</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">cno_rates</span> <span class="o">=</span> <span class="p">[</span><span class="s2">"c12(p,g)n13"</span><span class="p">,</span>
+             <span class="s2">"c13(p,g)n14"</span><span class="p">,</span>
+             <span class="s2">"n13(,)c13"</span><span class="p">,</span>
+             <span class="s2">"n14(p,g)o15"</span><span class="p">,</span>
+             <span class="s2">"n15(p,a)c12"</span><span class="p">,</span>
+             <span class="s2">"o15(,)n15"</span><span class="p">]</span>
 <span class="n">rates</span> <span class="o">=</span> <span class="n">rl</span><span class="o">.</span><span class="n">get_rate_by_name</span><span class="p">(</span><span class="n">cno_rates</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -806,7 +820,7 @@ O15 ⟶ N15 + e⁺ + 𝜈
 <p>Now we see that the <span class="math notranslate nohighlight">\({}^{14}\mathrm{N}(p,\gamma){}^{15}\mathrm{O}\)</span> rate is the slowest.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">r_cno</span> <span class="o">=</span> <span class="n">net_cno</span><span class="o">.</span><span class="n">get_rate_by_name</span><span class="p">(</span><span class="s2">&quot;n14(p,g)o15&quot;</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">r_cno</span> <span class="o">=</span> <span class="n">net_cno</span><span class="o">.</span><span class="n">get_rate_by_name</span><span class="p">(</span><span class="s2">"n14(p,g)o15"</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -815,12 +829,12 @@ O15 ⟶ N15 + e⁺ + 𝜈
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">T</span> <span class="ow">in</span> <span class="p">[</span><span class="mf">1.e7</span><span class="p">,</span> <span class="mf">2.e7</span><span class="p">,</span> <span class="mf">3.e7</span><span class="p">,</span> <span class="mf">4.e7</span><span class="p">]:</span>
-    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;T = </span><span class="si">{</span><span class="n">T</span><span class="si">}</span><span class="s2">, nu = </span><span class="si">{</span><span class="n">r_cno</span><span class="o">.</span><span class="n">get_rate_exponent</span><span class="p">(</span><span class="n">T</span><span class="p">)</span><span class="si">:</span><span class="s2">8.5f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"T = </span><span class="si">{</span><span class="n">T</span><span class="si">}</span><span class="s2">, nu = </span><span class="si">{</span><span class="n">r_cno</span><span class="o">.</span><span class="n">get_rate_exponent</span><span class="p">(</span><span class="n">T</span><span class="p">)</span><span class="si">:</span><span class="s2">8.5f</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>T = 10000000.0, nu = 22.82962
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>T = 10000000.0, nu = 22.82961
 T = 20000000.0, nu = 17.96637
 T = 30000000.0, nu = 15.60186
 T = 40000000.0, nu = 14.11535
@@ -837,7 +851,7 @@ T = 40000000.0, nu = 14.11535
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/ec8789ae88c3f7c174aeed8a8321d7df62b230decd588e9bed107f7b016b7a92.png" src="../_images/ec8789ae88c3f7c174aeed8a8321d7df62b230decd588e9bed107f7b016b7a92.png" />
+<img alt="../_images/20bac4c6c98a15ed2217c18d3e347dd8f797ecc419f743e66df2062ebcd2370e.png" src="../_images/20bac4c6c98a15ed2217c18d3e347dd8f797ecc419f743e66df2062ebcd2370e.png" />
 </div>
 </div>
 </section>
@@ -863,17 +877,17 @@ T = 40000000.0, nu = 14.11535
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">()</span>
 
-<span class="n">ax</span><span class="o">.</span><span class="n">loglog</span><span class="p">(</span><span class="n">Ts</span><span class="p">,</span> <span class="p">[</span><span class="n">r_pp</span><span class="o">.</span><span class="n">eval</span><span class="p">(</span><span class="n">q</span><span class="p">)</span> <span class="k">for</span> <span class="n">q</span> <span class="ow">in</span> <span class="n">Ts</span><span class="p">],</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;p-p&quot;</span><span class="p">)</span>
-<span class="n">ax</span><span class="o">.</span><span class="n">loglog</span><span class="p">(</span><span class="n">Ts</span><span class="p">,</span> <span class="p">[</span><span class="n">r_cno</span><span class="o">.</span><span class="n">eval</span><span class="p">(</span><span class="n">q</span><span class="p">)</span> <span class="k">for</span> <span class="n">q</span> <span class="ow">in</span> <span class="n">Ts</span><span class="p">],</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;CNO&quot;</span><span class="p">)</span>
-<span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s2">&quot;T&quot;</span><span class="p">)</span>
-<span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;$N_A\langle \sigma v \rangle$&quot;</span><span class="p">)</span>
-<span class="n">ax</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="n">linestyle</span><span class="o">=</span><span class="s2">&quot;:&quot;</span><span class="p">,</span> <span class="n">which</span><span class="o">=</span><span class="s2">&quot;both&quot;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">loglog</span><span class="p">(</span><span class="n">Ts</span><span class="p">,</span> <span class="p">[</span><span class="n">r_pp</span><span class="o">.</span><span class="n">eval</span><span class="p">(</span><span class="n">q</span><span class="p">)</span> <span class="k">for</span> <span class="n">q</span> <span class="ow">in</span> <span class="n">Ts</span><span class="p">],</span> <span class="n">label</span><span class="o">=</span><span class="s2">"p-p"</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">loglog</span><span class="p">(</span><span class="n">Ts</span><span class="p">,</span> <span class="p">[</span><span class="n">r_cno</span><span class="o">.</span><span class="n">eval</span><span class="p">(</span><span class="n">q</span><span class="p">)</span> <span class="k">for</span> <span class="n">q</span> <span class="ow">in</span> <span class="n">Ts</span><span class="p">],</span> <span class="n">label</span><span class="o">=</span><span class="s2">"CNO"</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s2">"T"</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="sa">r</span><span class="s2">"$N_A\langle \sigma v \rangle$"</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="n">linestyle</span><span class="o">=</span><span class="s2">":"</span><span class="p">,</span> <span class="n">which</span><span class="o">=</span><span class="s2">"both"</span><span class="p">)</span>
 <span class="n">leg</span> <span class="o">=</span> <span class="n">ax</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/0f63ac6894c710058609b0107bb36ebf03409ff5cf4268a59991da5d83c33d76.png" src="../_images/0f63ac6894c710058609b0107bb36ebf03409ff5cf4268a59991da5d83c33d76.png" />
+<img alt="../_images/e44f3324b1dbd357d58fd27d8928a0cb4dbd6ca63ebc638d2ac317782b8facca.png" src="../_images/e44f3324b1dbd357d58fd27d8928a0cb4dbd6ca63ebc638d2ac317782b8facca.png" />
 </div>
 </div>
 <p>Notice that they cross over at a temperature just hotter than the Sun’s core.  This means that stars more massive than the Sun (actually, about <span class="math notranslate nohighlight">\(1.5~M_\odot\)</span>) are powered by CNO and less massive stars are powered by p-p.  The strong <span class="math notranslate nohighlight">\(T\)</span> dependence of CNO will play a role in determining the structure of those more massive stars.</p>

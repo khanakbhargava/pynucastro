@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>Integrating a Network &#8212; pynucastro 2.6.0.post361+g42130cd32 documentation</title>
+    <title>Integrating a Network &#8212; pynucastro 2.6.0.post464+g1516d7558 documentation</title>
   
   
   
@@ -42,7 +42,7 @@
   <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=90905a2f556bf617f1a9" />
 <link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=90905a2f556bf617f1a9" />
 
-    <script src="_static/documentation_options.js?v=6dc0a0bf"></script>
+    <script src="_static/documentation_options.js?v=9b191038"></script>
     <script src="_static/doctools.js?v=fd6eb6e6"></script>
     <script src="_static/sphinx_highlight.js?v=6ffebe34"></script>
     <script src="_static/clipboard.min.js?v=a7894cd8"></script>
@@ -201,22 +201,24 @@
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Advanced Rate Operations</span></p>
 <ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="screening-examples.html">Screening Rates</a></li>
-<li class="toctree-l1"><a class="reference internal" href="modify-example.html">Modifying Rates</a></li>
 <li class="toctree-l1"><a class="reference internal" href="custom-rates.html">Creating a Custom Rate</a></li>
 <li class="toctree-l1"><a class="reference internal" href="derived-rates.html">Derived Rates</a></li>
 </ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Approximating Rates</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="alpha-gamma-approx.html">Approximating alpha-capture</a></li>
+<li class="toctree-l1"><a class="reference internal" href="double-n-capture.html">Approximating double n-capture</a></li>
+<li class="toctree-l1"><a class="reference internal" href="modified-rates.html">Modified Rates</a></li>
+<li class="toctree-l1"><a class="reference internal" href="co-approximations.html">Approximating C and O Burning</a></li>
+<li class="toctree-l1"><a class="reference internal" href="branched-rates.html"><code class="docutils literal notranslate"><span class="pre">BranchedRate</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="not_in_ydot_term.html">Rate Sequences with Extra Reactants</a></li>
+</ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Advanced Network Operations</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1 has-children"><a class="reference internal" href="approximate-rates.html">Approximate and Modified Rates</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l2"><a class="reference internal" href="alpha-gamma-approx.html">Approximating alpha-capture</a></li>
-<li class="toctree-l2"><a class="reference internal" href="double-n-capture.html">Approximating double n-capture</a></li>
-<li class="toctree-l2"><a class="reference internal" href="modified-rates.html">Modified Rates</a></li>
-<li class="toctree-l2"><a class="reference internal" href="co-approximations.html">Approximating C and O Burning</a></li>
-</ul>
-</details></li>
 <li class="toctree-l1"><a class="reference internal" href="nse-protons.html">Using NSE Protons</a></li>
 <li class="toctree-l1"><a class="reference internal" href="unimportant-rates.html">Removing Unimportant Rates</a></li>
 <li class="toctree-l1"><a class="reference internal" href="network-cycles.html">Finding Cycles (with NetworkX)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="most-probable-path.html">Finding the Likely Path Between Nuclei (with NetworkX)</a></li>
 <li class="toctree-l1"><a class="reference internal" href="stiffness.html">Assessing the Stiffness of a Network</a></li>
 <li class="toctree-l1"><a class="reference internal" href="reduction.html">Network Reduction</a></li>
 <li class="toctree-l1"><a class="reference internal" href="sens_analysis_example.html">Sensitivity Analysis</a></li>
@@ -256,8 +258,15 @@
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Some Useful Networks</span></p>
 <ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="common-nets.html">Common Networks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="mesa-basic.html">MESA <code class="docutils literal notranslate"><span class="pre">basic.net</span></code> Network</a></li>
+<li class="toctree-l1"><a class="reference internal" href="cno-network.html">CNO burning network</a></li>
 <li class="toctree-l1"><a class="reference internal" href="aprox13.html">The “aprox13” network</a></li>
 <li class="toctree-l1"><a class="reference internal" href="he-burning-example.html">A He-burning Network</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Working With Simulation Codes</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="mesa-nova.html">Importing MESA Models and Visualizing Reactive Flow</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Examples in Nuclear Astrophysics</span></p>
 <ul class="nav bd-sidenav">
@@ -266,12 +275,14 @@
 <li class="toctree-l1"><a class="reference internal" href="examples/hot-CNO-breakout-example.html">hot-CNO and breakout</a></li>
 <li class="toctree-l1"><a class="reference internal" href="examples/triple_alpha_eval.html">Computing the Screened Triple-alpha rate</a></li>
 <li class="toctree-l1"><a class="reference internal" href="examples/he-burning.html">Ratio of C/O from He burning</a></li>
+<li class="toctree-l1"><a class="reference internal" href="examples/c-burning-products.html">Products of Carbon Burning</a></li>
 <li class="toctree-l1"><a class="reference internal" href="examples/supernova-lightcurve.html">A Supernova Lightcurve</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Developer Documentation</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="rates-devel.html">Notes on Working with <code class="docutils literal notranslate"><span class="pre">Rate</span></code> Objects</a></li>
+<li class="toctree-l1"><a class="reference internal" href="rates-devel.html">Working with <code class="docutils literal notranslate"><span class="pre">Rate</span></code> Objects</a></li>
 <li class="toctree-l1"><a class="reference internal" href="adding-rates.html">Adding Rates from the Literature</a></li>
+<li class="toctree-l1"><a class="reference internal" href="nets-devel.html">Working with Network Objects</a></li>
 <li class="toctree-l1"><a class="reference internal" href="testing.html">Testing and Comparing Backends</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Reference</span></p>
@@ -297,6 +308,7 @@
 <li class="toctree-l3 has-children"><a class="reference internal" href="pynucastro.networks.html">pynucastro.networks package</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l4"><a class="reference internal" href="pynucastro.networks.amrexastro_cxx_network.html">pynucastro.networks.amrexastro_cxx_network module</a></li>
 <li class="toctree-l4"><a class="reference internal" href="pynucastro.networks.base_cxx_network.html">pynucastro.networks.base_cxx_network module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="pynucastro.networks.common_networks.html">pynucastro.networks.common_networks module</a></li>
 <li class="toctree-l4"><a class="reference internal" href="pynucastro.networks.fortran_network.html">pynucastro.networks.fortran_network module</a></li>
 <li class="toctree-l4"><a class="reference internal" href="pynucastro.networks.helper.html">pynucastro.networks.helper module</a></li>
 <li class="toctree-l4"><a class="reference internal" href="pynucastro.networks.network_compare.html">pynucastro.networks.network_compare module</a></li>
@@ -326,6 +338,7 @@
 <li class="toctree-l4"><a class="reference internal" href="pynucastro.rates.alternate_rates.html">pynucastro.rates.alternate_rates module</a></li>
 <li class="toctree-l4"><a class="reference internal" href="pynucastro.rates.approximate_rates.html">pynucastro.rates.approximate_rates module</a></li>
 <li class="toctree-l4"><a class="reference internal" href="pynucastro.rates.aprox_family_rates.html">pynucastro.rates.aprox_family_rates module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="pynucastro.rates.branched_rate.html">pynucastro.rates.branched_rate module</a></li>
 <li class="toctree-l4"><a class="reference internal" href="pynucastro.rates.derived_rate.html">pynucastro.rates.derived_rate module</a></li>
 <li class="toctree-l4"><a class="reference internal" href="pynucastro.rates.files.html">pynucastro.rates.files module</a></li>
 <li class="toctree-l4"><a class="reference internal" href="pynucastro.rates.known_duplicates.html">pynucastro.rates.known_duplicates module</a></li>
@@ -351,6 +364,7 @@
 <li class="toctree-l3"><a class="reference internal" href="pynucastro.mesa_utils.html">pynucastro.mesa_utils module</a></li>
 <li class="toctree-l3"><a class="reference internal" href="pynucastro.mpi_utils.html">pynucastro.mpi_utils module</a></li>
 <li class="toctree-l3"><a class="reference internal" href="pynucastro.numba_util.html">pynucastro.numba_util module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pynucastro.sort_utils.html">pynucastro.sort_utils module</a></li>
 <li class="toctree-l3"><a class="reference internal" href="pynucastro.utils.html">pynucastro.utils module</a></li>
 <li class="toctree-l3"><a class="reference internal" href="pynucastro.yt_utils.html">pynucastro.yt_utils module</a></li>
 </ul>
@@ -596,9 +610,11 @@
             </div>
             <nav aria-label="Page">
                 <ul class="pst-show_toc_level nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#integrating-the-network">Integrating the network</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#creating-our-pythonnetwork">Creating our <code class="docutils literal notranslate"><span class="pre">PythonNetwork</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#integrating-the-network-manually">Integrating the network manually</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#analyzing-the-results">Analyzing the results</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#energy-release">Energy release</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#integrating-the-network-with-integrate-network">Integrating the network with <code class="docutils literal notranslate"><span class="pre">integrate_network</span></code></a></li>
 </ul>
             </nav>
         </div>
@@ -621,6 +637,8 @@ it with the <a class="reference external" href="https://scipy.org">SciPy library
 </div>
 </div>
 </div>
+<section id="creating-our-pythonnetwork">
+<h2>Creating our <code class="docutils literal notranslate"><span class="pre">PythonNetwork</span></code><a class="headerlink" href="#creating-our-pythonnetwork" title="Link to this heading">#</a></h2>
 <p>We’ll start again with the basic CNO network explored earlier.  Again, we’ll read in the entire ReacLib library
 and pass in the names of the rates in the form of a string <code class="docutils literal notranslate"><span class="pre">A(x,y)B</span></code> to filter out just the rates we are interested in.</p>
 <div class="cell docutils container">
@@ -632,14 +650,14 @@ and pass in the names of the rates in the form of a string <code class="docutils
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">rate_names</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;c12(p,g)n13&quot;</span><span class="p">,</span>
-              <span class="s2">&quot;c13(p,g)n14&quot;</span><span class="p">,</span>
-              <span class="s2">&quot;n13(,)c13&quot;</span><span class="p">,</span>
-              <span class="s2">&quot;n13(p,g)o14&quot;</span><span class="p">,</span>
-              <span class="s2">&quot;n14(p,g)o15&quot;</span><span class="p">,</span>
-              <span class="s2">&quot;n15(p,a)c12&quot;</span><span class="p">,</span>
-              <span class="s2">&quot;o14(,)n14&quot;</span><span class="p">,</span>
-              <span class="s2">&quot;o15(,)n15&quot;</span><span class="p">]</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">rate_names</span> <span class="o">=</span> <span class="p">[</span><span class="s2">"c12(p,g)n13"</span><span class="p">,</span>
+              <span class="s2">"c13(p,g)n14"</span><span class="p">,</span>
+              <span class="s2">"n13(,)c13"</span><span class="p">,</span>
+              <span class="s2">"n13(p,g)o14"</span><span class="p">,</span>
+              <span class="s2">"n14(p,g)o15"</span><span class="p">,</span>
+              <span class="s2">"n15(p,a)c12"</span><span class="p">,</span>
+              <span class="s2">"o14(,)n14"</span><span class="p">,</span>
+              <span class="s2">"o15(,)n15"</span><span class="p">]</span>
 
 <span class="n">rates</span> <span class="o">=</span> <span class="n">rl</span><span class="o">.</span><span class="n">get_rate_by_name</span><span class="p">(</span><span class="n">rate_names</span><span class="p">)</span>
 <span class="n">rates</span>
@@ -674,7 +692,7 @@ and pass in the names of the rates in the form of a string <code class="docutils
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/dd89fc225f6ad7272f875d04a81134a9be8ee5645a0954c67fa39b2ca285f439.png" src="_images/dd89fc225f6ad7272f875d04a81134a9be8ee5645a0954c67fa39b2ca285f439.png" />
+<img alt="_images/5c23b23452585f0fae8efc86d5a4052f662014d361394f0d79f39f6085776a6f.png" src="_images/5c23b23452585f0fae8efc86d5a4052f662014d361394f0d79f39f6085776a6f.png" />
 </div>
 </div>
 <p>For example, this network knows how to write the full term for a reaction that goes into the <span class="math notranslate nohighlight">\(dY/dt\)</span> equation of the ODE system.</p>
@@ -700,7 +718,7 @@ and pass in the names of the rates in the form of a string <code class="docutils
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>rho*Y[jp]*Y[jc13]*rate_eval.p_C13_to_N14_reaclib
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>rho*Y[jp]*Y[jc13]*rate_eval.C13_p_to_N14_reaclib
 </pre></div>
 </div>
 </div>
@@ -714,7 +732,7 @@ and pass in the names of the rates in the form of a string <code class="docutils
 </div>
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>@numba.njit()
-def p_C13_to_N14_reaclib(rate_eval, tf, log_scor=0.0):
+def C13_p_to_N14_reaclib(rate_eval, tf, log_scor=0.0):
     # C13 + p --&gt; N14
     rate = 0.0
 
@@ -742,7 +760,7 @@ def p_C13_to_N14_reaclib(rate_eval, tf, log_scor=0.0):
     set_rate = np.exp(ln_set_rate)
     rate += set_rate
 
-    rate_eval.p_C13_to_N14_reaclib = rate
+    rate_eval.C13_p_to_N14_reaclib = rate
 </pre></div>
 </div>
 </div>
@@ -763,7 +781,7 @@ or <a class="reference internal" href="pynucastro.rates.approximate_rates.html#p
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pynet</span><span class="o">.</span><span class="n">write_network</span><span class="p">(</span><span class="s2">&quot;cno_test_integrate.py&quot;</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pynet</span><span class="o">.</span><span class="n">write_network</span><span class="p">(</span><span class="s2">"cno_test_integrate.py"</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -779,6 +797,8 @@ or <a class="reference internal" href="pynucastro.rates.approximate_rates.html#p
 import numpy as np
 from pynucastro.constants import constants
 from numba.experimental import jitclass
+
+N_A = constants.N_A
 
 from pynucastro.rates import (TableIndex, TableInterpolator, TabularWeakRate,
                               TempTableInterpolator, TemperatureTabularRate,
@@ -834,18 +854,18 @@ mass[jo14] = 0.020906683078094165
 mass[jo15] = 0.02239084645968795
 
 names = []
-names.append(&quot;H1&quot;)
-names.append(&quot;He4&quot;)
-names.append(&quot;C12&quot;)
-names.append(&quot;C13&quot;)
-names.append(&quot;N13&quot;)
-names.append(&quot;N14&quot;)
-names.append(&quot;N15&quot;)
-names.append(&quot;O14&quot;)
-names.append(&quot;O15&quot;)
+names.append("H1")
+names.append("He4")
+names.append("C12")
+names.append("C13")
+names.append("N13")
+names.append("N14")
+names.append("N15")
+names.append("O14")
+names.append("O15")
 
 def to_composition(Y):
-    &quot;&quot;&quot;Convert an array of molar fractions to a Composition object.&quot;&quot;&quot;
+    """Convert an array of molar fractions to a Composition object."""
     from pynucastro import Composition, Nucleus
     nuclei = [Nucleus.from_cache(name) for name in names]
     comp = Composition(nuclei)
@@ -855,7 +875,7 @@ def to_composition(Y):
 
 
 def energy_release(dY):
-    &quot;&quot;&quot;return the energy release in erg/g (/s if dY is actually dY/dt)&quot;&quot;&quot;
+    """return the energy release in erg/g (/s if dY is actually dY/dt)"""
     enuc = 0.0
     for i, y in enumerate(dY):
         enuc += y * mass[i]
@@ -863,32 +883,36 @@ def energy_release(dY):
     return enuc
 
 @jitclass([
-    (&quot;p_C12_to_N13_reaclib&quot;, numba.float64),
-    (&quot;p_C13_to_N14_reaclib&quot;, numba.float64),
-    (&quot;N13_to_C13_reaclib&quot;, numba.float64),
-    (&quot;p_N13_to_O14_reaclib&quot;, numba.float64),
-    (&quot;p_N14_to_O15_reaclib&quot;, numba.float64),
-    (&quot;p_N15_to_He4_C12_reaclib&quot;, numba.float64),
-    (&quot;O14_to_N14_reaclib&quot;, numba.float64),
-    (&quot;O15_to_N15_reaclib&quot;, numba.float64),
+    ("enuc_weak", numba.float64),
+    ("C12_p_to_N13_reaclib", numba.float64),
+    ("C13_p_to_N14_reaclib", numba.float64),
+    ("N13_to_C13_beta_pos_reaclib", numba.float64),
+    ("N13_p_to_O14_reaclib", numba.float64),
+    ("N14_p_to_O15_reaclib", numba.float64),
+    ("N15_p_to_He4_C12_reaclib", numba.float64),
+    ("O14_to_N14_beta_pos_reaclib", numba.float64),
+    ("O15_to_N15_beta_pos_reaclib", numba.float64),
+    ("dweak_ydot_dYe", numba.float64[:]),
 ])
 class RateEval:
     def __init__(self):
-        self.p_C12_to_N13_reaclib = np.nan
-        self.p_C13_to_N14_reaclib = np.nan
-        self.N13_to_C13_reaclib = np.nan
-        self.p_N13_to_O14_reaclib = np.nan
-        self.p_N14_to_O15_reaclib = np.nan
-        self.p_N15_to_He4_C12_reaclib = np.nan
-        self.O14_to_N14_reaclib = np.nan
-        self.O15_to_N15_reaclib = np.nan
+        self.enuc_weak = 0.0
+        self.C12_p_to_N13_reaclib = np.nan
+        self.C13_p_to_N14_reaclib = np.nan
+        self.N13_to_C13_beta_pos_reaclib = np.nan
+        self.N13_p_to_O14_reaclib = np.nan
+        self.N14_p_to_O15_reaclib = np.nan
+        self.N15_p_to_He4_C12_reaclib = np.nan
+        self.O14_to_N14_beta_pos_reaclib = np.nan
+        self.O15_to_N15_beta_pos_reaclib = np.nan
+        self.dweak_ydot_dYe = np.zeros(9)
 
 @numba.njit()
 def ye(Y):
-    return np.sum(Z * Y)/np.sum(A * Y)
+    return np.sum(Z * Y)
 
 @numba.njit()
-def p_C12_to_N13_reaclib(rate_eval, tf, log_scor=0.0):
+def C12_p_to_N13_reaclib(rate_eval, tf, log_scor=0.0):
     # C12 + p --&gt; N13
     rate = 0.0
 
@@ -908,10 +932,10 @@ def p_C12_to_N13_reaclib(rate_eval, tf, log_scor=0.0):
     set_rate = np.exp(ln_set_rate)
     rate += set_rate
 
-    rate_eval.p_C12_to_N13_reaclib = rate
+    rate_eval.C12_p_to_N13_reaclib = rate
 
 @numba.njit()
-def p_C13_to_N14_reaclib(rate_eval, tf, log_scor=0.0):
+def C13_p_to_N14_reaclib(rate_eval, tf, log_scor=0.0):
     # C13 + p --&gt; N14
     rate = 0.0
 
@@ -939,10 +963,10 @@ def p_C13_to_N14_reaclib(rate_eval, tf, log_scor=0.0):
     set_rate = np.exp(ln_set_rate)
     rate += set_rate
 
-    rate_eval.p_C13_to_N14_reaclib = rate
+    rate_eval.C13_p_to_N14_reaclib = rate
 
 @numba.njit()
-def N13_to_C13_reaclib(rate_eval, tf, log_scor=0.0):
+def N13_to_C13_beta_pos_reaclib(rate_eval, tf, log_scor=0.0):
     # N13 --&gt; C13
     rate = 0.0
 
@@ -953,10 +977,10 @@ def N13_to_C13_reaclib(rate_eval, tf, log_scor=0.0):
     set_rate = np.exp(ln_set_rate)
     rate += set_rate
 
-    rate_eval.N13_to_C13_reaclib = rate
+    rate_eval.N13_to_C13_beta_pos_reaclib = rate
 
 @numba.njit()
-def p_N13_to_O14_reaclib(rate_eval, tf, log_scor=0.0):
+def N13_p_to_O14_reaclib(rate_eval, tf, log_scor=0.0):
     # N13 + p --&gt; O14
     rate = 0.0
 
@@ -976,10 +1000,10 @@ def p_N13_to_O14_reaclib(rate_eval, tf, log_scor=0.0):
     set_rate = np.exp(ln_set_rate)
     rate += set_rate
 
-    rate_eval.p_N13_to_O14_reaclib = rate
+    rate_eval.N13_p_to_O14_reaclib = rate
 
 @numba.njit()
-def p_N14_to_O15_reaclib(rate_eval, tf, log_scor=0.0):
+def N14_p_to_O15_reaclib(rate_eval, tf, log_scor=0.0):
     # N14 + p --&gt; O15
     rate = 0.0
 
@@ -1015,10 +1039,10 @@ def p_N14_to_O15_reaclib(rate_eval, tf, log_scor=0.0):
     set_rate = np.exp(ln_set_rate)
     rate += set_rate
 
-    rate_eval.p_N14_to_O15_reaclib = rate
+    rate_eval.N14_p_to_O15_reaclib = rate
 
 @numba.njit()
-def p_N15_to_He4_C12_reaclib(rate_eval, tf, log_scor=0.0):
+def N15_p_to_He4_C12_reaclib(rate_eval, tf, log_scor=0.0):
     # N15 + p --&gt; He4 + C12
     rate = 0.0
 
@@ -1054,10 +1078,10 @@ def p_N15_to_He4_C12_reaclib(rate_eval, tf, log_scor=0.0):
     set_rate = np.exp(ln_set_rate)
     rate += set_rate
 
-    rate_eval.p_N15_to_He4_C12_reaclib = rate
+    rate_eval.N15_p_to_He4_C12_reaclib = rate
 
 @numba.njit()
-def O14_to_N14_reaclib(rate_eval, tf, log_scor=0.0):
+def O14_to_N14_beta_pos_reaclib(rate_eval, tf, log_scor=0.0):
     # O14 --&gt; N14
     rate = 0.0
 
@@ -1068,10 +1092,10 @@ def O14_to_N14_reaclib(rate_eval, tf, log_scor=0.0):
     set_rate = np.exp(ln_set_rate)
     rate += set_rate
 
-    rate_eval.O14_to_N14_reaclib = rate
+    rate_eval.O14_to_N14_beta_pos_reaclib = rate
 
 @numba.njit()
-def O15_to_N15_reaclib(rate_eval, tf, log_scor=0.0):
+def O15_to_N15_beta_pos_reaclib(rate_eval, tf, log_scor=0.0):
     # O15 --&gt; N15
     rate = 0.0
 
@@ -1082,7 +1106,7 @@ def O15_to_N15_reaclib(rate_eval, tf, log_scor=0.0):
     set_rate = np.exp(ln_set_rate)
     rate += set_rate
 
-    rate_eval.O15_to_N15_reaclib = rate
+    rate_eval.O15_to_N15_beta_pos_reaclib = rate
 
 def rhs(t, Y, rho, T, screen_func=None):
     return rhs_eq(t, Y, rho, T, screen_func)
@@ -1113,74 +1137,83 @@ def do_rate_eval(t, Y, rho, T, screen_func):
         scn_fac = ScreenFactors(1, 1, 6, 13)
         log_scor_p_C13 = screen_func(plasma_state, scn_fac)
 
+    rhoY = rho * ye(Y)
+    log_rhoY = np.log10(rhoY)
+    log_T = np.log10(T)
+
     # reaclib rates
-    p_C12_to_N13_reaclib(rate_eval, tf, log_scor=log_scor_p_C12)
-    p_C13_to_N14_reaclib(rate_eval, tf, log_scor=log_scor_p_C13)
-    N13_to_C13_reaclib(rate_eval, tf)
-    p_N13_to_O14_reaclib(rate_eval, tf, log_scor=log_scor_p_N13)
-    p_N14_to_O15_reaclib(rate_eval, tf, log_scor=log_scor_p_N14)
-    p_N15_to_He4_C12_reaclib(rate_eval, tf, log_scor=log_scor_p_N15)
-    O14_to_N14_reaclib(rate_eval, tf)
-    O15_to_N15_reaclib(rate_eval, tf)
+    C12_p_to_N13_reaclib(rate_eval, tf, log_scor=log_scor_p_C12)
+    C13_p_to_N14_reaclib(rate_eval, tf, log_scor=log_scor_p_C13)
+    N13_to_C13_beta_pos_reaclib(rate_eval, tf)
+    N13_p_to_O14_reaclib(rate_eval, tf, log_scor=log_scor_p_N13)
+    N14_p_to_O15_reaclib(rate_eval, tf, log_scor=log_scor_p_N14)
+    N15_p_to_He4_C12_reaclib(rate_eval, tf, log_scor=log_scor_p_N15)
+    O14_to_N14_beta_pos_reaclib(rate_eval, tf)
+    O15_to_N15_beta_pos_reaclib(rate_eval, tf)
 
     return rate_eval
+
+@numba.njit()
+def ydot_eq(Y, rho, rate_eval):
+
+    dYdt = np.zeros((nnuc), dtype=np.float64)
+
+    dYdt[jp] = (
+          -rho*Y[jp]*Y[jc12]*rate_eval.C12_p_to_N13_reaclib  +
+          -rho*Y[jp]*Y[jc13]*rate_eval.C13_p_to_N14_reaclib  +
+          -rho*Y[jp]*Y[jn13]*rate_eval.N13_p_to_O14_reaclib  +
+          -rho*Y[jp]*Y[jn14]*rate_eval.N14_p_to_O15_reaclib  +
+          -rho*Y[jp]*Y[jn15]*rate_eval.N15_p_to_He4_C12_reaclib
+       )
+
+    dYdt[jhe4] = (
+          +rho*Y[jp]*Y[jn15]*rate_eval.N15_p_to_He4_C12_reaclib
+       )
+
+    dYdt[jc12] = (
+          -rho*Y[jp]*Y[jc12]*rate_eval.C12_p_to_N13_reaclib  +
+          +rho*Y[jp]*Y[jn15]*rate_eval.N15_p_to_He4_C12_reaclib
+       )
+
+    dYdt[jc13] = (
+          -rho*Y[jp]*Y[jc13]*rate_eval.C13_p_to_N14_reaclib  +
+          +Y[jn13]*rate_eval.N13_to_C13_beta_pos_reaclib
+       )
+
+    dYdt[jn13] = (
+          +rho*Y[jp]*Y[jc12]*rate_eval.C12_p_to_N13_reaclib  +
+          -Y[jn13]*rate_eval.N13_to_C13_beta_pos_reaclib  +
+          -rho*Y[jp]*Y[jn13]*rate_eval.N13_p_to_O14_reaclib
+       )
+
+    dYdt[jn14] = (
+          +rho*Y[jp]*Y[jc13]*rate_eval.C13_p_to_N14_reaclib  +
+          -rho*Y[jp]*Y[jn14]*rate_eval.N14_p_to_O15_reaclib  +
+          +Y[jo14]*rate_eval.O14_to_N14_beta_pos_reaclib
+       )
+
+    dYdt[jn15] = (
+          -rho*Y[jp]*Y[jn15]*rate_eval.N15_p_to_He4_C12_reaclib  +
+          +Y[jo15]*rate_eval.O15_to_N15_beta_pos_reaclib
+       )
+
+    dYdt[jo14] = (
+          +rho*Y[jp]*Y[jn13]*rate_eval.N13_p_to_O14_reaclib  +
+          -Y[jo14]*rate_eval.O14_to_N14_beta_pos_reaclib
+       )
+
+    dYdt[jo15] = (
+          +rho*Y[jp]*Y[jn14]*rate_eval.N14_p_to_O15_reaclib  +
+          -Y[jo15]*rate_eval.O15_to_N15_beta_pos_reaclib
+       )
+
+    return dYdt
 
 @numba.njit()
 def rhs_eq(t, Y, rho, T, screen_func):
 
     rate_eval = do_rate_eval(t, Y, rho, T, screen_func)
-    dYdt = np.zeros((nnuc), dtype=np.float64)
-
-    dYdt[jp] = (
-          -rho*Y[jp]*Y[jc12]*rate_eval.p_C12_to_N13_reaclib  +
-          -rho*Y[jp]*Y[jc13]*rate_eval.p_C13_to_N14_reaclib  +
-          -rho*Y[jp]*Y[jn13]*rate_eval.p_N13_to_O14_reaclib  +
-          -rho*Y[jp]*Y[jn14]*rate_eval.p_N14_to_O15_reaclib  +
-          -rho*Y[jp]*Y[jn15]*rate_eval.p_N15_to_He4_C12_reaclib
-       )
-
-    dYdt[jhe4] = (
-          +rho*Y[jp]*Y[jn15]*rate_eval.p_N15_to_He4_C12_reaclib
-       )
-
-    dYdt[jc12] = (
-          -rho*Y[jp]*Y[jc12]*rate_eval.p_C12_to_N13_reaclib  +
-          +rho*Y[jp]*Y[jn15]*rate_eval.p_N15_to_He4_C12_reaclib
-       )
-
-    dYdt[jc13] = (
-          -rho*Y[jp]*Y[jc13]*rate_eval.p_C13_to_N14_reaclib  +
-          +Y[jn13]*rate_eval.N13_to_C13_reaclib
-       )
-
-    dYdt[jn13] = (
-          +rho*Y[jp]*Y[jc12]*rate_eval.p_C12_to_N13_reaclib  +
-          -Y[jn13]*rate_eval.N13_to_C13_reaclib  +
-          -rho*Y[jp]*Y[jn13]*rate_eval.p_N13_to_O14_reaclib
-       )
-
-    dYdt[jn14] = (
-          +rho*Y[jp]*Y[jc13]*rate_eval.p_C13_to_N14_reaclib  +
-          -rho*Y[jp]*Y[jn14]*rate_eval.p_N14_to_O15_reaclib  +
-          +Y[jo14]*rate_eval.O14_to_N14_reaclib
-       )
-
-    dYdt[jn15] = (
-          -rho*Y[jp]*Y[jn15]*rate_eval.p_N15_to_He4_C12_reaclib  +
-          +Y[jo15]*rate_eval.O15_to_N15_reaclib
-       )
-
-    dYdt[jo14] = (
-          +rho*Y[jp]*Y[jn13]*rate_eval.p_N13_to_O14_reaclib  +
-          -Y[jo14]*rate_eval.O14_to_N14_reaclib
-       )
-
-    dYdt[jo15] = (
-          +rho*Y[jp]*Y[jn14]*rate_eval.p_N14_to_O15_reaclib  +
-          -Y[jo15]*rate_eval.O15_to_N15_reaclib
-       )
-
-    return dYdt
+    return ydot_eq(Y, rho, rate_eval)
 
 def jacobian(t, Y, rho, T, screen_func=None):
     return jacobian_eq(t, Y, rho, T, screen_func)
@@ -1188,175 +1221,154 @@ def jacobian(t, Y, rho, T, screen_func=None):
 @numba.njit()
 def jacobian_eq(t, Y, rho, T, screen_func):
 
-    tf = Tfactors(T)
-    rate_eval = RateEval()
-
-    log_scor_p_N13 = 0.0
-    log_scor_p_C12 = 0.0
-    log_scor_p_N15 = 0.0
-    log_scor_p_N14 = 0.0
-    log_scor_p_C13 = 0.0
-
-    if screen_func is not None:
-        plasma_state = PlasmaState(T, rho, Y, Z)
-
-        scn_fac = ScreenFactors(1, 1, 7, 13)
-        log_scor_p_N13 = screen_func(plasma_state, scn_fac)
-        scn_fac = ScreenFactors(1, 1, 6, 12)
-        log_scor_p_C12 = screen_func(plasma_state, scn_fac)
-        scn_fac = ScreenFactors(1, 1, 7, 15)
-        log_scor_p_N15 = screen_func(plasma_state, scn_fac)
-        scn_fac = ScreenFactors(1, 1, 7, 14)
-        log_scor_p_N14 = screen_func(plasma_state, scn_fac)
-        scn_fac = ScreenFactors(1, 1, 6, 13)
-        log_scor_p_C13 = screen_func(plasma_state, scn_fac)
-
-    # reaclib rates
-    p_C12_to_N13_reaclib(rate_eval, tf, log_scor=log_scor_p_C12)
-    p_C13_to_N14_reaclib(rate_eval, tf, log_scor=log_scor_p_C13)
-    N13_to_C13_reaclib(rate_eval, tf)
-    p_N13_to_O14_reaclib(rate_eval, tf, log_scor=log_scor_p_N13)
-    p_N14_to_O15_reaclib(rate_eval, tf, log_scor=log_scor_p_N14)
-    p_N15_to_He4_C12_reaclib(rate_eval, tf, log_scor=log_scor_p_N15)
-    O14_to_N14_reaclib(rate_eval, tf)
-    O15_to_N15_reaclib(rate_eval, tf)
+    rate_eval = do_rate_eval(t, Y, rho, T, screen_func)
 
     jac = np.zeros((nnuc, nnuc), dtype=np.float64)
 
     jac[jp, jp] = (
-       -rho*Y[jc12]*rate_eval.p_C12_to_N13_reaclib
-       -rho*Y[jc13]*rate_eval.p_C13_to_N14_reaclib
-       -rho*Y[jn13]*rate_eval.p_N13_to_O14_reaclib
-       -rho*Y[jn14]*rate_eval.p_N14_to_O15_reaclib
-       -rho*Y[jn15]*rate_eval.p_N15_to_He4_C12_reaclib
+       -rho*Y[jc12]*rate_eval.C12_p_to_N13_reaclib
+       -rho*Y[jc13]*rate_eval.C13_p_to_N14_reaclib
+       -rho*Y[jn13]*rate_eval.N13_p_to_O14_reaclib
+       -rho*Y[jn14]*rate_eval.N14_p_to_O15_reaclib
+       -rho*Y[jn15]*rate_eval.N15_p_to_He4_C12_reaclib
        )
 
     jac[jp, jc12] = (
-       -rho*Y[jp]*rate_eval.p_C12_to_N13_reaclib
+       -rho*Y[jp]*rate_eval.C12_p_to_N13_reaclib
        )
 
     jac[jp, jc13] = (
-       -rho*Y[jp]*rate_eval.p_C13_to_N14_reaclib
+       -rho*Y[jp]*rate_eval.C13_p_to_N14_reaclib
        )
 
     jac[jp, jn13] = (
-       -rho*Y[jp]*rate_eval.p_N13_to_O14_reaclib
+       -rho*Y[jp]*rate_eval.N13_p_to_O14_reaclib
        )
 
     jac[jp, jn14] = (
-       -rho*Y[jp]*rate_eval.p_N14_to_O15_reaclib
+       -rho*Y[jp]*rate_eval.N14_p_to_O15_reaclib
        )
 
     jac[jp, jn15] = (
-       -rho*Y[jp]*rate_eval.p_N15_to_He4_C12_reaclib
+       -rho*Y[jp]*rate_eval.N15_p_to_He4_C12_reaclib
        )
 
     jac[jhe4, jp] = (
-       +rho*Y[jn15]*rate_eval.p_N15_to_He4_C12_reaclib
+       +rho*Y[jn15]*rate_eval.N15_p_to_He4_C12_reaclib
        )
 
     jac[jhe4, jn15] = (
-       +rho*Y[jp]*rate_eval.p_N15_to_He4_C12_reaclib
+       +rho*Y[jp]*rate_eval.N15_p_to_He4_C12_reaclib
        )
 
     jac[jc12, jp] = (
-       -rho*Y[jc12]*rate_eval.p_C12_to_N13_reaclib
-       +rho*Y[jn15]*rate_eval.p_N15_to_He4_C12_reaclib
+       -rho*Y[jc12]*rate_eval.C12_p_to_N13_reaclib
+       +rho*Y[jn15]*rate_eval.N15_p_to_He4_C12_reaclib
        )
 
     jac[jc12, jc12] = (
-       -rho*Y[jp]*rate_eval.p_C12_to_N13_reaclib
+       -rho*Y[jp]*rate_eval.C12_p_to_N13_reaclib
        )
 
     jac[jc12, jn15] = (
-       +rho*Y[jp]*rate_eval.p_N15_to_He4_C12_reaclib
+       +rho*Y[jp]*rate_eval.N15_p_to_He4_C12_reaclib
        )
 
     jac[jc13, jp] = (
-       -rho*Y[jc13]*rate_eval.p_C13_to_N14_reaclib
+       -rho*Y[jc13]*rate_eval.C13_p_to_N14_reaclib
        )
 
     jac[jc13, jc13] = (
-       -rho*Y[jp]*rate_eval.p_C13_to_N14_reaclib
+       -rho*Y[jp]*rate_eval.C13_p_to_N14_reaclib
        )
 
     jac[jc13, jn13] = (
-       +rate_eval.N13_to_C13_reaclib
+       +rate_eval.N13_to_C13_beta_pos_reaclib
        )
 
     jac[jn13, jp] = (
-       -rho*Y[jn13]*rate_eval.p_N13_to_O14_reaclib
-       +rho*Y[jc12]*rate_eval.p_C12_to_N13_reaclib
+       -rho*Y[jn13]*rate_eval.N13_p_to_O14_reaclib
+       +rho*Y[jc12]*rate_eval.C12_p_to_N13_reaclib
        )
 
     jac[jn13, jc12] = (
-       +rho*Y[jp]*rate_eval.p_C12_to_N13_reaclib
+       +rho*Y[jp]*rate_eval.C12_p_to_N13_reaclib
        )
 
     jac[jn13, jn13] = (
-       -rate_eval.N13_to_C13_reaclib
-       -rho*Y[jp]*rate_eval.p_N13_to_O14_reaclib
+       -rate_eval.N13_to_C13_beta_pos_reaclib
+       -rho*Y[jp]*rate_eval.N13_p_to_O14_reaclib
        )
 
     jac[jn14, jp] = (
-       -rho*Y[jn14]*rate_eval.p_N14_to_O15_reaclib
-       +rho*Y[jc13]*rate_eval.p_C13_to_N14_reaclib
+       -rho*Y[jn14]*rate_eval.N14_p_to_O15_reaclib
+       +rho*Y[jc13]*rate_eval.C13_p_to_N14_reaclib
        )
 
     jac[jn14, jc13] = (
-       +rho*Y[jp]*rate_eval.p_C13_to_N14_reaclib
+       +rho*Y[jp]*rate_eval.C13_p_to_N14_reaclib
        )
 
     jac[jn14, jn14] = (
-       -rho*Y[jp]*rate_eval.p_N14_to_O15_reaclib
+       -rho*Y[jp]*rate_eval.N14_p_to_O15_reaclib
        )
 
     jac[jn14, jo14] = (
-       +rate_eval.O14_to_N14_reaclib
+       +rate_eval.O14_to_N14_beta_pos_reaclib
        )
 
     jac[jn15, jp] = (
-       -rho*Y[jn15]*rate_eval.p_N15_to_He4_C12_reaclib
+       -rho*Y[jn15]*rate_eval.N15_p_to_He4_C12_reaclib
        )
 
     jac[jn15, jn15] = (
-       -rho*Y[jp]*rate_eval.p_N15_to_He4_C12_reaclib
+       -rho*Y[jp]*rate_eval.N15_p_to_He4_C12_reaclib
        )
 
     jac[jn15, jo15] = (
-       +rate_eval.O15_to_N15_reaclib
+       +rate_eval.O15_to_N15_beta_pos_reaclib
        )
 
     jac[jo14, jp] = (
-       +rho*Y[jn13]*rate_eval.p_N13_to_O14_reaclib
+       +rho*Y[jn13]*rate_eval.N13_p_to_O14_reaclib
        )
 
     jac[jo14, jn13] = (
-       +rho*Y[jp]*rate_eval.p_N13_to_O14_reaclib
+       +rho*Y[jp]*rate_eval.N13_p_to_O14_reaclib
        )
 
     jac[jo14, jo14] = (
-       -rate_eval.O14_to_N14_reaclib
+       -rate_eval.O14_to_N14_beta_pos_reaclib
        )
 
     jac[jo15, jp] = (
-       +rho*Y[jn14]*rate_eval.p_N14_to_O15_reaclib
+       +rho*Y[jn14]*rate_eval.N14_p_to_O15_reaclib
        )
 
     jac[jo15, jn14] = (
-       +rho*Y[jp]*rate_eval.p_N14_to_O15_reaclib
+       +rho*Y[jp]*rate_eval.N14_p_to_O15_reaclib
        )
 
     jac[jo15, jo15] = (
-       -rate_eval.O15_to_N15_reaclib
+       -rate_eval.O15_to_N15_beta_pos_reaclib
        )
+
+    # add ∂λ_weak / ∂Y_e terms now
+    # this uses ∂Y_e/∂Y_i = Z_i
+    for irow in range(nnuc):
+        for jcol in range(nnuc):
+            jac[irow, jcol] += rate_eval.dweak_ydot_dYe[irow] * Z[jcol]
 
     return jac
 </pre></div>
 </div>
 </div>
 </div>
-<p>We can now import the network that was just created and integrate it using the SciPy ODE solvers</p>
+</section>
+<section id="integrating-the-network-manually">
+<h2>Integrating the network manually<a class="headerlink" href="#integrating-the-network-manually" title="Link to this heading">#</a></h2>
+<p>We can use the stiff ODE integration solvers that are part of SciPy <a class="reference external" href="https://docs.scipy.org/doc/scipy/reference/generated/scipy.integrate.solve_ivp.html">solve_ivp</a> to integrate this system.</p>
+<p>We start by importing the network that was just created, to get access to its functions.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">cno_test_integrate</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">cno</span>
@@ -1364,9 +1376,6 @@ def jacobian_eq(t, Y, rho, T, screen_func):
 </div>
 </div>
 </div>
-<section id="integrating-the-network">
-<h2>Integrating the network<a class="headerlink" href="#integrating-the-network" title="Link to this heading">#</a></h2>
-<p>We can use the stiff ODE integration solvers that are part of SciPy <a class="reference external" href="https://docs.scipy.org/doc/scipy/reference/generated/scipy.integrate.solve_ivp.html">solve_ivp</a> to integrate this system.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">scipy.integrate</span><span class="w"> </span><span class="kn">import</span> <span class="n">solve_ivp</span>
@@ -1396,7 +1405,7 @@ def jacobian_eq(t, Y, rho, T, screen_func):
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">tmax</span> <span class="o">=</span> <span class="mf">1.e20</span>
 
-<span class="n">sol</span> <span class="o">=</span> <span class="n">solve_ivp</span><span class="p">(</span><span class="n">cno</span><span class="o">.</span><span class="n">rhs</span><span class="p">,</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="n">tmax</span><span class="p">],</span> <span class="n">Y0</span><span class="p">,</span> <span class="n">method</span><span class="o">=</span><span class="s2">&quot;BDF&quot;</span><span class="p">,</span> <span class="n">jac</span><span class="o">=</span><span class="n">cno</span><span class="o">.</span><span class="n">jacobian</span><span class="p">,</span>
+<span class="n">sol</span> <span class="o">=</span> <span class="n">solve_ivp</span><span class="p">(</span><span class="n">cno</span><span class="o">.</span><span class="n">rhs</span><span class="p">,</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="n">tmax</span><span class="p">],</span> <span class="n">Y0</span><span class="p">,</span> <span class="n">method</span><span class="o">=</span><span class="s2">"BDF"</span><span class="p">,</span> <span class="n">jac</span><span class="o">=</span><span class="n">cno</span><span class="o">.</span><span class="n">jacobian</span><span class="p">,</span>
                 <span class="n">dense_output</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">args</span><span class="o">=</span><span class="p">(</span><span class="n">rho</span><span class="p">,</span> <span class="n">T</span><span class="p">),</span> <span class="n">rtol</span><span class="o">=</span><span class="mf">1.e-6</span><span class="p">,</span> <span class="n">atol</span><span class="o">=</span><span class="mf">1.e-6</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -1411,8 +1420,8 @@ def jacobian_eq(t, Y, rho, T, screen_func):
 <h2>Analyzing the results<a class="headerlink" href="#analyzing-the-results" title="Link to this heading">#</a></h2>
 <p>The evolution of the massfractions can be visualized using standard plotting tools like Matplotlib.
 However, the <a class="reference internal" href="pynucastro.networks.python_network.html#pynucastro.networks.python_network.NetworkSolution" title="pynucastro.networks.python_network.NetworkSolution"><code class="xref py py-obj docutils literal notranslate"><span class="pre">NetworkSolution</span></code></a> class
-provides convenient built-in methods for post-processing and visualizations.
-To create a <a class="reference internal" href="pynucastro.networks.python_network.html#pynucastro.networks.python_network.NetworkSolution" title="pynucastro.networks.python_network.NetworkSolution"><code class="xref py py-obj docutils literal notranslate"><span class="pre">NetworkSolution</span></code></a> object,
+provides convenient built-in methods for post-processing and visualizations.</p>
+<p>To create a <a class="reference internal" href="pynucastro.networks.python_network.html#pynucastro.networks.python_network.NetworkSolution" title="pynucastro.networks.python_network.NetworkSolution"><code class="xref py py-obj docutils literal notranslate"><span class="pre">NetworkSolution</span></code></a> object,
 you need to provide the solution returned by <code class="docutils literal notranslate"><span class="pre">solve_ivp</span></code>, along with the <code class="docutils literal notranslate"><span class="pre">rhs</span></code> and <code class="docutils literal notranslate"><span class="pre">jacobian</span></code> functions
 from the network module, the corresponding <code class="docutils literal notranslate"><span class="pre">PythonNetwork</span></code> object, and the density and temperature used for integration.</p>
 <div class="cell docutils container">
@@ -1438,7 +1447,7 @@ from the network module, the corresponding <code class="docutils literal notrans
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/54c0b70a5ab964b5d62f7bdff4568564dbddae9bbb7b9385f15f8333a4fed9a9.png" src="_images/54c0b70a5ab964b5d62f7bdff4568564dbddae9bbb7b9385f15f8333a4fed9a9.png" />
+<img alt="_images/4e2bfa6da2da26e1352c207b7a3efb9d8ed29fa0861fabd5bfa429ee4d652325.png" src="_images/4e2bfa6da2da26e1352c207b7a3efb9d8ed29fa0861fabd5bfa429ee4d652325.png" />
 </div>
 </div>
 </section>
@@ -1454,7 +1463,7 @@ the network as <code class="docutils literal notranslate"><span class="pre">mass
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">E</span> <span class="o">=</span> <span class="n">network_sol</span><span class="o">.</span><span class="n">energy_release</span><span class="p">(</span><span class="n">sol</span><span class="o">.</span><span class="n">y</span><span class="p">[:,</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">-</span> <span class="n">Y0</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;E = </span><span class="si">{</span><span class="n">E</span><span class="si">:</span><span class="s2">20.10g</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"E = </span><span class="si">{</span><span class="n">E</span><span class="si">:</span><span class="s2">20.10g</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -1469,17 +1478,21 @@ the network as <code class="docutils literal notranslate"><span class="pre">mass
 <div class="math notranslate nohighlight">
 \[\epsilon = -N_A \sum_i \frac{dY_i}{dt} M_i\]</div>
 <p>at any given time using <a class="reference internal" href="pynucastro.networks.python_network.html#pynucastro.networks.python_network.NetworkSolution.energy_release_at" title="pynucastro.networks.python_network.NetworkSolution.energy_release_at"><code class="xref py py-func docutils literal notranslate"><span class="pre">energy_release_at</span></code></a></p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p><code class="docutils literal notranslate"><span class="pre">energy_release(dY)</span></code> only accounts for the binding-energy change from the composition change. It does not include tabular weak-rate neutrino losses or gamma deposition. When tabular weak rates are present in the network, these terms are accumulated during rate evaluation and included by <a class="reference internal" href="pynucastro.networks.python_network.html#pynucastro.networks.python_network.NetworkSolution.energy_release_at" title="pynucastro.networks.python_network.NetworkSolution.energy_release_at"><code class="xref py py-meth docutils literal notranslate"><span class="pre">NetworkSolution.energy_release_at</span></code></a>.</p>
+</div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">initial_epsilon</span> <span class="o">=</span> <span class="n">network_sol</span><span class="o">.</span><span class="n">energy_release_at</span><span class="p">(</span><span class="n">sol</span><span class="o">.</span><span class="n">t</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">fr</span><span class="s2">&quot;epsilon(t=</span><span class="si">{</span><span class="n">sol</span><span class="o">.</span><span class="n">t</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="si">:</span><span class="s2">10.10g</span><span class="si">}</span><span class="s2">) = </span><span class="si">{</span><span class="n">initial_epsilon</span><span class="si">:</span><span class="s2">20.10g</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">fr</span><span class="s2">"epsilon(t=</span><span class="si">{</span><span class="n">sol</span><span class="o">.</span><span class="n">t</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="si">:</span><span class="s2">10.10g</span><span class="si">}</span><span class="s2">) = </span><span class="si">{</span><span class="n">initial_epsilon</span><span class="si">:</span><span class="s2">20.10g</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
 
 <span class="n">t</span> <span class="o">=</span> <span class="mf">2.55e14</span>
 <span class="n">mid_epsilon</span> <span class="o">=</span> <span class="n">network_sol</span><span class="o">.</span><span class="n">energy_release_at</span><span class="p">(</span><span class="n">t</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;epsilon(t=</span><span class="si">{</span><span class="n">t</span><span class="si">:</span><span class="s2">10.10g</span><span class="si">}</span><span class="s2">) = </span><span class="si">{</span><span class="n">mid_epsilon</span><span class="si">:</span><span class="s2">20.10g</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"epsilon(t=</span><span class="si">{</span><span class="n">t</span><span class="si">:</span><span class="s2">10.10g</span><span class="si">}</span><span class="s2">) = </span><span class="si">{</span><span class="n">mid_epsilon</span><span class="si">:</span><span class="s2">20.10g</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
 
 <span class="n">final_epsilon</span> <span class="o">=</span> <span class="n">network_sol</span><span class="o">.</span><span class="n">energy_release_at</span><span class="p">(</span><span class="n">sol</span><span class="o">.</span><span class="n">t</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;epsilon(t=</span><span class="si">{</span><span class="n">sol</span><span class="o">.</span><span class="n">t</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span><span class="si">:</span><span class="s2">10.10g</span><span class="si">}</span><span class="s2">) = </span><span class="si">{</span><span class="n">final_epsilon</span><span class="si">:</span><span class="s2">20.10g</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"epsilon(t=</span><span class="si">{</span><span class="n">sol</span><span class="o">.</span><span class="n">t</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span><span class="si">:</span><span class="s2">10.10g</span><span class="si">}</span><span class="s2">) = </span><span class="si">{</span><span class="n">final_epsilon</span><span class="si">:</span><span class="s2">20.10g</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -1491,24 +1504,37 @@ epsilon(t=     1e+20) =      4.503996655e-10
 </div>
 </div>
 </div>
-<div class="admonition tip">
-<p class="admonition-title">Tip</p>
+</section>
+<section id="integrating-the-network-with-integrate-network">
+<h2>Integrating the network with <code class="docutils literal notranslate"><span class="pre">integrate_network</span></code><a class="headerlink" href="#integrating-the-network-with-integrate-network" title="Link to this heading">#</a></h2>
 <p><a class="reference internal" href="pynucastro.networks.python_network.html#pynucastro.networks.python_network.PythonNetwork" title="pynucastro.networks.python_network.PythonNetwork"><code class="xref py py-obj docutils literal notranslate"><span class="pre">PythonNetwork</span></code></a> class provides the convenient method
 <a class="reference internal" href="pynucastro.networks.python_network.html#pynucastro.networks.python_network.PythonNetwork.integrate_network" title="pynucastro.networks.python_network.PythonNetwork.integrate_network"><code class="xref py py-func docutils literal notranslate"><span class="pre">integrate_network</span></code></a>,
-which is a wrapper around <code class="docutils literal notranslate"><span class="pre">scipy.integrate.solve_ivp</span></code> for integrating the reaction network. This approach avoids the need to explicitly write out the Python module file via <a class="reference internal" href="pynucastro.networks.rate_collection.html#pynucastro.networks.rate_collection.RateCollection.write_network" title="pynucastro.networks.rate_collection.RateCollection.write_network"><code class="xref py py-func docutils literal notranslate"><span class="pre">write_network</span></code></a>.
-This method natively returns a <a class="reference internal" href="pynucastro.networks.python_network.html#pynucastro.networks.python_network.NetworkSolution" title="pynucastro.networks.python_network.NetworkSolution"><code class="xref py py-obj docutils literal notranslate"><span class="pre">NetworkSolution</span></code></a> object for easy analysis
+which is a wrapper around <code class="docutils literal notranslate"><span class="pre">scipy.integrate.solve_ivp</span></code> for integrating the reaction network. This approach avoids the need to explicitly write out the Python module file via <a class="reference internal" href="pynucastro.networks.rate_collection.html#pynucastro.networks.rate_collection.RateCollection.write_network" title="pynucastro.networks.rate_collection.RateCollection.write_network"><code class="xref py py-func docutils literal notranslate"><span class="pre">write_network</span></code></a>.</p>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p><code class="docutils literal notranslate"><span class="pre">integrate_network</span></code> natively returns a <a class="reference internal" href="pynucastro.networks.python_network.html#pynucastro.networks.python_network.NetworkSolution" title="pynucastro.networks.python_network.NetworkSolution"><code class="xref py py-obj docutils literal notranslate"><span class="pre">NetworkSolution</span></code></a> object for easy analysis
 and visualization.</p>
 </div>
 <p>To demonstrate the use of <a class="reference internal" href="pynucastro.networks.python_network.html#pynucastro.networks.python_network.PythonNetwork.integrate_network" title="pynucastro.networks.python_network.PythonNetwork.integrate_network"><code class="xref py py-func docutils literal notranslate"><span class="pre">integrate_network</span></code></a>,
 we will integrate the network with a different set of initial thermodynamic conditions.
-If no initial molar abundances are provided, the initial composition can be generated using one of three methods: <code class="docutils literal notranslate"><span class="pre">uniform</span></code>, <code class="docutils literal notranslate"><span class="pre">solar</span></code>, or <code class="docutils literal notranslate"><span class="pre">random</span></code>. In this example, we will use the <code class="docutils literal notranslate"><span class="pre">solar</span></code> composition.
-We can also specify a screening method to use, and we will use the <code class="docutils literal notranslate"><span class="pre">chugunov_2007</span></code> method for demonstration.</p>
+If no initial molar abundances are provided, the initial composition can be generated using one of three methods: <code class="docutils literal notranslate"><span class="pre">uniform</span></code>, <code class="docutils literal notranslate"><span class="pre">solar</span></code>, or <code class="docutils literal notranslate"><span class="pre">random</span></code>. In this example, we will use the <code class="docutils literal notranslate"><span class="pre">solar</span></code> composition.</p>
+<p>We will also make two more changes:</p>
+<ul class="simple">
+<li><p>We will specify a screening method to use, <code class="docutils literal notranslate"><span class="pre">chugunov_2007</span></code></p></li>
+<li><p>We will using the <code class="docutils literal notranslate"><span class="pre">stopping_condition</span></code> feature to integrate up to the point of H exhaustion.</p></li>
+</ul>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">rho</span> <span class="o">=</span> <span class="mi">200</span>
 <span class="n">T</span> <span class="o">=</span> <span class="mf">3.e7</span>
+
+<span class="c1"># we won't go all the way to tmax because of the stopping condition</span>
 <span class="n">tmax</span> <span class="o">=</span> <span class="mf">1e20</span>
-<span class="n">network_sol2</span> <span class="o">=</span> <span class="n">pynet</span><span class="o">.</span><span class="n">integrate_network</span><span class="p">(</span><span class="n">tmax</span><span class="p">,</span> <span class="n">rho</span><span class="p">,</span> <span class="n">T</span><span class="p">,</span> <span class="n">screen_method</span><span class="o">=</span><span class="s2">&quot;chugunov_2007&quot;</span><span class="p">,</span> <span class="n">initial_comp</span><span class="o">=</span><span class="s2">&quot;solar&quot;</span><span class="p">,</span> <span class="n">rtol</span><span class="o">=</span><span class="mf">1e-8</span><span class="p">,</span> <span class="n">atol</span><span class="o">=</span><span class="mf">1e-8</span><span class="p">)</span>
+
+<span class="n">network_sol2</span> <span class="o">=</span> <span class="n">pynet</span><span class="o">.</span><span class="n">integrate_network</span><span class="p">(</span><span class="n">tmax</span><span class="p">,</span> <span class="n">rho</span><span class="p">,</span> <span class="n">T</span><span class="p">,</span>
+                                       <span class="n">screen_method</span><span class="o">=</span><span class="s2">"chugunov_2007"</span><span class="p">,</span>
+                                       <span class="n">initial_comp</span><span class="o">=</span><span class="s2">"solar"</span><span class="p">,</span> <span class="n">rtol</span><span class="o">=</span><span class="mf">1e-8</span><span class="p">,</span> <span class="n">atol</span><span class="o">=</span><span class="mf">1e-8</span><span class="p">,</span>
+                                       <span class="n">stopping_condition</span><span class="o">=</span><span class="p">(</span><span class="s2">"h1"</span><span class="p">,</span> <span class="mf">1.e-5</span><span class="p">))</span>
 </pre></div>
 </div>
 </div>
@@ -1516,12 +1542,12 @@ We can also specify a screening method to use, and we will use the <code class="
 <p>The time evolution of the mass fractions can be visualized via built-in method <a class="reference internal" href="pynucastro.networks.python_network.html#pynucastro.networks.python_network.NetworkSolution.plot_evolution" title="pynucastro.networks.python_network.NetworkSolution.plot_evolution"><code class="xref py py-func docutils literal notranslate"><span class="pre">plot_evolution</span></code></a> just like before.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span> <span class="o">=</span> <span class="n">network_sol2</span><span class="o">.</span><span class="n">plot_evolution</span><span class="p">(</span><span class="n">tmin</span><span class="o">=</span><span class="mf">1e-2</span><span class="p">,</span> <span class="n">tmax</span><span class="o">=</span><span class="mf">1e20</span><span class="p">,</span> <span class="n">ymin</span><span class="o">=</span><span class="mf">1e-8</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span> <span class="o">=</span> <span class="n">network_sol2</span><span class="o">.</span><span class="n">plot_evolution</span><span class="p">(</span><span class="n">tmin</span><span class="o">=</span><span class="mf">1e-2</span><span class="p">,</span> <span class="n">ymin</span><span class="o">=</span><span class="mf">1e-8</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/e2bfbd44d89ec624b18bd211410c4bb486e6ea05e05e8e9ab57f1ed68673c31b.png" src="_images/e2bfbd44d89ec624b18bd211410c4bb486e6ea05e05e8e9ab57f1ed68673c31b.png" />
+<img alt="_images/b2d905a945ca22727e9a0724ee490dae4807bd95f8b5672b12e982ceebe56409.png" src="_images/b2d905a945ca22727e9a0724ee490dae4807bd95f8b5672b12e982ceebe56409.png" />
 </div>
 </div>
 </section>
@@ -1574,9 +1600,11 @@ We can also specify a screening method to use, and we will use the <code class="
   </div>
   <nav id="pst-page-toc-nav" class="page-toc" aria-labelledby="pst-page-navigation-heading-2">
     <ul class="pst-show_toc_level nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#integrating-the-network">Integrating the network</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#creating-our-pythonnetwork">Creating our <code class="docutils literal notranslate"><span class="pre">PythonNetwork</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#integrating-the-network-manually">Integrating the network manually</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#analyzing-the-results">Analyzing the results</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#energy-release">Energy release</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#integrating-the-network-with-integrate-network">Integrating the network with <code class="docutils literal notranslate"><span class="pre">integrate_network</span></code></a></li>
 </ul>
   </nav></div>
 

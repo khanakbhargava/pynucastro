@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>Notes on Working with Rate Objects &#8212; pynucastro 2.6.0.post361+g42130cd32 documentation</title>
+    <title>Working with Rate Objects &#8212; pynucastro 2.6.0.post464+g1516d7558 documentation</title>
   
   
   
@@ -42,12 +42,14 @@
   <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=90905a2f556bf617f1a9" />
 <link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=90905a2f556bf617f1a9" />
 
-    <script src="_static/documentation_options.js?v=6dc0a0bf"></script>
+    <script src="_static/documentation_options.js?v=9b191038"></script>
     <script src="_static/doctools.js?v=fd6eb6e6"></script>
     <script src="_static/sphinx_highlight.js?v=6ffebe34"></script>
     <script src="_static/clipboard.min.js?v=a7894cd8"></script>
     <script src="_static/copybutton.js?v=eaa7b67c"></script>
     <script src="_static/scripts/sphinx-book-theme.js?v=fab101a9"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-mml-chtml.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'rates-devel';</script>
     <script>DOCUMENTATION_OPTIONS.search_as_you_type = false;</script>
     <link rel="index" title="Index" href="genindex.html" />
@@ -196,22 +198,24 @@
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Advanced Rate Operations</span></p>
 <ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="screening-examples.html">Screening Rates</a></li>
-<li class="toctree-l1"><a class="reference internal" href="modify-example.html">Modifying Rates</a></li>
 <li class="toctree-l1"><a class="reference internal" href="custom-rates.html">Creating a Custom Rate</a></li>
 <li class="toctree-l1"><a class="reference internal" href="derived-rates.html">Derived Rates</a></li>
 </ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Approximating Rates</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="alpha-gamma-approx.html">Approximating alpha-capture</a></li>
+<li class="toctree-l1"><a class="reference internal" href="double-n-capture.html">Approximating double n-capture</a></li>
+<li class="toctree-l1"><a class="reference internal" href="modified-rates.html">Modified Rates</a></li>
+<li class="toctree-l1"><a class="reference internal" href="co-approximations.html">Approximating C and O Burning</a></li>
+<li class="toctree-l1"><a class="reference internal" href="branched-rates.html"><code class="docutils literal notranslate"><span class="pre">BranchedRate</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="not_in_ydot_term.html">Rate Sequences with Extra Reactants</a></li>
+</ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Advanced Network Operations</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1 has-children"><a class="reference internal" href="approximate-rates.html">Approximate and Modified Rates</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l2"><a class="reference internal" href="alpha-gamma-approx.html">Approximating alpha-capture</a></li>
-<li class="toctree-l2"><a class="reference internal" href="double-n-capture.html">Approximating double n-capture</a></li>
-<li class="toctree-l2"><a class="reference internal" href="modified-rates.html">Modified Rates</a></li>
-<li class="toctree-l2"><a class="reference internal" href="co-approximations.html">Approximating C and O Burning</a></li>
-</ul>
-</details></li>
 <li class="toctree-l1"><a class="reference internal" href="nse-protons.html">Using NSE Protons</a></li>
 <li class="toctree-l1"><a class="reference internal" href="unimportant-rates.html">Removing Unimportant Rates</a></li>
 <li class="toctree-l1"><a class="reference internal" href="network-cycles.html">Finding Cycles (with NetworkX)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="most-probable-path.html">Finding the Likely Path Between Nuclei (with NetworkX)</a></li>
 <li class="toctree-l1"><a class="reference internal" href="stiffness.html">Assessing the Stiffness of a Network</a></li>
 <li class="toctree-l1"><a class="reference internal" href="reduction.html">Network Reduction</a></li>
 <li class="toctree-l1"><a class="reference internal" href="sens_analysis_example.html">Sensitivity Analysis</a></li>
@@ -251,8 +255,15 @@
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Some Useful Networks</span></p>
 <ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="common-nets.html">Common Networks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="mesa-basic.html">MESA <code class="docutils literal notranslate"><span class="pre">basic.net</span></code> Network</a></li>
+<li class="toctree-l1"><a class="reference internal" href="cno-network.html">CNO burning network</a></li>
 <li class="toctree-l1"><a class="reference internal" href="aprox13.html">The “aprox13” network</a></li>
 <li class="toctree-l1"><a class="reference internal" href="he-burning-example.html">A He-burning Network</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Working With Simulation Codes</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="mesa-nova.html">Importing MESA Models and Visualizing Reactive Flow</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Examples in Nuclear Astrophysics</span></p>
 <ul class="nav bd-sidenav">
@@ -261,12 +272,14 @@
 <li class="toctree-l1"><a class="reference internal" href="examples/hot-CNO-breakout-example.html">hot-CNO and breakout</a></li>
 <li class="toctree-l1"><a class="reference internal" href="examples/triple_alpha_eval.html">Computing the Screened Triple-alpha rate</a></li>
 <li class="toctree-l1"><a class="reference internal" href="examples/he-burning.html">Ratio of C/O from He burning</a></li>
+<li class="toctree-l1"><a class="reference internal" href="examples/c-burning-products.html">Products of Carbon Burning</a></li>
 <li class="toctree-l1"><a class="reference internal" href="examples/supernova-lightcurve.html">A Supernova Lightcurve</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Developer Documentation</span></p>
 <ul class="current nav bd-sidenav">
-<li class="toctree-l1 current active"><a class="current reference internal" href="#">Notes on Working with <code class="docutils literal notranslate"><span class="pre">Rate</span></code> Objects</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Working with <code class="docutils literal notranslate"><span class="pre">Rate</span></code> Objects</a></li>
 <li class="toctree-l1"><a class="reference internal" href="adding-rates.html">Adding Rates from the Literature</a></li>
+<li class="toctree-l1"><a class="reference internal" href="nets-devel.html">Working with Network Objects</a></li>
 <li class="toctree-l1"><a class="reference internal" href="testing.html">Testing and Comparing Backends</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Reference</span></p>
@@ -292,6 +305,7 @@
 <li class="toctree-l3 has-children"><a class="reference internal" href="pynucastro.networks.html">pynucastro.networks package</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l4"><a class="reference internal" href="pynucastro.networks.amrexastro_cxx_network.html">pynucastro.networks.amrexastro_cxx_network module</a></li>
 <li class="toctree-l4"><a class="reference internal" href="pynucastro.networks.base_cxx_network.html">pynucastro.networks.base_cxx_network module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="pynucastro.networks.common_networks.html">pynucastro.networks.common_networks module</a></li>
 <li class="toctree-l4"><a class="reference internal" href="pynucastro.networks.fortran_network.html">pynucastro.networks.fortran_network module</a></li>
 <li class="toctree-l4"><a class="reference internal" href="pynucastro.networks.helper.html">pynucastro.networks.helper module</a></li>
 <li class="toctree-l4"><a class="reference internal" href="pynucastro.networks.network_compare.html">pynucastro.networks.network_compare module</a></li>
@@ -321,6 +335,7 @@
 <li class="toctree-l4"><a class="reference internal" href="pynucastro.rates.alternate_rates.html">pynucastro.rates.alternate_rates module</a></li>
 <li class="toctree-l4"><a class="reference internal" href="pynucastro.rates.approximate_rates.html">pynucastro.rates.approximate_rates module</a></li>
 <li class="toctree-l4"><a class="reference internal" href="pynucastro.rates.aprox_family_rates.html">pynucastro.rates.aprox_family_rates module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="pynucastro.rates.branched_rate.html">pynucastro.rates.branched_rate module</a></li>
 <li class="toctree-l4"><a class="reference internal" href="pynucastro.rates.derived_rate.html">pynucastro.rates.derived_rate module</a></li>
 <li class="toctree-l4"><a class="reference internal" href="pynucastro.rates.files.html">pynucastro.rates.files module</a></li>
 <li class="toctree-l4"><a class="reference internal" href="pynucastro.rates.known_duplicates.html">pynucastro.rates.known_duplicates module</a></li>
@@ -346,6 +361,7 @@
 <li class="toctree-l3"><a class="reference internal" href="pynucastro.mesa_utils.html">pynucastro.mesa_utils module</a></li>
 <li class="toctree-l3"><a class="reference internal" href="pynucastro.mpi_utils.html">pynucastro.mpi_utils module</a></li>
 <li class="toctree-l3"><a class="reference internal" href="pynucastro.numba_util.html">pynucastro.numba_util module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pynucastro.sort_utils.html">pynucastro.sort_utils module</a></li>
 <li class="toctree-l3"><a class="reference internal" href="pynucastro.utils.html">pynucastro.utils module</a></li>
 <li class="toctree-l3"><a class="reference internal" href="pynucastro.yt_utils.html">pynucastro.yt_utils module</a></li>
 </ul>
@@ -581,7 +597,7 @@
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>Notes on Working with Rate Objects</h1>
+    <h1>Working with Rate Objects</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -591,6 +607,8 @@
             </div>
             <nav aria-label="Page">
                 <ul class="pst-show_toc_level nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#list-membership">List membership</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#descriptive-attributes">Descriptive attributes</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#copying">Copying</a></li>
 </ul>
             </nav>
@@ -603,16 +621,112 @@
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <section id="notes-on-working-with-rate-objects">
-<h1>Notes on Working with <code class="docutils literal notranslate"><span class="pre">Rate</span></code> Objects<a class="headerlink" href="#notes-on-working-with-rate-objects" title="Link to this heading">#</a></h1>
-<section id="copying">
-<h2>Copying<a class="headerlink" href="#copying" title="Link to this heading">#</a></h2>
-<p>A <code class="docutils literal notranslate"><span class="pre">Rate</span></code> is not immutable.  When we do:</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">rl</span> <span class="o">=</span> <span class="n">pyna</span><span class="o">.</span><span class="n">ReacLibLibrary</span><span class="p">()</span>
-<span class="n">c12ag</span> <span class="o">=</span> <span class="n">rl</span><span class="o">.</span><span class="n">get_rate_by_name</span><span class="p">(</span><span class="s2">&quot;c12(a,g)o16&quot;</span><span class="p">)</span>
+  <section id="working-with-rate-objects">
+<h1>Working with <code class="docutils literal notranslate"><span class="pre">Rate</span></code> Objects<a class="headerlink" href="#working-with-rate-objects" title="Link to this heading">#</a></h1>
+<section id="list-membership">
+<h2>List membership<a class="headerlink" href="#list-membership" title="Link to this heading">#</a></h2>
+<p>The <a class="reference internal" href="pynucastro.rates.rate.html#pynucastro.rates.rate.Rate" title="pynucastro.rates.rate.Rate"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Rate</span></code></a> class defines an equality
+operator <code class="docutils literal notranslate"><span class="pre">__eq__</span></code> that is used as follows:</p>
+<ul>
+<li><p>To test equality of rates, for example, given a
+<code class="docutils literal notranslate"><span class="pre">Rate</span></code> <code class="docutils literal notranslate"><span class="pre">r</span></code> and a list of rates <code class="docutils literal notranslate"><span class="pre">rate_list</span></code> doing:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">if</span> <span class="n">r</span> <span class="ow">in</span> <span class="n">rate_list</span><span class="p">:</span>
+    <span class="c1"># do something</span>
 </pre></div>
 </div>
-<p>the rate <code class="docutils literal notranslate"><span class="pre">c12ag</span></code> is actually a reference to the version stored
+<p>will use <code class="docutils literal notranslate"><span class="pre">Rate.__eq__</span></code> for the comparison.</p>
+</li>
+<li><p>For a <code class="docutils literal notranslate"><span class="pre">RateCollection</span></code>, we use lists for <code class="docutils literal notranslate"><span class="pre">RateCollection.rates</span></code>
+and <code class="docutils literal notranslate"><span class="pre">RateCollection.all_rates</span></code>.  As noted above, to test membership
+in a list, the <code class="docutils literal notranslate"><span class="pre">id</span></code> will be used.</p></li>
+</ul>
+</section>
+<section id="descriptive-attributes">
+<h2>Descriptive attributes<a class="headerlink" href="#descriptive-attributes" title="Link to this heading">#</a></h2>
+<p>There are several different attributes that refer to the name /
+properties of the rate in some way.  Consider the rate for
+<span class="math notranslate nohighlight">\({}^{12}\mathrm{C}(\alpha,\gamma){}^{16}\mathrm{O}\)</span>:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">rl</span> <span class="o">=</span> <span class="n">pyna</span><span class="o">.</span><span class="n">ReacLibLibrary</span><span class="p">()</span>
+<span class="n">c12ag</span> <span class="o">=</span> <span class="n">rl</span><span class="o">.</span><span class="n">get_rate_by_name</span><span class="p">(</span><span class="s2">"c12(a,g)o16"</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>The following rate attributes are defined:</p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">Rate.rid</span></code> : this is a string that gives the reactants and
+products, using only ASCII characters.  No information about the
+source of the rate is included.</p>
+<p>It is not used for library operations directly, but instead is used
+to build <code class="docutils literal notranslate"><span class="pre">id</span></code> (described next) and included as a human-readable
+comment in the generated rate functions in exported networks.</p>
+<p>For <code class="docutils literal notranslate"><span class="pre">c12ag.rid</span></code>, we have:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="s1">'C12 + He4 --&gt; O16'</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Other sources of <span class="math notranslate nohighlight">\({}^{12}\mathrm{C}(\alpha,\gamma){}^{16}\mathrm{O}\)</span> will have the
+same <code class="docutils literal notranslate"><span class="pre">rid</span></code>.  For instance:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">pynucastro.rates.alternate_rates</span><span class="w"> </span><span class="kn">import</span> <span class="n">DeBoerC12agO16</span>
+<span class="n">c12ag_deboer</span> <span class="o">=</span> <span class="n">DeBoerC12agO16</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>We would find <code class="docutils literal notranslate"><span class="pre">c12ag_deboer.rid</span></code> to be:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="s1">'C12 + He4 --&gt; O16'</span>
+</pre></div>
+</div>
+</div>
+</li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Rate.id</span></code> : this is intended to be a unique identifier for a rate.
+It is composed of the <code class="docutils literal notranslate"><span class="pre">rid</span></code>, any label, and the rate source (<code class="docutils literal notranslate"><span class="pre">Rate.src</span></code>).</p>
+<p>Here are several ways <code class="docutils literal notranslate"><span class="pre">Rate.id</span></code> is used:</p>
+<ul>
+<li><p>For a <code class="docutils literal notranslate"><span class="pre">Library</span></code>, the main storage for rates (<code class="docutils literal notranslate"><span class="pre">Library._rates</span></code>)
+is a dictionary keyed by <code class="docutils literal notranslate"><span class="pre">Rate.id</span></code>.</p>
+<p>As a result, <code class="docutils literal notranslate"><span class="pre">Rate.id</span></code> must
+be unique in a <code class="docutils literal notranslate"><span class="pre">Library</span></code> and a generated network.</p>
+</li>
+<li><p>In the allowed-duplicate checks (<a class="reference internal" href="pynucastro.rates.known_duplicates.html#pynucastro.rates.known_duplicates.is_allowed_dupe" title="pynucastro.rates.known_duplicates.is_allowed_dupe"><code class="xref py py-func docutils literal notranslate"><span class="pre">is_allowed_dupe</span></code></a>), together with
+the rate class name.</p></li>
+</ul>
+<p>For <code class="docutils literal notranslate"><span class="pre">c12ag.id</span></code>, we have:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="s1">'C12 + He4 --&gt; O16 &lt;reaclib_nac2&gt;'</span>
+</pre></div>
+</div>
+<p>This is distinct from other sources of the <span class="math notranslate nohighlight">\({}^{12}\mathrm{C}(\alpha,\gamma){}^{16}\mathrm{O}\)</span> rate,
+so using <code class="docutils literal notranslate"><span class="pre">c12ag_deboer</span></code> defined above, we could see <code class="docutils literal notranslate"><span class="pre">c12ag_deboer.id</span></code> as:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="s1">'C12 + He4 --&gt; O16 &lt;deboer_deboer2017&gt;'</span>
+</pre></div>
+</div>
+</li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Rate.fname</span></code> : this is a programming-language safe name for the
+string (no special characters except for <code class="docutils literal notranslate"><span class="pre">_</span></code>), and is used for the function names
+and rate indices in exported networks.</p>
+<p>This must be unique in a generated network.</p>
+<p>For <code class="docutils literal notranslate"><span class="pre">c12ag</span></code>, we have:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="s1">'C12_He4_to_O16_reaclib'</span>
+</pre></div>
+</div>
+<p>For weak rates, the weak rate type is added to the string.  This is important,
+for example, since ReacLib provides two rates for <span class="math notranslate nohighlight">\(p + p\)</span>, a <span class="math notranslate nohighlight">\(\beta^+\)</span> and <span class="math notranslate nohighlight">\(e^-\)</span>-capture:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">pp</span><span class="p">,</span> <span class="n">pep</span> <span class="o">=</span> <span class="n">rl</span><span class="o">.</span><span class="n">get_rate_by_name</span><span class="p">(</span><span class="s2">"p(p,)d"</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>If we look at these separately, we see:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">pp.fname</span></code> is <code class="docutils literal notranslate"><span class="pre">'p_p_to_d_beta_pos_reaclib'</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">pep.fname</span></code> is <code class="docutils literal notranslate"><span class="pre">'p_p_to_d_electron_capture_reaclib'</span></code></p></li>
+</ul>
+</li>
+</ul>
+</section>
+<section id="copying">
+<h2>Copying<a class="headerlink" href="#copying" title="Link to this heading">#</a></h2>
+<p>A <code class="docutils literal notranslate"><span class="pre">Rate</span></code> is not immutable.  This can be an issue when we do:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">rl</span> <span class="o">=</span> <span class="n">pyna</span><span class="o">.</span><span class="n">ReacLibLibrary</span><span class="p">()</span>
+<span class="n">c12ag</span> <span class="o">=</span> <span class="n">rl</span><span class="o">.</span><span class="n">get_rate_by_name</span><span class="p">(</span><span class="s2">"c12(a,g)o16"</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Here, the rate <code class="docutils literal notranslate"><span class="pre">c12ag</span></code> is actually a reference to the version stored
 internally in the <code class="docutils literal notranslate"><span class="pre">Library</span></code> that <code class="docutils literal notranslate"><span class="pre">ReacLibLibrary</span></code> creates.</p>
 <p>This means if we modify the rate, e.g, as:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">c12ag</span><span class="o">.</span><span class="n">removed</span> <span class="o">=</span> <span class="kc">True</span>
@@ -633,6 +747,11 @@ shallow copy for most rate attributes, but explicitly recreates the
 <p class="admonition-title">Tip</p>
 <p>When we create a <code class="docutils literal notranslate"><span class="pre">RateCollection</span></code> or other network, we explicitly
 copy the rates into the network.</p>
+</div>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>For <a class="reference internal" href="pynucastro.rates.reaclib_rate.html#pynucastro.rates.reaclib_rate.ReacLibRate" title="pynucastro.rates.reaclib_rate.ReacLibRate"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ReacLibRate</span></code></a>, the
+sets that make up the rate are shared with the copy.</p>
 </div>
 </section>
 </section>
@@ -684,6 +803,8 @@ copy the rates into the network.</p>
   </div>
   <nav id="pst-page-toc-nav" class="page-toc" aria-labelledby="pst-page-navigation-heading-2">
     <ul class="pst-show_toc_level nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#list-membership">List membership</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#descriptive-attributes">Descriptive attributes</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#copying">Copying</a></li>
 </ul>
   </nav></div>

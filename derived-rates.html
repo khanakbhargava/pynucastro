@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>Derived Rates &#8212; pynucastro 2.6.0.post361+g42130cd32 documentation</title>
+    <title>Derived Rates &#8212; pynucastro 2.6.0.post464+g1516d7558 documentation</title>
   
   
   
@@ -42,7 +42,7 @@
   <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=90905a2f556bf617f1a9" />
 <link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=90905a2f556bf617f1a9" />
 
-    <script src="_static/documentation_options.js?v=6dc0a0bf"></script>
+    <script src="_static/documentation_options.js?v=9b191038"></script>
     <script src="_static/doctools.js?v=fd6eb6e6"></script>
     <script src="_static/sphinx_highlight.js?v=6ffebe34"></script>
     <script src="_static/clipboard.min.js?v=a7894cd8"></script>
@@ -54,7 +54,7 @@
     <script>DOCUMENTATION_OPTIONS.search_as_you_type = false;</script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="Approximate and Modified Rates" href="approximate-rates.html" />
+    <link rel="next" title="Approximating alpha-capture" href="alpha-gamma-approx.html" />
     <link rel="prev" title="Creating a Custom Rate" href="custom-rates.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
@@ -198,22 +198,24 @@
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Advanced Rate Operations</span></p>
 <ul class="current nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="screening-examples.html">Screening Rates</a></li>
-<li class="toctree-l1"><a class="reference internal" href="modify-example.html">Modifying Rates</a></li>
 <li class="toctree-l1"><a class="reference internal" href="custom-rates.html">Creating a Custom Rate</a></li>
 <li class="toctree-l1 current active"><a class="current reference internal" href="#">Derived Rates</a></li>
 </ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Approximating Rates</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="alpha-gamma-approx.html">Approximating alpha-capture</a></li>
+<li class="toctree-l1"><a class="reference internal" href="double-n-capture.html">Approximating double n-capture</a></li>
+<li class="toctree-l1"><a class="reference internal" href="modified-rates.html">Modified Rates</a></li>
+<li class="toctree-l1"><a class="reference internal" href="co-approximations.html">Approximating C and O Burning</a></li>
+<li class="toctree-l1"><a class="reference internal" href="branched-rates.html"><code class="docutils literal notranslate"><span class="pre">BranchedRate</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="not_in_ydot_term.html">Rate Sequences with Extra Reactants</a></li>
+</ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Advanced Network Operations</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1 has-children"><a class="reference internal" href="approximate-rates.html">Approximate and Modified Rates</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l2"><a class="reference internal" href="alpha-gamma-approx.html">Approximating alpha-capture</a></li>
-<li class="toctree-l2"><a class="reference internal" href="double-n-capture.html">Approximating double n-capture</a></li>
-<li class="toctree-l2"><a class="reference internal" href="modified-rates.html">Modified Rates</a></li>
-<li class="toctree-l2"><a class="reference internal" href="co-approximations.html">Approximating C and O Burning</a></li>
-</ul>
-</details></li>
 <li class="toctree-l1"><a class="reference internal" href="nse-protons.html">Using NSE Protons</a></li>
 <li class="toctree-l1"><a class="reference internal" href="unimportant-rates.html">Removing Unimportant Rates</a></li>
 <li class="toctree-l1"><a class="reference internal" href="network-cycles.html">Finding Cycles (with NetworkX)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="most-probable-path.html">Finding the Likely Path Between Nuclei (with NetworkX)</a></li>
 <li class="toctree-l1"><a class="reference internal" href="stiffness.html">Assessing the Stiffness of a Network</a></li>
 <li class="toctree-l1"><a class="reference internal" href="reduction.html">Network Reduction</a></li>
 <li class="toctree-l1"><a class="reference internal" href="sens_analysis_example.html">Sensitivity Analysis</a></li>
@@ -253,8 +255,15 @@
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Some Useful Networks</span></p>
 <ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="common-nets.html">Common Networks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="mesa-basic.html">MESA <code class="docutils literal notranslate"><span class="pre">basic.net</span></code> Network</a></li>
+<li class="toctree-l1"><a class="reference internal" href="cno-network.html">CNO burning network</a></li>
 <li class="toctree-l1"><a class="reference internal" href="aprox13.html">The “aprox13” network</a></li>
 <li class="toctree-l1"><a class="reference internal" href="he-burning-example.html">A He-burning Network</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Working With Simulation Codes</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="mesa-nova.html">Importing MESA Models and Visualizing Reactive Flow</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Examples in Nuclear Astrophysics</span></p>
 <ul class="nav bd-sidenav">
@@ -263,12 +272,14 @@
 <li class="toctree-l1"><a class="reference internal" href="examples/hot-CNO-breakout-example.html">hot-CNO and breakout</a></li>
 <li class="toctree-l1"><a class="reference internal" href="examples/triple_alpha_eval.html">Computing the Screened Triple-alpha rate</a></li>
 <li class="toctree-l1"><a class="reference internal" href="examples/he-burning.html">Ratio of C/O from He burning</a></li>
+<li class="toctree-l1"><a class="reference internal" href="examples/c-burning-products.html">Products of Carbon Burning</a></li>
 <li class="toctree-l1"><a class="reference internal" href="examples/supernova-lightcurve.html">A Supernova Lightcurve</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Developer Documentation</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="rates-devel.html">Notes on Working with <code class="docutils literal notranslate"><span class="pre">Rate</span></code> Objects</a></li>
+<li class="toctree-l1"><a class="reference internal" href="rates-devel.html">Working with <code class="docutils literal notranslate"><span class="pre">Rate</span></code> Objects</a></li>
 <li class="toctree-l1"><a class="reference internal" href="adding-rates.html">Adding Rates from the Literature</a></li>
+<li class="toctree-l1"><a class="reference internal" href="nets-devel.html">Working with Network Objects</a></li>
 <li class="toctree-l1"><a class="reference internal" href="testing.html">Testing and Comparing Backends</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Reference</span></p>
@@ -294,6 +305,7 @@
 <li class="toctree-l3 has-children"><a class="reference internal" href="pynucastro.networks.html">pynucastro.networks package</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l4"><a class="reference internal" href="pynucastro.networks.amrexastro_cxx_network.html">pynucastro.networks.amrexastro_cxx_network module</a></li>
 <li class="toctree-l4"><a class="reference internal" href="pynucastro.networks.base_cxx_network.html">pynucastro.networks.base_cxx_network module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="pynucastro.networks.common_networks.html">pynucastro.networks.common_networks module</a></li>
 <li class="toctree-l4"><a class="reference internal" href="pynucastro.networks.fortran_network.html">pynucastro.networks.fortran_network module</a></li>
 <li class="toctree-l4"><a class="reference internal" href="pynucastro.networks.helper.html">pynucastro.networks.helper module</a></li>
 <li class="toctree-l4"><a class="reference internal" href="pynucastro.networks.network_compare.html">pynucastro.networks.network_compare module</a></li>
@@ -323,6 +335,7 @@
 <li class="toctree-l4"><a class="reference internal" href="pynucastro.rates.alternate_rates.html">pynucastro.rates.alternate_rates module</a></li>
 <li class="toctree-l4"><a class="reference internal" href="pynucastro.rates.approximate_rates.html">pynucastro.rates.approximate_rates module</a></li>
 <li class="toctree-l4"><a class="reference internal" href="pynucastro.rates.aprox_family_rates.html">pynucastro.rates.aprox_family_rates module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="pynucastro.rates.branched_rate.html">pynucastro.rates.branched_rate module</a></li>
 <li class="toctree-l4"><a class="reference internal" href="pynucastro.rates.derived_rate.html">pynucastro.rates.derived_rate module</a></li>
 <li class="toctree-l4"><a class="reference internal" href="pynucastro.rates.files.html">pynucastro.rates.files module</a></li>
 <li class="toctree-l4"><a class="reference internal" href="pynucastro.rates.known_duplicates.html">pynucastro.rates.known_duplicates module</a></li>
@@ -348,6 +361,7 @@
 <li class="toctree-l3"><a class="reference internal" href="pynucastro.mesa_utils.html">pynucastro.mesa_utils module</a></li>
 <li class="toctree-l3"><a class="reference internal" href="pynucastro.mpi_utils.html">pynucastro.mpi_utils module</a></li>
 <li class="toctree-l3"><a class="reference internal" href="pynucastro.numba_util.html">pynucastro.numba_util module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pynucastro.sort_utils.html">pynucastro.sort_utils module</a></li>
 <li class="toctree-l3"><a class="reference internal" href="pynucastro.utils.html">pynucastro.utils module</a></li>
 <li class="toctree-l3"><a class="reference internal" href="pynucastro.yt_utils.html">pynucastro.yt_utils module</a></li>
 </ul>
@@ -655,7 +669,7 @@ semi-relativistic ideal gas by:</p>
 <p>or equivalently,</p>
 <div class="math notranslate nohighlight">
 \[\mu = \underbrace{k_B T \log \left[\dfrac{n}{g}\left( \dfrac{2\pi \hbar^2}{mkT} \right)^{3/2} \right]}_{\mu^{kin}} + mc^2 + \mu^c\]</div>
-<p>as summarized in <span class="bibtex-citation" id="id3">[<a class="reference internal" href="zreferences.html#id22" title="Thomas Rauscher and Friedrich-Karl Thielemann. Astrophysical Reaction Rates From Statistical Model Calculations. Atomic Data and Nuclear Data Tables, 75(1-2):1-351, May 2000. arXiv:astro-ph/0004059, doi:10.1006/adnd.2000.0834.">Rauscher and Thielemann, 2000</a>]</span>.</p>
+<p>as summarized in <span class="bibtex-citation" id="id3">Rauscher and Thielemann [<a class="reference internal" href="zreferences.html#id22" title="Thomas Rauscher and Friedrich-Karl Thielemann. Astrophysical Reaction Rates From Statistical Model Calculations. Atomic Data and Nuclear Data Tables, 75(1-2):1-351, May 2000. arXiv:astro-ph/0004059, doi:10.1006/adnd.2000.0834.">2000</a>]</span>.</p>
 <p>Often times we want to work in massfractions, <span class="math notranslate nohighlight">\(X_i = m_i n_i / \rho\)</span>,
 or in molar fractions, <span class="math notranslate nohighlight">\(Y_i = X_i / A_i\)</span>. Hence:</p>
 <div class="math notranslate nohighlight">
@@ -672,7 +686,7 @@ in their ground state as they approach. Hence to account for state degeneracy,
 However, particles may be in a superposition of states due to excitation
 of upper levels, with excitation energies <span class="math notranslate nohighlight">\(\Delta_l\)</span>,
 caused by an steady increase of the temperature.
-As pointed out in <span class="bibtex-citation" id="id4">[<a class="reference internal" href="zreferences.html#id22" title="Thomas Rauscher and Friedrich-Karl Thielemann. Astrophysical Reaction Rates From Statistical Model Calculations. Atomic Data and Nuclear Data Tables, 75(1-2):1-351, May 2000. arXiv:astro-ph/0004059, doi:10.1006/adnd.2000.0834.">Rauscher and Thielemann, 2000</a>]</span>, we have to replace
+As pointed out in <span class="bibtex-citation" id="id4">Rauscher and Thielemann [<a class="reference internal" href="zreferences.html#id22" title="Thomas Rauscher and Friedrich-Karl Thielemann. Astrophysical Reaction Rates From Statistical Model Calculations. Atomic Data and Nuclear Data Tables, 75(1-2):1-351, May 2000. arXiv:astro-ph/0004059, doi:10.1006/adnd.2000.0834.">2000</a>]</span>, we have to replace
 <span class="math notranslate nohighlight">\(g \rightarrow (2J_0 + 1) G\)</span>, where <span class="math notranslate nohighlight">\(G\)</span> is the internal partition
 function normalized by the ground state spin.</p>
 <div class="math notranslate nohighlight">
@@ -695,7 +709,7 @@ constant to the nearest boundary value.</p></li>
 reads a table and construct a dictionary between each nucleus and their partition function class object.</p></li>
 <li><p><a class="reference internal" href="pynucastro.nucdata.partition_function.html#pynucastro.nucdata.partition_function.PartitionFunctionCollection" title="pynucastro.nucdata.partition_function.PartitionFunctionCollection"><code class="xref py py-class docutils literal notranslate"><span class="pre">PartitionFunctionCollection</span></code></a>
 collects all the formatted table information, inside <code class="docutils literal notranslate"><span class="pre">/nucdata/PartitionFunction/</span></code>.
-It allow us to include the high temperature tables in <span class="bibtex-citation" id="id5">[<a class="reference internal" href="zreferences.html#id23" title="T. Rauscher. Nuclear partition functions at temperatures exceeding 10^10 K. The Astrophysical Journal Supplement Series, 147(2):403, August 2003. doi:10.1086/375733.">Rauscher, 2003</a>]</span> and to
+It allow us to include the high temperature tables in <span class="bibtex-citation" id="id5">Rauscher [<a class="reference internal" href="zreferences.html#id23" title="T. Rauscher. Nuclear partition functions at temperatures exceeding 10^10 K. The Astrophysical Journal Supplement Series, 147(2):403, August 2003. doi:10.1086/375733.">2003</a>]</span> and to
 select the model used to compute the partition functions, respectively. By default,
 we include high temperatures, and our partition function model to be the
 <em>finite range droplet model (FRDM)</em>. If a nucleus is not in the collection,
@@ -709,10 +723,10 @@ assigns a partition function class object to the defined nucleus.
 Let us illustrate how it work:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">pynucastro</span>
 
-<span class="n">co46</span> <span class="o">=</span> <span class="n">pynucastro</span><span class="o">.</span><span class="n">rates</span><span class="o">.</span><span class="n">Nucleus</span><span class="p">(</span><span class="s1">&#39;co46&#39;</span><span class="p">)</span>
+<span class="n">co46</span> <span class="o">=</span> <span class="n">pynucastro</span><span class="o">.</span><span class="n">rates</span><span class="o">.</span><span class="n">Nucleus</span><span class="p">(</span><span class="s1">'co46'</span><span class="p">)</span>
 <span class="n">pCollection</span> <span class="o">=</span> <span class="n">pynucastro</span><span class="o">.</span><span class="n">nucdata</span><span class="o">.</span><span class="n">PartitionFunctionCollection</span><span class="p">()</span>
 
-<span class="n">co46</span><span class="o">.</span><span class="n">set_partition_function</span><span class="p">(</span><span class="n">pCollection</span><span class="o">=</span><span class="n">pCollection</span><span class="p">,</span> <span class="n">set_data</span><span class="o">=</span><span class="s1">&#39;etfsiq&#39;</span><span class="p">,</span> <span class="n">use_high_temperatures</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">co46</span><span class="o">.</span><span class="n">set_partition_function</span><span class="p">(</span><span class="n">pCollection</span><span class="o">=</span><span class="n">pCollection</span><span class="p">,</span> <span class="n">set_data</span><span class="o">=</span><span class="s1">'etfsiq'</span><span class="p">,</span> <span class="n">use_high_temperatures</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 <span class="n">pf_co46</span> <span class="o">=</span> <span class="n">co46</span><span class="o">.</span><span class="n">get_partition_function</span><span class="p">()</span>
 </pre></div>
 </div>
@@ -724,8 +738,8 @@ how it works:</p>
 
 <span class="n">p_collection</span> <span class="o">=</span> <span class="n">pynucastro</span><span class="o">.</span><span class="n">nucdata</span><span class="o">.</span><span class="n">PartitionFunctionCollection</span><span class="p">()</span>
 
-<span class="n">o18_pg_f19</span> <span class="o">=</span> <span class="n">pynucastro</span><span class="o">.</span><span class="n">rates</span><span class="o">.</span><span class="n">Rate</span><span class="p">(</span><span class="s1">&#39;../data/o18-pg-f19-il10&#39;</span><span class="p">)</span>
-<span class="n">o18_pg_f19</span><span class="o">.</span><span class="n">set_partition_function</span><span class="p">(</span><span class="n">p_collection</span><span class="o">=</span><span class="n">p_collection</span><span class="p">,</span> <span class="n">set_data</span><span class="o">=</span><span class="s1">&#39;frdm&#39;</span><span class="p">,</span> <span class="n">use_high_temperatures</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">o18_pg_f19</span> <span class="o">=</span> <span class="n">pynucastro</span><span class="o">.</span><span class="n">rates</span><span class="o">.</span><span class="n">Rate</span><span class="p">(</span><span class="s1">'../data/o18-pg-f19-il10'</span><span class="p">)</span>
+<span class="n">o18_pg_f19</span><span class="o">.</span><span class="n">set_partition_function</span><span class="p">(</span><span class="n">p_collection</span><span class="o">=</span><span class="n">p_collection</span><span class="p">,</span> <span class="n">set_data</span><span class="o">=</span><span class="s1">'frdm'</span><span class="p">,</span> <span class="n">use_high_temperatures</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 
 <span class="n">p</span> <span class="o">=</span> <span class="n">o18_pg_f19</span><span class="o">.</span><span class="n">reactants</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
 <span class="n">o18</span> <span class="o">=</span> <span class="n">o18_pg_f19</span><span class="o">.</span><span class="n">reactants</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
@@ -742,9 +756,9 @@ how it works:</p>
 <p>The forward and reverse reactions are entangled due to thermodynamical and
 nuclear equilibrium aspects. In this section we will see how this connection is introduced
 and explore its consequences in the nuclear rates computation,
-as discussed in <span class="bibtex-citation" id="id6">[<a class="reference internal" href="zreferences.html#id22" title="Thomas Rauscher and Friedrich-Karl Thielemann. Astrophysical Reaction Rates From Statistical Model Calculations. Atomic Data and Nuclear Data Tables, 75(1-2):1-351, May 2000. arXiv:astro-ph/0004059, doi:10.1006/adnd.2000.0834.">Rauscher and Thielemann, 2000</a>]</span>. The general case is worked out in the appendix of
-<span class="bibtex-citation" id="id7">[<a class="reference internal" href="zreferences.html#id38" title="Alexander I. Smith, Eric T. Johnson, Zhi Chen, Kiran Eiden, Donald E. Willcox, Brendan Boyd, Lyra Cao, Christopher J. DeGrendele, and Michael Zingale. Pynucastro: A Python Library for Nuclear Astrophysics. The Astrophysical Journal, 947(2):65, April 2023. URL: https://iopscience.iop.org/article/10.3847/1538-4357/acbaff (visited on 2025-04-21), doi:10.3847/1538-4357/acbaff.">Smith <em>et al.</em>, 2023</a>]</span>. Here we demonstrate a less general reaction channel,
-<span class="math notranslate nohighlight">\(A + B \rightarrow C + D\)</span>, discussed in <span class="bibtex-citation" id="id8">[<a class="reference internal" href="zreferences.html#id3" title="Richard H. Cyburt, A. Matthew Amthor, Ryan Ferguson, Zach Meisel, Karl Smith, Scott Warren, Alexander Heger, R. D. Hoffman, Thomas Rauscher, Alexander Sakharuk, Hendrik Schatz, F. K. Thielemann, and Michael Wiescher. The JINA REACLIB database: its recent updates and impact on type-i x-ray bursts. The Astrophysical Journal Supplement Series, 189(1):240, 2010. URL: https://stacks.iop.org/0067-0049/189/i=1/a=240.">Cyburt <em>et al.</em>, 2010</a>]</span>, for simplicity.</p>
+as discussed in <span class="bibtex-citation" id="id6">Rauscher and Thielemann [<a class="reference internal" href="zreferences.html#id22" title="Thomas Rauscher and Friedrich-Karl Thielemann. Astrophysical Reaction Rates From Statistical Model Calculations. Atomic Data and Nuclear Data Tables, 75(1-2):1-351, May 2000. arXiv:astro-ph/0004059, doi:10.1006/adnd.2000.0834.">2000</a>]</span>. The general case is worked out in the appendix of
+<span class="bibtex-citation" id="id7">Smith <em>et al.</em> [<a class="reference internal" href="zreferences.html#id38" title="Alexander I. Smith, Eric T. Johnson, Zhi Chen, Kiran Eiden, Donald E. Willcox, Brendan Boyd, Lyra Cao, Christopher J. DeGrendele, and Michael Zingale. Pynucastro: A Python Library for Nuclear Astrophysics. The Astrophysical Journal, 947(2):65, April 2023. URL: https://iopscience.iop.org/article/10.3847/1538-4357/acbaff (visited on 2025-04-21), doi:10.3847/1538-4357/acbaff.">2023</a>]</span>. Here we demonstrate a less general reaction channel,
+<span class="math notranslate nohighlight">\(A + B \rightarrow C + D\)</span>, discussed in <span class="bibtex-citation" id="id8">Cyburt <em>et al.</em> [<a class="reference internal" href="zreferences.html#id3" title="Richard H. Cyburt, A. Matthew Amthor, Ryan Ferguson, Zach Meisel, Karl Smith, Scott Warren, Alexander Heger, R. D. Hoffman, Thomas Rauscher, Alexander Sakharuk, Hendrik Schatz, F. K. Thielemann, and Michael Wiescher. The JINA REACLIB database: its recent updates and impact on type-i x-ray bursts. The Astrophysical Journal Supplement Series, 189(1):240, 2010. URL: https://stacks.iop.org/0067-0049/189/i=1/a=240.">2010</a>]</span>, for simplicity.</p>
 <p>Starting with a pair of reaction channels, where <span class="math notranslate nohighlight">\(A\)</span>, <span class="math notranslate nohighlight">\(B\)</span>, <span class="math notranslate nohighlight">\(C\)</span>, <span class="math notranslate nohighlight">\(D\)</span> are distinct
 nuclear species:</p>
 <div class="math notranslate nohighlight">
@@ -840,9 +854,9 @@ work in log-space:</p>
 <p>When deriving an inverse rate from a ReacLib rate,
 the equilibrium ratio, excluding the partition functions,
 can be absorbed into the <a class="reference internal" href="rate_types.html#reaclib"><span class="std std-ref">ReacLib</span></a> parameterization,
-as shown in <span class="bibtex-citation" id="id10">[<a class="reference internal" href="zreferences.html#id22" title="Thomas Rauscher and Friedrich-Karl Thielemann. Astrophysical Reaction Rates From Statistical Model Calculations. Atomic Data and Nuclear Data Tables, 75(1-2):1-351, May 2000. arXiv:astro-ph/0004059, doi:10.1006/adnd.2000.0834.">Rauscher and Thielemann, 2000</a>]</span>.
+as shown in <span class="bibtex-citation" id="id10">Rauscher and Thielemann [<a class="reference internal" href="zreferences.html#id22" title="Thomas Rauscher and Friedrich-Karl Thielemann. Astrophysical Reaction Rates From Statistical Model Calculations. Atomic Data and Nuclear Data Tables, 75(1-2):1-351, May 2000. arXiv:astro-ph/0004059, doi:10.1006/adnd.2000.0834.">2000</a>]</span>.
 The general ReacLib parameterization of the DerivedRate
-is given in the appendix of <span class="bibtex-citation" id="id11">[<a class="reference internal" href="zreferences.html#id38" title="Alexander I. Smith, Eric T. Johnson, Zhi Chen, Kiran Eiden, Donald E. Willcox, Brendan Boyd, Lyra Cao, Christopher J. DeGrendele, and Michael Zingale. Pynucastro: A Python Library for Nuclear Astrophysics. The Astrophysical Journal, 947(2):65, April 2023. URL: https://iopscience.iop.org/article/10.3847/1538-4357/acbaff (visited on 2025-04-21), doi:10.3847/1538-4357/acbaff.">Smith <em>et al.</em>, 2023</a>]</span>.</p>
+is given in the appendix of <span class="bibtex-citation" id="id11">Smith <em>et al.</em> [<a class="reference internal" href="zreferences.html#id38" title="Alexander I. Smith, Eric T. Johnson, Zhi Chen, Kiran Eiden, Donald E. Willcox, Brendan Boyd, Lyra Cao, Christopher J. DeGrendele, and Michael Zingale. Pynucastro: A Python Library for Nuclear Astrophysics. The Astrophysical Journal, 947(2):65, April 2023. URL: https://iopscience.iop.org/article/10.3847/1538-4357/acbaff (visited on 2025-04-21), doi:10.3847/1538-4357/acbaff.">2023</a>]</span>.</p>
 </div>
 </section>
 </section>
@@ -868,11 +882,11 @@ is given in the appendix of <span class="bibtex-citation" id="id11">[<a class="r
       </div>
     </a>
     <a class="right-next"
-       href="approximate-rates.html"
+       href="alpha-gamma-approx.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Approximate and Modified Rates</p>
+        <p class="prev-next-title">Approximating alpha-capture</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
