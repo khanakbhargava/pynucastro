@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>Working with Rate Objects &#8212; pynucastro 2.6.0.post464+g1516d7558 documentation</title>
+    <title>Working with Rate Objects &#8212; pynucastro 2.6.0.post470+g0c22729e3 documentation</title>
   
   
   
@@ -42,7 +42,7 @@
   <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=90905a2f556bf617f1a9" />
 <link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=90905a2f556bf617f1a9" />
 
-    <script src="_static/documentation_options.js?v=9b191038"></script>
+    <script src="_static/documentation_options.js?v=1fbc5c94"></script>
     <script src="_static/doctools.js?v=fd6eb6e6"></script>
     <script src="_static/sphinx_highlight.js?v=6ffebe34"></script>
     <script src="_static/clipboard.min.js?v=a7894cd8"></script>
@@ -280,6 +280,7 @@
 <li class="toctree-l1 current active"><a class="current reference internal" href="#">Working with <code class="docutils literal notranslate"><span class="pre">Rate</span></code> Objects</a></li>
 <li class="toctree-l1"><a class="reference internal" href="adding-rates.html">Adding Rates from the Literature</a></li>
 <li class="toctree-l1"><a class="reference internal" href="nets-devel.html">Working with Network Objects</a></li>
+<li class="toctree-l1"><a class="reference internal" href="jac-devel.html">Form of the Jacobian</a></li>
 <li class="toctree-l1"><a class="reference internal" href="testing.html">Testing and Comparing Backends</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Reference</span></p>
@@ -608,7 +609,9 @@
             <nav aria-label="Page">
                 <ul class="pst-show_toc_level nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#list-membership">List membership</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#hashing-and-equality">Hashing and equality</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#descriptive-attributes">Descriptive attributes</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#function-arguments">Function arguments</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#copying">Copying</a></li>
 </ul>
             </nav>
@@ -636,10 +639,35 @@ operator <code class="docutils literal notranslate"><span class="pre">__eq__</sp
 </div>
 <p>will use <code class="docutils literal notranslate"><span class="pre">Rate.__eq__</span></code> for the comparison.</p>
 </li>
-<li><p>For a <code class="docutils literal notranslate"><span class="pre">RateCollection</span></code>, we use lists for <code class="docutils literal notranslate"><span class="pre">RateCollection.rates</span></code>
+<li><p>For a <a class="reference internal" href="pynucastro.networks.rate_collection.html#pynucastro.networks.rate_collection.RateCollection" title="pynucastro.networks.rate_collection.RateCollection"><code class="xref py py-obj docutils literal notranslate"><span class="pre">RateCollection</span></code></a>, we use lists for <code class="docutils literal notranslate"><span class="pre">RateCollection.rates</span></code>
 and <code class="docutils literal notranslate"><span class="pre">RateCollection.all_rates</span></code>.  As noted above, to test membership
-in a list, the <code class="docutils literal notranslate"><span class="pre">id</span></code> will be used.</p></li>
+in a list, the equality operator will be used.</p></li>
 </ul>
+</section>
+<section id="hashing-and-equality">
+<h2>Hashing and equality<a class="headerlink" href="#hashing-and-equality" title="Link to this heading">#</a></h2>
+<p>Rates can also be dictionary keys or set members.  Their hashes use the
+fields compared by their equality operators, independently of display
+strings, <code class="docutils literal notranslate"><span class="pre">id</span></code>, or <code class="docutils literal notranslate"><span class="pre">fname</span></code>:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">Rate</span></code> and subclasses inheriting its equality compare the reactant and
+product lists and <code class="docutils literal notranslate"><span class="pre">weak_type</span></code>.  Rates using different equality
+implementations compare unequal, so comparisons between base-rate
+wrappers and specialized rates are symmetric.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">ReacLibRate</span></code> also compares the chapter and the collection of
+<code class="docutils literal notranslate"><span class="pre">SingleSet</span></code> objects, ignoring set order but preserving duplicate counts.
+Each <code class="docutils literal notranslate"><span class="pre">SingleSet</span></code> compares its ordered coefficients, label, and flags.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">TemperatureTabularRate</span></code> and <code class="docutils literal notranslate"><span class="pre">TabularWeakRate</span></code> compare reactant and
+product lists within their respective rate families.  <code class="docutils literal notranslate"><span class="pre">StarLibRate</span></code>
+additionally compares <code class="docutils literal notranslate"><span class="pre">weak_type</span></code> within the StarLib family.</p></li>
+</ul>
+<p>Fields not used in equality, such as tabulated rate values, must not be
+added to the hash alone.  These comparisons define object identity, not
+numerical equivalence at every temperature and density.</p>
+<p>Rates and <code class="docutils literal notranslate"><span class="pre">SingleSet</span></code> objects remain mutable.  Do not change their
+equality fields (including nested set coefficients) while using them as
+dictionary keys or set members.  Copy a library rate before modifying it;
+copy its sets and coefficient arrays too if those will be changed.</p>
 </section>
 <section id="descriptive-attributes">
 <h2>Descriptive attributes<a class="headerlink" href="#descriptive-attributes" title="Link to this heading">#</a></h2>
@@ -717,6 +745,29 @@ for example, since ReacLib provides two rates for <span class="math notranslate 
 <li><p><code class="docutils literal notranslate"><span class="pre">pep.fname</span></code> is <code class="docutils literal notranslate"><span class="pre">'p_p_to_d_electron_capture_reaclib'</span></code></p></li>
 </ul>
 </li>
+</ul>
+</section>
+<section id="function-arguments">
+<span id="sec-rate-function-args"></span><h2>Function arguments<a class="headerlink" href="#function-arguments" title="Link to this heading">#</a></h2>
+<p>For a <a class="reference internal" href="pynucastro.networks.python_network.html#pynucastro.networks.python_network.PythonNetwork" title="pynucastro.networks.python_network.PythonNetwork"><code class="xref py py-obj docutils literal notranslate"><span class="pre">PythonNetwork</span></code></a>
+or one of the C++ networks, a separate function is output that computes each rate.
+The arguments for these functions (both for the function definition and calling)
+are generated by <a class="reference internal" href="pynucastro.rates.rate.html#pynucastro.rates.rate.py_rate_func_args" title="pynucastro.rates.rate.py_rate_func_args"><code class="xref py py-func docutils literal notranslate"><span class="pre">py_rate_func_args</span></code></a>
+and <a class="reference internal" href="pynucastro.rates.rate.html#pynucastro.rates.rate.cxx_rate_func_args" title="pynucastro.rates.rate.cxx_rate_func_args"><code class="xref py py-func docutils literal notranslate"><span class="pre">cxx_rate_func_args</span></code></a> based
+on the following attributes of a <code class="docutils literal notranslate"><span class="pre">Rate</span></code> object:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">rate_eval_needs_tfactors</span></code> : adds <a class="reference internal" href="pynucastro.rates.rate.html#pynucastro.rates.rate.Tfactors" title="pynucastro.rates.rate.Tfactors"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Tfactors</span></code></a> (or its C++ equivalent) to the
+argument list</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">rate_eval_needs_temp</span></code> : adds temperature, <span class="math notranslate nohighlight">\(T\)</span>, to the argument list</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">rate_eval_needs_logtemp</span></code> : adds log base-10 temperature,
+<span class="math notranslate nohighlight">\(\log_{10}(T)\)</span>, to the argument list</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">rate_eval_needs_rho</span></code> : adds density, <span class="math notranslate nohighlight">\(\rho\)</span>, to the argument list</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">rate_eval_needs_rhoye</span></code> : adds the product <span class="math notranslate nohighlight">\(\rho Y_e\)</span>, where <span class="math notranslate nohighlight">\(Y_e\)</span>
+is the electron fraction, to the argument list</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">rate_eval_needs_logrhoye</span></code> : adds <span class="math notranslate nohighlight">\(\log_{10}(\rho Y_e)\)</span> to the argument list</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">rate_eval_needs_comp</span></code> : adds the molar fractions, <span class="math notranslate nohighlight">\(Y\)</span>, to the argument list</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">rate_eval_needs_pfcache</span></code> : (C++-only) adds the partition function
+cache (of type <code class="docutils literal notranslate"><span class="pre">part_fun::pf_cache_t</span></code>) to the argument list</p></li>
 </ul>
 </section>
 <section id="copying">
@@ -804,7 +855,9 @@ sets that make up the rate are shared with the copy.</p>
   <nav id="pst-page-toc-nav" class="page-toc" aria-labelledby="pst-page-navigation-heading-2">
     <ul class="pst-show_toc_level nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#list-membership">List membership</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#hashing-and-equality">Hashing and equality</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#descriptive-attributes">Descriptive attributes</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#function-arguments">Function arguments</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#copying">Copying</a></li>
 </ul>
   </nav></div>

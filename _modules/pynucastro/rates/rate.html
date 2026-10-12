@@ -7,7 +7,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>pynucastro.rates.rate &#8212; pynucastro 2.6.0.post464+g1516d7558 documentation</title>
+    <title>pynucastro.rates.rate &#8212; pynucastro 2.6.0.post470+g0c22729e3 documentation</title>
   
   
   
@@ -41,7 +41,7 @@
   <link rel="preload" as="script" href="../../../_static/scripts/bootstrap.js?digest=90905a2f556bf617f1a9" />
 <link rel="preload" as="script" href="../../../_static/scripts/pydata-sphinx-theme.js?digest=90905a2f556bf617f1a9" />
 
-    <script src="../../../_static/documentation_options.js?v=9b191038"></script>
+    <script src="../../../_static/documentation_options.js?v=1fbc5c94"></script>
     <script src="../../../_static/doctools.js?v=fd6eb6e6"></script>
     <script src="../../../_static/sphinx_highlight.js?v=6ffebe34"></script>
     <script src="../../../_static/clipboard.min.js?v=a7894cd8"></script>
@@ -277,6 +277,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../../../rates-devel.html">Working with <code class="docutils literal notranslate"><span class="pre">Rate</span></code> Objects</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../adding-rates.html">Adding Rates from the Literature</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../nets-devel.html">Working with Network Objects</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../jac-devel.html">Form of the Jacobian</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../testing.html">Testing and Comparing Backends</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Reference</span></p>
@@ -634,7 +635,7 @@
 
 <div class="viewcode-block" id="py_rate_func_args">
 <a class="viewcode-back" href="../../../pynucastro.rates.rate.html#pynucastro.rates.rate.py_rate_func_args">[docs]</a>
-<span class="k">def</span><span class="w"> </span><span class="nf">py_rate_func_args</span><span class="p">(</span><span class="n">r</span><span class="p">,</span> <span class="o">*</span><span class="p">,</span> <span class="n">mode</span><span class="o">=</span><span class="s2">"definition"</span><span class="p">):</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">py_rate_func_args</span><span class="p">(</span><span class="n">r</span><span class="p">,</span> <span class="o">*</span><span class="p">,</span> <span class="n">mode</span><span class="o">=</span><span class="s2">"definition"</span><span class="p">,</span> <span class="n">screen_term_pass</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">"""Given a rate, give the list of arguments that are needed to</span>
 <span class="sd">    define the python function arguments or call the python function.</span>
 
@@ -645,6 +646,10 @@
 <span class="sd">    mode : str</span>
 <span class="sd">        "definition" if it is for writing the function,</span>
 <span class="sd">        "call" if it is for calling the function</span>
+<span class="sd">    screen_term_pass : str</span>
+<span class="sd">        The name of a screening variable to pass onto the function</span>
+<span class="sd">        when calling.  If it is None, then it will automatically be</span>
+<span class="sd">        generated via the screening pairs.</span>
 
 <span class="sd">    Returns</span>
 <span class="sd">    -------</span>
@@ -669,7 +674,7 @@
         <span class="k">if</span> <span class="n">r</span><span class="o">.</span><span class="n">rate_eval_needs_comp</span><span class="p">:</span>
             <span class="n">args</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">"Y=None"</span><span class="p">)</span>
         <span class="k">if</span> <span class="n">r</span><span class="o">.</span><span class="n">screening_pairs</span><span class="p">:</span>
-            <span class="n">args</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">"log_scor=0"</span><span class="p">)</span>
+            <span class="n">args</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">"log_scor=0.0"</span><span class="p">)</span>
 
     <span class="k">else</span><span class="p">:</span>
         <span class="n">args</span> <span class="o">=</span> <span class="p">[</span><span class="s2">"rate_eval"</span><span class="p">]</span>
@@ -686,8 +691,11 @@
         <span class="k">if</span> <span class="n">r</span><span class="o">.</span><span class="n">rate_eval_needs_comp</span><span class="p">:</span>
             <span class="n">args</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">"Y=Y"</span><span class="p">)</span>
         <span class="k">if</span> <span class="n">r</span><span class="o">.</span><span class="n">screening_pairs</span><span class="p">:</span>
-            <span class="n">screen_terms</span> <span class="o">=</span> <span class="p">[</span><span class="sa">f</span><span class="s2">"log_scor_</span><span class="si">{</span><span class="n">r1</span><span class="si">}</span><span class="s2">_</span><span class="si">{</span><span class="n">r2</span><span class="si">}</span><span class="s2">"</span>
-                            <span class="k">for</span> <span class="n">r1</span><span class="p">,</span> <span class="n">r2</span> <span class="ow">in</span> <span class="n">r</span><span class="o">.</span><span class="n">screening_pairs</span><span class="p">]</span>
+            <span class="k">if</span> <span class="n">screen_term_pass</span><span class="p">:</span>
+                <span class="n">screen_terms</span> <span class="o">=</span> <span class="p">[</span><span class="n">screen_term_pass</span><span class="p">]</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">screen_terms</span> <span class="o">=</span> <span class="p">[</span><span class="sa">f</span><span class="s2">"log_scor_</span><span class="si">{</span><span class="n">r1</span><span class="si">}</span><span class="s2">_</span><span class="si">{</span><span class="n">r2</span><span class="si">}</span><span class="s2">"</span>
+                                <span class="k">for</span> <span class="n">r1</span><span class="p">,</span> <span class="n">r2</span> <span class="ow">in</span> <span class="n">r</span><span class="o">.</span><span class="n">screening_pairs</span><span class="p">]</span>
             <span class="n">args</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">"log_scor="</span> <span class="o">+</span> <span class="s2">" + "</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">screen_terms</span><span class="p">))</span>
 
     <span class="k">return</span> <span class="n">args</span></div>
@@ -1033,7 +1041,7 @@
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">string</span>
 
     <span class="k">def</span><span class="w"> </span><span class="fm">__hash__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="k">return</span> <span class="nb">hash</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="fm">__repr__</span><span class="p">())</span>
+        <span class="k">return</span> <span class="nb">hash</span><span class="p">((</span><span class="nb">tuple</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">reactants</span><span class="p">),</span> <span class="nb">tuple</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">products</span><span class="p">),</span> <span class="bp">self</span><span class="o">.</span><span class="n">weak_type</span><span class="p">))</span>
 
     <span class="k">def</span><span class="w"> </span><span class="nf">__copy__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">"""Make a copy of the rate via copy.copy().  This is mostly</span>
@@ -1058,9 +1066,18 @@
 
     <span class="k">def</span><span class="w"> </span><span class="fm">__eq__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">"""Determine whether two Rate objects are equal.  They are</span>
-<span class="sd">        equal if they contain identical reactants and products</span>
+<span class="sd">        equal if they use the same equality implementation and contain</span>
+<span class="sd">        identical reactants, products, and weak types.</span>
 
 <span class="sd">        """</span>
+
+        <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">other</span><span class="p">,</span> <span class="n">Rate</span><span class="p">):</span>
+            <span class="k">return</span> <span class="bp">NotImplemented</span>
+
+        <span class="c1"># Subclasses with more restrictive equality must not compare equal</span>
+        <span class="c1"># in only one direction to rates using the base implementation.</span>
+        <span class="k">if</span> <span class="nb">type</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__eq__</span> <span class="ow">is</span> <span class="ow">not</span> <span class="nb">type</span><span class="p">(</span><span class="n">other</span><span class="p">)</span><span class="o">.</span><span class="fm">__eq__</span><span class="p">:</span>
+            <span class="k">return</span> <span class="kc">False</span>
 
         <span class="n">test1</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">weak_type</span> <span class="o">==</span> <span class="n">other</span><span class="o">.</span><span class="n">weak_type</span>
         <span class="n">test2</span> <span class="o">=</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">reactants</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">products</span><span class="p">)</span> <span class="o">==</span> <span class="p">(</span><span class="n">other</span><span class="o">.</span><span class="n">reactants</span><span class="p">,</span> <span class="n">other</span><span class="o">.</span><span class="n">products</span><span class="p">)</span>

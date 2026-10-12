@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>NSE vs. Direct Integration &#8212; pynucastro 2.6.0.post464+g1516d7558 documentation</title>
+    <title>NSE vs. Direct Integration &#8212; pynucastro 2.6.0.post470+g0c22729e3 documentation</title>
   
   
   
@@ -42,7 +42,7 @@
   <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=90905a2f556bf617f1a9" />
 <link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=90905a2f556bf617f1a9" />
 
-    <script src="_static/documentation_options.js?v=9b191038"></script>
+    <script src="_static/documentation_options.js?v=1fbc5c94"></script>
     <script src="_static/doctools.js?v=fd6eb6e6"></script>
     <script src="_static/sphinx_highlight.js?v=6ffebe34"></script>
     <script src="_static/clipboard.min.js?v=a7894cd8"></script>
@@ -280,6 +280,7 @@
 <li class="toctree-l1"><a class="reference internal" href="rates-devel.html">Working with <code class="docutils literal notranslate"><span class="pre">Rate</span></code> Objects</a></li>
 <li class="toctree-l1"><a class="reference internal" href="adding-rates.html">Adding Rates from the Literature</a></li>
 <li class="toctree-l1"><a class="reference internal" href="nets-devel.html">Working with Network Objects</a></li>
+<li class="toctree-l1"><a class="reference internal" href="jac-devel.html">Form of the Jacobian</a></li>
 <li class="toctree-l1"><a class="reference internal" href="testing.html">Testing and Comparing Backends</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Reference</span></p>
@@ -863,7 +864,7 @@ Since we will compare to NSE, we want to use the same screening that NSE uses â€
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/cbb38c1de46db4648c1417e9bfbf939403921d8ecfee3e1b6c624de69a466259.png" src="_images/cbb38c1de46db4648c1417e9bfbf939403921d8ecfee3e1b6c624de69a466259.png" />
+<img alt="_images/f0754f26c203977f32aaed2641591a6163df1c2d253ef6cb07eccb29e8c546ea.png" src="_images/f0754f26c203977f32aaed2641591a6163df1c2d253ef6cb07eccb29e8c546ea.png" />
 </div>
 </div>
 </section>
@@ -931,7 +932,7 @@ Since we will compare to NSE, we want to use the same screening that NSE uses â€
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/ad77062bdef9d3e4552f5e4a22ecb851a7eabfeb09c707dcc5d7cd17cc97ea13.png" src="_images/ad77062bdef9d3e4552f5e4a22ecb851a7eabfeb09c707dcc5d7cd17cc97ea13.png" />
+<img alt="_images/a6f630ca245648c1fa94d239aea70a7f03cbd0af7302b71d0e9322dcaaf1b467.png" src="_images/a6f630ca245648c1fa94d239aea70a7f03cbd0af7302b71d0e9322dcaaf1b467.png" />
 </div>
 </div>
 <p>We see that the plot of absolute and relative difference shows that the mass fraction obtained from direct integration matches with NSE equations to machine precision just as <code class="docutils literal notranslate"><span class="pre">is_NSE_compatible()</span></code> predicted. The differences between the two are largely set by the tolerances of both the NSE solver and the ODE integrator.</p>
@@ -966,7 +967,7 @@ by the total activity of the rate (forward + reverse) by doing <code class="docu
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/4e49115f24ccc4f2307f18b534e066a49a0ef1838e4118447c0d158f052739e6.png" src="_images/4e49115f24ccc4f2307f18b534e066a49a0ef1838e4118447c0d158f052739e6.png" />
+<img alt="_images/72303f1b935934037b0616c0ce775f6abc3d94d237434dd42fcbab10663c21b4.png" src="_images/72303f1b935934037b0616c0ce775f6abc3d94d237434dd42fcbab10663c21b4.png" />
 </div>
 </div>
 <p>Here we see that the normalized net rates are all &lt; <span class="math notranslate nohighlight">\(10^{-12}\)</span>, so we are effectively seeing the integration tolerance, and are very close to machine precision.</p>
@@ -1029,7 +1030,7 @@ But letâ€™s verify it by integrating the network.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/9244eaaa48aff5a93f9f71b8a731c77e054b88b3e6b1530536dceb63e94569c4.png" src="_images/9244eaaa48aff5a93f9f71b8a731c77e054b88b3e6b1530536dceb63e94569c4.png" />
+<img alt="_images/40127b23c0d5731b7e3ba45a1c882ed28dbce9144bc2714bbf9c4b0609f13b8c.png" src="_images/40127b23c0d5731b7e3ba45a1c882ed28dbce9144bc2714bbf9c4b0609f13b8c.png" />
 <img alt="_images/b543456754974a572c6e52e956ee445267dda00ef4d594e788991eca91cea811.png" src="_images/b543456754974a572c6e52e956ee445267dda00ef4d594e788991eca91cea811.png" />
 </div>
 </div>
@@ -1114,8 +1115,8 @@ Letâ€™s verify its prediction by integrating the network.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/cbad80f746646d5ddda4a6d618e1c4d8c58deee6a99b03883202c1e45693f7b9.png" src="_images/cbad80f746646d5ddda4a6d618e1c4d8c58deee6a99b03883202c1e45693f7b9.png" />
-<img alt="_images/2f923da9c2f85bb4106dfc543c4638779e05f669dcb66e20a8654d5f049939e2.png" src="_images/2f923da9c2f85bb4106dfc543c4638779e05f669dcb66e20a8654d5f049939e2.png" />
+<img alt="_images/cb9c0f1c70a8885db5162f0a0891ba1c121cc9159a8343334f233981506386ce.png" src="_images/cb9c0f1c70a8885db5162f0a0891ba1c121cc9159a8343334f233981506386ce.png" />
+<img alt="_images/8b99c5e2aeb3870fed309c34402be1177ec842cc881b7f3685defee35c360c82.png" src="_images/8b99c5e2aeb3870fed309c34402be1177ec842cc881b7f3685defee35c360c82.png" />
 </div>
 </div>
 <p>The error plot above shows that NSE and integration agrees to machine-precision once again.</p>

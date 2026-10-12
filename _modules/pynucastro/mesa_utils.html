@@ -7,7 +7,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>pynucastro.mesa_utils &#8212; pynucastro 2.6.0.post464+g1516d7558 documentation</title>
+    <title>pynucastro.mesa_utils &#8212; pynucastro 2.6.0.post470+g0c22729e3 documentation</title>
   
   
   
@@ -41,7 +41,7 @@
   <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=90905a2f556bf617f1a9" />
 <link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=90905a2f556bf617f1a9" />
 
-    <script src="../../_static/documentation_options.js?v=9b191038"></script>
+    <script src="../../_static/documentation_options.js?v=1fbc5c94"></script>
     <script src="../../_static/doctools.js?v=fd6eb6e6"></script>
     <script src="../../_static/sphinx_highlight.js?v=6ffebe34"></script>
     <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
@@ -277,6 +277,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../../rates-devel.html">Working with <code class="docutils literal notranslate"><span class="pre">Rate</span></code> Objects</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../adding-rates.html">Adding Rates from the Literature</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../nets-devel.html">Working with Network Objects</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../jac-devel.html">Form of the Jacobian</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../testing.html">Testing and Comparing Backends</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Reference</span></p>
@@ -603,6 +604,10 @@
                 <span class="k">continue</span>
             <span class="n">nuclei</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">nuc</span><span class="p">)</span>
 
+    <span class="c1"># sometimes MESA uses "neut" for neutrons</span>
+    <span class="k">if</span> <span class="s2">"neut"</span> <span class="ow">in</span> <span class="n">model</span><span class="o">.</span><span class="n">bulk_names</span><span class="p">:</span>
+        <span class="n">nuclei</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">Nucleus</span><span class="p">(</span><span class="s2">"neut"</span><span class="p">))</span>
+
     <span class="k">return</span> <span class="n">nuclei</span></div>
 
 
@@ -635,10 +640,21 @@
     <span class="k">if</span> <span class="n">nuclei</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
         <span class="n">nuclei</span> <span class="o">=</span> <span class="n">get_nuclei</span><span class="p">(</span><span class="n">model</span><span class="p">)</span>
 
-    <span class="n">r</span> <span class="o">=</span> <span class="mf">10.0</span><span class="o">**</span><span class="n">model</span><span class="o">.</span><span class="n">bulk_data</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="s2">"logR"</span><span class="p">]</span> <span class="o">*</span> <span class="n">R_sun</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="n">r</span> <span class="o">=</span> <span class="mf">10.0</span><span class="o">**</span><span class="n">model</span><span class="o">.</span><span class="n">bulk_data</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="s2">"logR"</span><span class="p">]</span> <span class="o">*</span> <span class="n">R_sun</span>
+    <span class="k">except</span> <span class="ne">ValueError</span><span class="p">:</span>
+        <span class="n">r</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">bulk_data</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="s2">"radius_cm"</span><span class="p">]</span>
     <span class="n">m</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">bulk_data</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="s2">"mass"</span><span class="p">]</span> <span class="o">*</span> <span class="n">M_sun</span>
-    <span class="n">rho</span> <span class="o">=</span> <span class="mf">10.0</span><span class="o">**</span><span class="n">model</span><span class="o">.</span><span class="n">bulk_data</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="s2">"logRho"</span><span class="p">]</span>
-    <span class="n">T</span> <span class="o">=</span> <span class="mf">10.0</span><span class="o">**</span><span class="n">model</span><span class="o">.</span><span class="n">bulk_data</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="s2">"logT"</span><span class="p">]</span>
+
+    <span class="k">try</span><span class="p">:</span>
+        <span class="n">rho</span> <span class="o">=</span> <span class="mf">10.0</span><span class="o">**</span><span class="n">model</span><span class="o">.</span><span class="n">bulk_data</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="s2">"logRho"</span><span class="p">]</span>
+    <span class="k">except</span> <span class="ne">ValueError</span><span class="p">:</span>
+        <span class="n">rho</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">bulk_data</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="s2">"density"</span><span class="p">]</span>
+
+    <span class="k">try</span><span class="p">:</span>
+        <span class="n">T</span> <span class="o">=</span> <span class="mf">10.0</span><span class="o">**</span><span class="n">model</span><span class="o">.</span><span class="n">bulk_data</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="s2">"logT"</span><span class="p">]</span>
+    <span class="k">except</span> <span class="ne">ValueError</span><span class="p">:</span>
+        <span class="n">T</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">bulk_data</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="s2">"temperature"</span><span class="p">]</span>
     <span class="n">comp</span> <span class="o">=</span> <span class="n">Composition</span><span class="p">(</span><span class="n">nuclei</span><span class="p">)</span>
     <span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="n">nuclei</span><span class="p">:</span>
         <span class="c1"># sometimes the species data is in terms of log</span>
