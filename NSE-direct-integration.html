@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>NSE vs. Direct Integration &#8212; pynucastro 2.6.0.post470+g0c22729e3 documentation</title>
+    <title>NSE vs. Direct Integration &#8212; pynucastro 2.6.0.post475+g7222a94b3 documentation</title>
   
   
   
@@ -42,7 +42,7 @@
   <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=90905a2f556bf617f1a9" />
 <link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=90905a2f556bf617f1a9" />
 
-    <script src="_static/documentation_options.js?v=1fbc5c94"></script>
+    <script src="_static/documentation_options.js?v=1d536d1f"></script>
     <script src="_static/doctools.js?v=fd6eb6e6"></script>
     <script src="_static/sphinx_highlight.js?v=6ffebe34"></script>
     <script src="_static/clipboard.min.js?v=a7894cd8"></script>
@@ -208,6 +208,7 @@
 <li class="toctree-l1"><a class="reference internal" href="modified-rates.html">Modified Rates</a></li>
 <li class="toctree-l1"><a class="reference internal" href="co-approximations.html">Approximating C and O Burning</a></li>
 <li class="toctree-l1"><a class="reference internal" href="branched-rates.html"><code class="docutils literal notranslate"><span class="pre">BranchedRate</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="beta-limited-rates.html">Î²-limited Rates</a></li>
 <li class="toctree-l1"><a class="reference internal" href="not_in_ydot_term.html">Rate Sequences with Extra Reactants</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Advanced Network Operations</span></p>
@@ -336,6 +337,7 @@
 <li class="toctree-l4"><a class="reference internal" href="pynucastro.rates.alternate_rates.html">pynucastro.rates.alternate_rates module</a></li>
 <li class="toctree-l4"><a class="reference internal" href="pynucastro.rates.approximate_rates.html">pynucastro.rates.approximate_rates module</a></li>
 <li class="toctree-l4"><a class="reference internal" href="pynucastro.rates.aprox_family_rates.html">pynucastro.rates.aprox_family_rates module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="pynucastro.rates.beta_limited_rate.html">pynucastro.rates.beta_limited_rate module</a></li>
 <li class="toctree-l4"><a class="reference internal" href="pynucastro.rates.branched_rate.html">pynucastro.rates.branched_rate module</a></li>
 <li class="toctree-l4"><a class="reference internal" href="pynucastro.rates.derived_rate.html">pynucastro.rates.derived_rate module</a></li>
 <li class="toctree-l4"><a class="reference internal" href="pynucastro.rates.files.html">pynucastro.rates.files module</a></li>
@@ -800,6 +802,7 @@ In pynucastro, this is the <a class="reference internal" href="pynucastro.rates.
   starlib rates: 0
   temperature tabular rates: 1
   weak tabular rates: 0
+  beta-limited rates: 0
   approximate rates: 10
   derived rates: 47
   branched rates: 0
@@ -864,7 +867,7 @@ Since we will compare to NSE, we want to use the same screening that NSE uses â€
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/f0754f26c203977f32aaed2641591a6163df1c2d253ef6cb07eccb29e8c546ea.png" src="_images/f0754f26c203977f32aaed2641591a6163df1c2d253ef6cb07eccb29e8c546ea.png" />
+<img alt="_images/20a98c1672576a4770d2837c592c1582493cfa74b7b5727bff0a6554312f5084.png" src="_images/20a98c1672576a4770d2837c592c1582493cfa74b7b5727bff0a6554312f5084.png" />
 </div>
 </div>
 </section>
@@ -932,7 +935,7 @@ Since we will compare to NSE, we want to use the same screening that NSE uses â€
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/a6f630ca245648c1fa94d239aea70a7f03cbd0af7302b71d0e9322dcaaf1b467.png" src="_images/a6f630ca245648c1fa94d239aea70a7f03cbd0af7302b71d0e9322dcaaf1b467.png" />
+<img alt="_images/18acfaa5831e6c878ea4c786a27c6526d73b76d9b824712e26b231c6d55aa427.png" src="_images/18acfaa5831e6c878ea4c786a27c6526d73b76d9b824712e26b231c6d55aa427.png" />
 </div>
 </div>
 <p>We see that the plot of absolute and relative difference shows that the mass fraction obtained from direct integration matches with NSE equations to machine precision just as <code class="docutils literal notranslate"><span class="pre">is_NSE_compatible()</span></code> predicted. The differences between the two are largely set by the tolerances of both the NSE solver and the ODE integrator.</p>
@@ -967,7 +970,7 @@ by the total activity of the rate (forward + reverse) by doing <code class="docu
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/72303f1b935934037b0616c0ce775f6abc3d94d237434dd42fcbab10663c21b4.png" src="_images/72303f1b935934037b0616c0ce775f6abc3d94d237434dd42fcbab10663c21b4.png" />
+<img alt="_images/617bc5138846af4b6ec0a6861aef42992cd6f82fb6293be0363533a935c8e12a.png" src="_images/617bc5138846af4b6ec0a6861aef42992cd6f82fb6293be0363533a935c8e12a.png" />
 </div>
 </div>
 <p>Here we see that the normalized net rates are all &lt; <span class="math notranslate nohighlight">\(10^{-12}\)</span>, so we are effectively seeing the integration tolerance, and are very close to machine precision.</p>
@@ -1115,8 +1118,8 @@ Letâ€™s verify its prediction by integrating the network.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/cb9c0f1c70a8885db5162f0a0891ba1c121cc9159a8343334f233981506386ce.png" src="_images/cb9c0f1c70a8885db5162f0a0891ba1c121cc9159a8343334f233981506386ce.png" />
-<img alt="_images/8b99c5e2aeb3870fed309c34402be1177ec842cc881b7f3685defee35c360c82.png" src="_images/8b99c5e2aeb3870fed309c34402be1177ec842cc881b7f3685defee35c360c82.png" />
+<img alt="_images/27cf5ca528c86bac5cc4692afe57d4f65f0d4e6cd55bd477b724afdaaf1674c2.png" src="_images/27cf5ca528c86bac5cc4692afe57d4f65f0d4e6cd55bd477b724afdaaf1674c2.png" />
+<img alt="_images/016bb21c8c64ccb43ca26cdddb47eeda6e46b5bbf48f0fa1a2cdc8cb4763c68b.png" src="_images/016bb21c8c64ccb43ca26cdddb47eeda6e46b5bbf48f0fa1a2cdc8cb4763c68b.png" />
 </div>
 </div>
 <p>The error plot above shows that NSE and integration agrees to machine-precision once again.</p>
